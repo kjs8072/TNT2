@@ -45,7 +45,7 @@ public class AttendDAO {
 	public ArrayList<AttendBean> getAttendList(int student_num){
 		connect();
 		String sql="select * from ATTENDANCE_MANAGEMENTS  where student_num=?";
-		ArrayList<AttendBean> list = new ArrayList<>();
+		ArrayList<AttendBean> list = new ArrayList<AttendBean>();
 		AttendBean bean = null;
 		
 		try {

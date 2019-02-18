@@ -3,7 +3,7 @@
 <%@ page import="java.util.ArrayList, TNT_Bean.*, TNT_DAO.*"%>
 <%@ page import="java.util.ArrayList, TNT_Bean.*"%>
 
-<jsp:useBean id="bean" class="TNT_Bean.AttendBean"></jsp:useBean>
+<jsp:useBean id="bean" class=""></jsp:useBean>
 <jsp:useBean id="TNT" class="TNT_DAO.StudentDAO"></jsp:useBean>
 <jsp:setProperty property="*" name="bean" />
 <jsp:setProperty property="*" name="TNT" />

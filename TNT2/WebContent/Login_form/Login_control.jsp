@@ -27,7 +27,7 @@
 		System.out.println(bean.getUserid() + res + bean.getPasswd());
 		if (res.equals("student_id")) {
 			if (dao.funcStudent(bean.getUserid(), bean.getPasswd()))
-				response.sendRedirect("Login_students.jsp"); //메인주소로 해놓기
+				response.sendRedirect("student_form.jsp"); //메인주소로 해놓기
 			else
 				out.println("<script>alert('Login Fail');history.back();</script>");
 		}
@@ -36,7 +36,7 @@
 	else if (action.equals("staffs")) {
 		ArrayList<LoginBean> login = dao.staffDBselect();
 		request.setAttribute("data", login);
-		pageContext.forward("staff_main.jsp");
+		pageContext.forward("Login_staffs.jsp");
 
 	} else if (action.equals("insert")) {
 		dao.staffsDBinsert(bean);
@@ -47,7 +47,7 @@
 		System.out.println(bean.getUserid() + res + bean.getPasswd());
 		if (res.equals("staff_id")) {
 			if (dao.funcStaff(bean.getUserid(), bean.getPasswd()))
-				response.sendRedirect("student_main.jsp");
+				response.sendRedirect("Staff_Main.jsp");
 			else
 				out.println("<script>alert('Login Fall');history.back();</script>");
 		}

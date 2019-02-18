@@ -1,5 +1,9 @@
 package TNT_Bean;
+<<<<<<< HEAD
 
+=======
+//지선이바보
+>>>>>>> branch 'master' of https://github.com/kjs8072/TNT2.git
 public class AttendBean {
 	int attendance_num;
 	int student_num;

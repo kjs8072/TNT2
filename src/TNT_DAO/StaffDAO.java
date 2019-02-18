@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+<<<<<<< HEAD
 import TNT_Bean.StaffBean;
 
 public class StaffDAO {
@@ -56,6 +57,56 @@ public class StaffDAO {
 					pstmt.setString(4, membership.getStaff_name());
 					pstmt.setString(5, membership.getStaff_gender());
 					pstmt.setString(6, membership.getResponsibility());
+=======
+public class StaffDAO {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
+		String jdbc_url = "jdbc:oracle:thin:@localhost:1521:TNT";
+
+		void connect() { //DB¿¬°á
+			try {
+				Class.forName(jdbc_driver);
+				conn = DriverManager.getConnection(jdbc_url, "admin", "oracle");
+				
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+	}
+		void disconnect() {
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		public boolean insertDB(TNTStaff membership) { //»ðÀÔ
+			connect();
+			String sql = "insert into staffs (staff_num,staff_id,staff_pass,staff_name,staff_gender,staff_responsibility,staff_address,staff_phone,staff_email)"
+						+ " values (?,?,?,?,?,?,?,?,?) ";
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, membership.getStaff_num()); //ex)
+					pstmt.setInt(2, membership.getStaff_id());
+					pstmt.setString(3, membership.getStaff_pass());
+					pstmt.setString(4, membership.getStaff_name());
+					pstmt.setString(5, membership.getStaff_gender());
+					pstmt.setString(6, membership.getStaff_responsibility());
+>>>>>>> branch 'master' of https://github.com/kjs8072/TNT2.git
 					pstmt.setString(7, membership.getStaff_address());
 					pstmt.setString(8, membership.getStaff_phone());
 					pstmt.setString(9, membership.getStaff_email());

@@ -1,11 +1,11 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="TNT.LoginBean"%>
-<%@page import="TNT.LoginDAO"%>
-<jsp:useBean id="bean" class="TNT.LoginBean" scope="request"></jsp:useBean>
+<%@ page import="TNT_Bean.LoginBean"%>
+<%@page import="TNT_DAO.LoginDAO"%>
+<jsp:useBean id="bean" class="TNT_Bean.LoginBean" scope="request"></jsp:useBean>
 <jsp:setProperty property="*" name="bean"></jsp:setProperty>
-<jsp:useBean id="dao" class="TNT.LoginDAO"></jsp:useBean>
+<jsp:useBean id="dao" class="TNT_DAO.LoginDAO"></jsp:useBean>
 <%
 	request.setCharacterEncoding("UTF-8");
 %>

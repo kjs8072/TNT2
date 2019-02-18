@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import TNT_Bean.StaffBean;
+
 public class StaffDAO {
 
 		Connection conn = null;
@@ -42,18 +44,18 @@ public class StaffDAO {
 				}
 			}
 		}
-		public boolean insertDB(TNTStaff membership) { //»ðÀÔ
+		public boolean insertDB(StaffBean membership) { //»ðÀÔ
 			connect();
 			String sql = "insert into staffs (staff_num,staff_id,staff_pass,staff_name,staff_gender,staff_responsibility,staff_address,staff_phone,staff_email)"
 						+ " values (?,?,?,?,?,?,?,?,?) ";
 				try {
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setInt(1, membership.getStaff_num()); //ex)
-					pstmt.setInt(2, membership.getStaff_id());
+					pstmt.setString(2, membership.getStaff_id());
 					pstmt.setString(3, membership.getStaff_pass());
 					pstmt.setString(4, membership.getStaff_name());
 					pstmt.setString(5, membership.getStaff_gender());
-					pstmt.setString(6, membership.getStaff_responsibility());
+					pstmt.setString(6, membership.getResponsibility());
 					pstmt.setString(7, membership.getStaff_address());
 					pstmt.setString(8, membership.getStaff_phone());
 					pstmt.setString(9, membership.getStaff_email());
@@ -68,7 +70,7 @@ public class StaffDAO {
 				return true;
 		}
 
-		public int funcstaff_check(int id) {
+		public int funcstaff_check(String id) {
 		      connect();
 		      CallableStatement cs;
 		      String sql = "{? = call staff_check(?)";
@@ -77,7 +79,7 @@ public class StaffDAO {
 		      try {
 		         cs = conn.prepareCall(sql);
 		         cs.registerOutParameter(1, java.sql.Types.INTEGER);
-		         cs.setInt(2, id);
+		         cs.setString(2, id);
 		         cs.execute();
 		         result = cs.getInt(1);
 		         System.out.println("llllllllllllllllllllllll"+result);

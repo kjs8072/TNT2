@@ -3,8 +3,8 @@
 <%@ page import="java.util.ArrayList, TNT_Bean.*, TNT_DAO.*"%>
 <%@ page import="java.util.ArrayList, TNT_Bean.*"%>
 
-<jsp:useBean id="bean" class=""></jsp:useBean>
-<jsp:useBean id="TNT" class="TNT_DAO.StudentDAO"></jsp:useBean>
+<jsp:useBean id="bean" class="TNT_Bean.StaffBean"></jsp:useBean>
+<jsp:useBean id="TNT" class="TNT_DAO.StaffDAO"></jsp:useBean>
 <jsp:setProperty property="*" name="bean" />
 <jsp:setProperty property="*" name="TNT" />
 
@@ -31,9 +31,8 @@
    }
    
    else if (action.equals("check2")) {
-         if (bean.funcstaff_check(TNT.getStaff_id())==0){
+         if (TNT.funcstaff_check(bean.getStaff_id())==0){
             out.println("<script>alert('ok');history.back();</script>");   
-            
          }   else
             out.println("<script>alert('no');history.back();</script>");
    }   

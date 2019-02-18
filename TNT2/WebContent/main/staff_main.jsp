@@ -5,13 +5,13 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>TNT</title>
+<title>STAFF MAIN</title>
 
 <!-- Bootstrap core CSS -->
 <link
@@ -84,7 +84,7 @@
 							<i class="icon-screen-desktop m-auto text-primary"></i>
 						</div>
 						<h3>
-							<a href="TNT_Attend_control.jsp?action=attendance">MyPage</a>
+							<a href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=attendance">MyPage</a>
 						</h3>
 					</div>
 				</div>

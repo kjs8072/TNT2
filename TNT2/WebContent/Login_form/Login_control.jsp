@@ -36,7 +36,7 @@
 	else if (action.equals("staffs")) {
 		ArrayList<LoginBean> login = dao.staffDBselect();
 		request.setAttribute("data", login);
-		pageContext.forward("Login_staffs.jsp");
+		pageContext.forward("staff_main.jsp");
 
 	} else if (action.equals("insert")) {
 		dao.staffsDBinsert(bean);
@@ -47,7 +47,7 @@
 		System.out.println(bean.getUserid() + res + bean.getPasswd());
 		if (res.equals("staff_id")) {
 			if (dao.funcStaff(bean.getUserid(), bean.getPasswd()))
-				response.sendRedirect("Login_staffs.jsp");
+				response.sendRedirect("student_main.jsp");
 			else
 				out.println("<script>alert('Login Fall');history.back();</script>");
 		}

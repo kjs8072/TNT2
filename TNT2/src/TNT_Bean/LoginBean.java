@@ -1,4 +1,4 @@
-package TNT;
+package TNT_Bean;
 
 public class LoginBean {
 

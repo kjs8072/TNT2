@@ -12,19 +12,16 @@ import TNT_Bean.StaffBean;
 
 public class StaffDAO {
 
-//학생 자격증 내용 추가
-//프로시저나 함수 필요한 지 얘기해주세요~
-
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 
 	String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
-	String jdbc_url = "jdbc:oracle:thin:@localhost:1521:TNT";
+	String jdbc_url = "jdbc:oracle:thin:@192.168.0.24:1521:TNT";
 
 	void connect() { // DB연결
 		try {
 			Class.forName(jdbc_driver);
-			conn = DriverManager.getConnection(jdbc_url, "admin", "oracle");
+			conn = DriverManager.getConnection(jdbc_url, "admin", "admin");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -53,7 +50,7 @@ public class StaffDAO {
 
 	public ArrayList<StaffBean> SelectDBstaffs() {
 		connect();
-		String sql = "select staff_id, staff_name, staff_address, staff_num,  " + " from staffs";
+		String sql = "select staff_id, staff_name, staff_address, staff_num, staff_phone, staff_salary " + " from staffs";
 
 		ArrayList<StaffBean> list = new ArrayList<>();
 		StaffBean bean = null;

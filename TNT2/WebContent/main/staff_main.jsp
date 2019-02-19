@@ -33,6 +33,19 @@
 <link href="<%=request.getContextPath()%>/css/landing-page.min.css"
 	rel="stylesheet">
 
+<!--  <script>
+		function list1() {
+			document.form1.action.value = "list";
+			//console.log("asdfasdf");
+			document.form1.submit();
+		}
+
+		function gradeList() {
+			document.form1.action.value = "gradelist";
+			document.form1.submit();
+		}
+	</script> -->
+
 </head>
 
 <body>
@@ -40,8 +53,10 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
+		
+		<!-- 상단 / STAFF MAIN으로 이동하기 -->
 			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/index.html" style="color: blue">TUTER
+				href="<%=request.getContextPath()%>/main/staff_main.jsp" style="color: blue">TUTER
 				& TUTEE</a> <a class="btn btn-primary" href="#">Sign In</a>
 		</div>
 	</nav>
@@ -53,20 +68,21 @@
 			<div class="row">
 				<div class="col-xl-9 mx-auto">
 					<h1 class="mb-5">
-						<a href="index.html">Tuter & Tutee</a>
+					<!-- 중앙img / STAFF MAIN으로 이동하기 -->
+						<a href="<%=request.getContextPath()%>/main/staff_main.jsp">Tuter & Tutee</a>
 					</h1>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 					<form>
 						<div class="form-row">
-							<div class="col-12 col-md-9 mb-2 mb-md-0">
+							<%--	<div class="col-12 col-md-9 mb-2 mb-md-0">
 								<input type="text" class="form-control form-control-lg"
 									placeholder="Enter your email...">
 							</div>
 							<div class="col-12 col-md-3">
 								<button type="submit" class="btn btn-block btn-lg btn-primary"
 									href="TNT_control.jsp?action=attendance">Sign up!</button>
-							</div>
+							</div> --%>
 						</div>
 					</form>
 				</div>
@@ -84,7 +100,8 @@
 							<i class="icon-screen-desktop m-auto text-primary"></i>
 						</div>
 						<h3>
-							<a href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=attendance">MyPage</a>
+							<a
+								href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=list">MyPage</a>
 						</h3>
 					</div>
 				</div>

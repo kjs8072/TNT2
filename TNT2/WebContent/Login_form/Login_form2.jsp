@@ -13,13 +13,6 @@
 </script> -->
 <meta charset="UTF-8">
 <title>Login Form</title>
- <!-- Custom fonts for this template-->
- <link href="<%=request.getContextPath() %>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
- <!-- Custom styles for this template-->
- <link href="<%=request.getContextPath() %>/css/sb-admin-2.min.css" rel="stylesheet">
-
 </head>
 <body>
 
@@ -38,32 +31,24 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">환영합니다!!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
-                  <form class="user" method="post" action="Login_control.jsp">
-                  	<input type="hidden" name="action" value="login">
+                  <form class="user">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="userid" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="passwd" placeholder="Password">
+                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                     </div>
                     <div class="form-group">
-					  <div>
-					    <tr>
-							<th>Login Type</th><br>
-							<td><label><input type="radio" name="user" value="student_id" checked>학생</label> 
-							<label><input type="radio" name="user" value="staff_id">교직원<br></label></td>
-						</tr>
-					  </div>
                       <div class="custom-control custom-checkbox small">
                         <input type="checkbox" class="custom-control-input" id="customCheck">
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
-                    <input type="submit" class="btn btn-primary btn-user btn-block" value="로그인">
+                    <a href="index.html" class="btn btn-primary btn-user btn-block">
                       Login
-                    </input>
+                    </a>
                     <hr>
                     <a href="index.html" class="btn btn-google btn-user btn-block">
                       <i class="fab fa-google fa-fw"></i> Login with Google
@@ -86,17 +71,34 @@
         </div>
 
       </div>
+
     </div>
+
   </div>
-  <!-- Bootstrap core JavaScript-->
-  <script src="<%=request.getContextPath() %>/vendor/jquery/jquery.min.js"></script>
-  <script src="<%=request.getContextPath() %>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="<%=request.getContextPath() %>/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="<%=request.getContextPath() %>/js/sb-admin-2.min.js"></script>
-
+	<h2>Login Form</h2>
+	<hr>
+	<!-- <a href="">메인화면으로 돌아가기</a> -->
+	<form method="post" action="Login_control.jsp">
+		<input type="hidden" name="action" value="login">
+		<table border="1">
+			<tr>
+				<th>ID</th>
+				<td><input type="text" name="userid"></td>
+			<tr>
+				<th>PASSWORD</th>
+				<td><input type="password" name="passwd"></td>
+			<tr>
+				<th>Login Type</th>
+				<td><input type="radio" name="user" value="student_id" checked>
+					학생<br> <input type="radio" name="user" value="staff_id">
+					교직원<br></td>
+			</tr>
+			<tr>
+				<td colspan="1" align="center"><input type="submit" value="Login"></td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>

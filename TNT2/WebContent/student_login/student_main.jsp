@@ -34,7 +34,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
-      <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp" style="color:blue">TUTER & TUTEE</a>
+      <a class="navbar-brand" href="<%= request.getContextPath() %>/student_login/student_main.jsp" style="color:blue">TUTER & TUTEE</a>
       <%
            if(session.getAttribute("signedUser") ==null){
       %>

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page
 	import="TNT_Bean.*, TNT_DAO.*, java.util.ArrayList, java.sql.Date"%>
+
 <jsp:useBean id="list" class="java.util.ArrayList" scope="request"></jsp:useBean>
 <jsp:setProperty property="*" name="list"></jsp:setProperty>
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>학생정보</title>
+<title>학생 성적 순위</title>
 
   <!-- Bootstrap core JavaScript-->
   <script src="<%=request.getContextPath()%>/vendor/jquery/jquery.min.js"></script>
@@ -23,7 +24,6 @@
 
   <!-- Custom scripts for all pages-->
   <script src="<%=request.getContextPath()%>/js/sb-admin-2.min.js"></script>
-
 
 <!-- Bootstrap core CSS -->
 <link
@@ -46,7 +46,6 @@
 	rel="stylesheet">
 
 
-	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 table {
@@ -65,7 +64,10 @@ tr:nth-child(even) {
   background-color: #f2f2f2
 }
 </style>
+
+
 </head>
+
 
 
 <body>
@@ -73,11 +75,12 @@ tr:nth-child(even) {
 	<%
 		//언어 설정
 		request.setCharacterEncoding("UTF-8");
-		StudentBean student = new StudentBean();
+		TestvuBean testvu = new TestvuBean();
 		StudentDAO tnt = new StudentDAO();
 
-		list = tnt.getStudents();
+		list = tnt.getScore();
 	%>
+
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
@@ -97,15 +100,15 @@ tr:nth-child(even) {
       <!-- Main Content -->
       <div id="content">
 
-
 	<!-- Masthead -->
 	<header class="masthead text-white text-center">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-9 mx-auto">
-					<h1 class="mb-5">						
-							<a>학생 정보</a>
+					<h1 class="mb-5">
+						<!-- 중앙img / STAFF MAIN으로 이동하기 -->
+						<a >학생 성적 정보</a>
 					</h1>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
@@ -129,45 +132,40 @@ tr:nth-child(even) {
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">학생 정보</h6>
+              <h6 class="m-0 font-weight-bold text-primary">학생 성적 정보</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
 
-<!-- 	<h2 align="center">학생 정보</h2> -->
 	<table id="dataTable" border="1" align="center">
 		<thead>
 		<tr>
-			<th>번호</th>
 			<th>이름</th>
-			<th>생일</th>
-			<th>성별</th>
-			<th>전화</th>
-			<th>주소</th>
-			<th>최종학력</th>
-			<th>학교</th>
-			<th>전공</th>
+			<th>과정명</th>
+			<th>교과목명</th>
+			<th>점수</th>
+			<th>시험일</th>
+			<th>시험구분</th>
+			<th>시험결과</th>
 		</tr></thead><tbody>
 		<%
-			for (StudentBean st : (ArrayList<StudentBean>) list) {
+			for (TestvuBean tu : (ArrayList<TestvuBean>) list) {
 		%>
 		<tr>
-			<td><%=st.getStudent_num()%></td>
-			<td><%=st.getStudent_name()%></td>
-			<td><%=st.getStudent_birth()%></td>
-			<td><%=st.getStudent_gender()%></td>
-			<td><%=st.getStudent_phone()%></td>
-			<td><%=st.getStudent_address()%></td>
-			<td><%=st.getStudent_complete_edu()%></td>
-			<td><%=st.getStudent_univ_coll()%></td>
-			<td><%=st.getStudent_major()%></td>
+
+			<td><%=tu.getStudent_name()%></td>
+			<td><%=tu.getCourse_name()%></td>
+			<td><%=tu.getSubject_name()%></td>
+			<td><%=tu.getScore()%></td>
+			<td><%=tu.getTest_date()%></td>
+			<td><%=tu.getTest_division()%></td>
+			<td><%=tu.getTest_result()%></td>
 		</tr>
 		<%
 			}
 		%>
 		</tbody>
 	</table>
-</div></div></div></div></div>
   <!-- Page level plugins -->
   <script src="<%=request.getContextPath() %>/vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="<%=request.getContextPath() %>/vendor/datatables/dataTables.bootstrap4.min.js"></script>

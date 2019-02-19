@@ -12,6 +12,9 @@ import TNT_Bean.StaffBean;
 
 public class StaffDAO {
 
+//학생 자격증 내용 추가
+//프로시저나 함수 필요한 지 얘기해주세요~
+
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 
@@ -48,17 +51,36 @@ public class StaffDAO {
 		}
 	}
 
-	public boolean updateStaff(StaffDAO staffdao) {
+	public ArrayList<StaffBean> SelectDBstaffs() {
 		connect();
-		String sql = "update staffs set "	
-	
-	
-	
+		String sql = "select staff_id, staff_name, staff_address, staff_num,  " + " from staffs";
+
+		ArrayList<StaffBean> list = new ArrayList<>();
+		StaffBean bean = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				bean = new StaffBean();
+				bean.setStaff_name(rs.getString("staff_name"));
+				bean.setStaff_address(rs.getString("staff_address"));
+				bean.setStaff_email(rs.getString("staff_email"));
+				bean.setStaff_num(rs.getInt("staff_num"));
+				bean.setStaff_phone(rs.getString("staff_phone"));
+				bean.setStaff_salary(rs.getInt("staff_salary"));
+				bean.setStaff_id(rs.getString("staff_id"));
+
+				list.add(bean);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
-	
-	
-	
-	
+
 	public boolean insertDB(StaffBean membership) { // 삽입
 		connect();
 		String sql = "insert into staffs (staff_num,staff_id,staff_pass,staff_name,staff_gender,staff_responsibility,staff_address,staff_phone,staff_email)"

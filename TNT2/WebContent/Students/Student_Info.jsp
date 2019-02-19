@@ -14,6 +14,17 @@
 <meta name="author" content="">
 <title>학생정보</title>
 
+  <!-- Bootstrap core JavaScript-->
+  <script src="<%=request.getContextPath()%>/vendor/jquery/jquery.min.js"></script>
+  <script src="<%=request.getContextPath()%>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="<%=request.getContextPath()%>/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="<%=request.getContextPath()%>/js/sb-admin-2.min.js"></script>
+
+
 <!-- Bootstrap core CSS -->
 <link
 	href="<%=request.getContextPath()%>/vendor/bootstrap/css/bootstrap.min.css"
@@ -33,6 +44,8 @@
 <!-- Custom styles for this template -->
 <link href="<%=request.getContextPath()%>/css/landing-page.min.css"
 	rel="stylesheet">
+
+
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -57,6 +70,15 @@ tr:nth-child(even) {
 
 <body>
 
+	<%
+		//언어 설정
+		request.setCharacterEncoding("UTF-8");
+		StudentBean student = new StudentBean();
+		StudentDAO tnt = new StudentDAO();
+
+		list = tnt.getStudents();
+	%>
+
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
@@ -68,6 +90,13 @@ tr:nth-child(even) {
 				href="#">Sign In</a>
 		</div>
 	</nav>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
 
 	<!-- Masthead -->
 	<header class="masthead text-white text-center">
@@ -97,18 +126,17 @@ tr:nth-child(even) {
 		</div>
 	</header>
 
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">학생 정보</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
 
 <!-- 	<h2 align="center">학생 정보</h2> -->
-	<%
-		//언어 설정
-		request.setCharacterEncoding("UTF-8");
-		StudentBean student = new StudentBean();
-		StudentDAO tnt = new StudentDAO();
-
-		list = tnt.getStudents();
-	%>
-
-	<table border="1" align="center">
+	<table id="dataTable" border="1" align="center">
+		<thead>
 		<tr>
 			<th>번호</th>
 			<th>이름</th>
@@ -119,7 +147,7 @@ tr:nth-child(even) {
 			<th>최종학력</th>
 			<th>학교</th>
 			<th>전공</th>
-		</tr>
+		</tr></thead><tbody>
 		<%
 			for (StudentBean st : (ArrayList<StudentBean>) list) {
 		%>
@@ -137,7 +165,15 @@ tr:nth-child(even) {
 		<%
 			}
 		%>
+		</tbody>
 	</table>
+</div></div></div></div></div>
+  <!-- Page level plugins -->
+  <script src="<%=request.getContextPath() %>/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<%=request.getContextPath() %>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="<%=request.getContextPath() %>/js/demo/datatables-demo.js"></script>
 
 
 </body>

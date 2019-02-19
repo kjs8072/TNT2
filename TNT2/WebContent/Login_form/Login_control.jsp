@@ -27,7 +27,7 @@
 		System.out.println(bean.getUserid() + res + bean.getPasswd());
 		if (res.equals("student_id")) {
 			if (dao.funcStudent(bean.getUserid(), bean.getPasswd()))
-				response.sendRedirect("student_form.jsp"); //메인주소로 해놓기
+				response.sendRedirect("index.jsp"); //메인주소로 해놓기
 			else
 				out.println("<script>alert('Login Fail');history.back();</script>");
 		}

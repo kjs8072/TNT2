@@ -34,7 +34,7 @@
 					교직원<br></td>
 			</tr>
 			<tr>
-				<td colspan="1" align="center"><input type="submit" value="로그인"></td>
+				<td colspan="1" align="center"><input type="submit" value="Login"></td>
 			</tr>
 		</table>
 	</form>

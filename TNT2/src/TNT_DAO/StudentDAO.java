@@ -20,12 +20,12 @@ public class StudentDAO {
 	ResultSet rs = null;
 
 	String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
-	String jdbc_url = "jdbc:oracle:thin:@localhost:1521:xe";//ip,db바꿔야함
+	String jdbc_url="jdbc:oracle:thin:@192.168.111.130:1521:TNT";
 
 	void connect() {
 		try {
 			Class.forName(jdbc_driver);
-			conn = DriverManager.getConnection(jdbc_url, "hr", "hr");//admin oracle로 바꾸기
+			conn = DriverManager.getConnection(jdbc_url, "admin", "admin");	//url, user명, password
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -85,16 +85,17 @@ public class StudentDAO {
 		return list;
 	}
 
-	public ArrayList<StudentBean> getInfoList(){
+	public ArrayList<StudentBean> getInfoList(String stdid){
 		connect();
-		String sql="select student_id, student_name, student_birth, student_gender, student_phone, student_address, student_univ_coll, student_major " 
-				+ " from students";
+		String sql="select student_name, student_birth, student_gender, student_phone, student_address, student_univ_coll, student_major " 
+				+ " from students where student_id=?";
 		
 		ArrayList<StudentBean> list = new ArrayList<>();
 		StudentBean bean = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, stdid);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -106,7 +107,6 @@ public class StudentDAO {
 				bean.setStudent_address(rs.getString("student_address"));
 				bean.setStudent_univ_coll(rs.getString("student_univ_coll"));
 				bean.setStudent_major(rs.getString("student_major"));
-				bean.setStudent_id(rs.getString("student_id"));
 				
 				list.add(bean);
 			}

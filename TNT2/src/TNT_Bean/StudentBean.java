@@ -4,7 +4,6 @@ package TNT_Bean;
 import java.sql.Date;
 
 public class StudentBean {
-
 	private int student_num;
 	private String student_id;
 	private String student_pass;
@@ -82,7 +81,4 @@ public class StudentBean {
 	public void setStudent_major(String student_major) {
 		this.student_major = student_major;
 	}
-
-	
-
 }

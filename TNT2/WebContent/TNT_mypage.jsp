@@ -63,13 +63,13 @@
 			<%
 				if(ab.getStudent_gender().equals("MALE")) {
 			%>
-			<td><input type="radio" name="student_gender" value="남자" checked>남자 
-			<input type="radio"name="student_gender" value="여자">여자</td></tr>
+			<td><div class="radio"><label><input type="radio" name="student_gender" value="남자" checked>남자</label> 
+			<label><input type="radio"name="student_gender" value="여자">여자</label></div></td></tr>
 			<%
 				} else if(ab.getStudent_gender().equals("FEMALE")){
 			%>
-			<td><input type="radio" name="student_gender" value="남자" checked>남자 
-			<input type="radio"name="student_gender" value="여자" checked>여자</td></tr>
+			<td><div class="radio"><label><input type="radio" name="student_gender" value="남자" checked>남자</label> 
+			<label><input type="radio"name="student_gender" value="여자">여자</label></div></td></tr>
 			<%
 				}
 			%>
@@ -92,8 +92,8 @@
 			}
 		%>
 		<tr>
-			<td colspan="2" align="center"><input type="submit" value="수정">
-			<input type="reset" value="취소"></td></tr>
+			<td colspan="2" align="center"><input class="btn btn-primary" type="submit" value="수정">
+			<input class="btn btn-danger" type="reset" value="취소"></td></tr>
 	</table>
 </div>	
 </form>

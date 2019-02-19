@@ -1,6 +1,5 @@
 package TNT_DAO;
 
-
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 
 import TNT_Bean.StudentBean;
 import TNT_Bean.TestvuBean;
- 
+
 public class StudentDAO {
 
 	Connection conn = null;
@@ -20,14 +19,14 @@ public class StudentDAO {
 	ResultSet rs = null;
 
 	String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
+
 	String jdbc_url="jdbc:oracle:thin:@192.168.111.130:1521:TNT";
+
 
 	void connect() {
 		try {
-			Class.forName(jdbc_driver);
+
 			conn = DriverManager.getConnection(jdbc_url, "admin", "admin");	//url, user¸í, password
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,9 +56,9 @@ public class StudentDAO {
 	public ArrayList<StudentBean> getStudents() {
 		connect();
 		String sql = "select student_num, student_name, student_birth, student_gender, student_phone, "
-							+ "student_address, student_complete_edu, student_univ_coll, student_major "
-							+ "from students order by 1";
-		
+				+ "student_address, student_complete_edu, student_univ_coll, student_major "
+				+ "from students order by 1";
+
 		ArrayList<StudentBean> list = new ArrayList<>();
 		StudentBean student = null;
 		try {
@@ -85,6 +84,7 @@ public class StudentDAO {
 		return list;
 	}
 
+
 	public ArrayList<StudentBean> getInfoList(String stdid){
 		connect();
 		String sql="select student_name, student_birth, student_gender, student_phone, student_address, student_univ_coll, student_major " 
@@ -92,13 +92,13 @@ public class StudentDAO {
 		
 		ArrayList<StudentBean> list = new ArrayList<>();
 		StudentBean bean = null;
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, stdid);
 			ResultSet rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				bean = new StudentBean();
 				bean.setStudent_name(rs.getString("student_name"));
 				bean.setStudent_birth(rs.getDate("student_birth"));
@@ -107,7 +107,9 @@ public class StudentDAO {
 				bean.setStudent_address(rs.getString("student_address"));
 				bean.setStudent_univ_coll(rs.getString("student_univ_coll"));
 				bean.setStudent_major(rs.getString("student_major"));
-				
+
+
+				bean.setStudent_id(rs.getString("student_id"));
 				list.add(bean);
 			}
 		} catch (SQLException e) {
@@ -115,14 +117,14 @@ public class StudentDAO {
 		}
 		return list;
 	}
-	
+
 	public ArrayList<TestvuBean> getScore() {
 		connect();
-		
+
 		String sql = "select * from test_vu";
-		
+
 		ArrayList<TestvuBean> list = new ArrayList<>();
-		TestvuBean vu= null;
+		TestvuBean vu = null;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
@@ -143,53 +145,53 @@ public class StudentDAO {
 		}
 		return list;
 	}
-	
-	public int funcStudent_check(String id) {
-	      connect();
-	      CallableStatement cs;
-	      String sql = "{? = call studid_check(?)";
-	      int result = 0;
 
-	      try {
-	         cs = conn.prepareCall(sql);
-	         cs.registerOutParameter(1, java.sql.Types.INTEGER);
-	         cs.setString(2, id);
-	         cs.execute();
-	         result = cs.getInt(1);
-	         System.out.println("llllllllllllllllllllllll"+result);
+	public int funcStudent_check(String id) {
+		connect();
+		CallableStatement cs;
+		String sql = "{? = call studid_check(?)";
+		int result = 0;
+
+		try {
+			cs = conn.prepareCall(sql);
+			cs.registerOutParameter(1, java.sql.Types.INTEGER);
+			cs.setString(2, id);
+			cs.execute();
+			result = cs.getInt(1);
+			System.out.println("llllllllllllllllllllllll" + result);
 //	         System.out.println(cs.getInt(1) + " => success ");
-	         cs.close();
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	         return 0;
-	      }
-	      return result;
-	   }
-	
-	public boolean insertDB(StudentBean membership) { //»ðÀÔ
+			cs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+		return result;
+	}
+
+	public boolean insertDB(StudentBean membership) { // »ðÀÔ
 		connect();
 		String sql = "insert into students (student_id,student_pw,student_name,sysdate,student_gender,student_phone,student_address,student_complete_edu,student_univ_coll,student_major)"
-					+ " values (?,?,?,?,?,?,?,?,?) ";
-			try {
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, membership.getStudent_id());
-				pstmt.setString(2, membership.getStudent_pass()); //ex)
-				pstmt.setString(3, membership.getStudent_name());
-				pstmt.setString(4, membership.getStudent_gender());
-				pstmt.setString(5, membership.getStudent_phone());
-				pstmt.setString(6, membership.getStudent_address());
-				pstmt.setString(7, membership.getStudent_complete_edu());
-				pstmt.setString(8, membership.getStudent_univ_coll());
-				pstmt.setString(9, membership.getStudent_major());
-				pstmt.executeUpdate();
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return false;
-			} finally {
-				disconnect();
-			}
-			return true;
+				+ " values (?,?,?,?,?,?,?,?,?) ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, membership.getStudent_id());
+			pstmt.setString(2, membership.getStudent_pass()); // ex)
+			pstmt.setString(3, membership.getStudent_name());
+			pstmt.setString(4, membership.getStudent_gender());
+			pstmt.setString(5, membership.getStudent_phone());
+			pstmt.setString(6, membership.getStudent_address());
+			pstmt.setString(7, membership.getStudent_complete_edu());
+			pstmt.setString(8, membership.getStudent_univ_coll());
+			pstmt.setString(9, membership.getStudent_major());
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			disconnect();
+		}
+		return true;
 	}
-	
+
 }

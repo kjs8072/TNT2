@@ -1,32 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("UTF-8"); %>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>TNT</title>
+<title>STAFF MAIN</title>
 
 <!-- Bootstrap core CSS -->
-<link href="<%= request.getContextPath() %>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 
 <!-- Custom fonts for this template -->
-<link href="<%= request.getContextPath() %>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-<link href="<%= request.getContextPath() %>/vendor/simple-line-icons/css/simple-line-icons.css"
+<link
+	href="<%=request.getContextPath()%>/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/vendor/simple-line-icons/css/simple-line-icons.css"
 	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
 
 <!-- Custom styles for this template -->
-<link href="<%= request.getContextPath() %>/css/landing-page.min.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/landing-page.min.css"
+	rel="stylesheet">
 
 </head>
 
@@ -35,7 +40,8 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
-			<a class="navbar-brand" href="<%= request.getContextPath() %>/index.html" style="color: blue">TUTER
+			<a class="navbar-brand"
+				href="<%=request.getContextPath()%>/index.html" style="color: blue">TUTER
 				& TUTEE</a> <a class="btn btn-primary" href="#">Sign In</a>
 		</div>
 	</nav>
@@ -78,7 +84,7 @@
 							<i class="icon-screen-desktop m-auto text-primary"></i>
 						</div>
 						<h3>
-							<a href="TNT_Attend_control.jsp?action=attendance">ㅁㄴㅇㄹ</a>
+							<a href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=attendance">MyPage</a>
 						</h3>
 					</div>
 				</div>
@@ -87,7 +93,11 @@
 						<div class="features-icons-icon d-flex">
 							<i class="icon-layers m-auto text-primary"></i>
 						</div>
-						<h3>Mypage</h3>
+						<h3>
+							<a
+								href="<%=request.getContextPath()%>/staff/staff_control.jsp?aciton=list">학생조회
+							</a>
+						</h3>
 					</div>
 				</div>
 				<div class="col-lg-4">
@@ -95,7 +105,11 @@
 						<div class="features-icons-icon d-flex">
 							<i class="icon-check m-auto text-primary"></i>
 						</div>
-						<h3>ì¶ê²°</h3>
+						<h3>
+							<a
+								href="<%=request.getContextPath()%>/staff/staff_control.jsp?aciton=gradelist">성적조회
+							</a>
+						</h3>
 						<p class="lead mb-0"></p>
 					</div>
 				</div>
@@ -139,8 +153,9 @@
 	</footer>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="<%= request.getContextPath() %>/vendor/jquery/jquery.min.js"></script>
-	<script src="<%= request.getContextPath() %>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="<%=request.getContextPath()%>/vendor/jquery/jquery.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

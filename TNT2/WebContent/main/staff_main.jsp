@@ -112,7 +112,7 @@
 						</div>
 						<h3>
 							<a
-								href="<%=request.getContextPath()%>/staff/staff_control.jsp?aciton=list">학생조회
+								href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=list">학생조회
 							</a>
 						</h3>
 					</div>
@@ -124,7 +124,7 @@
 						</div>
 						<h3>
 							<a
-								href="<%=request.getContextPath()%>/staff/staff_control.jsp?aciton=gradelist">성적조회
+								href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=gradelist">성적조회
 							</a>
 						</h3>
 						<p class="lead mb-0"></p>

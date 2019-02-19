@@ -2,14 +2,14 @@ package TNT_Bean;
 
 public class LoginBean {
 
-	private int userid;
+	private String userid;
 	private String passwd;
 
-	public int getUserid() {
+	public String getUserid() {
 		return userid;
 	}
 
-	public void setUserid(int userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 

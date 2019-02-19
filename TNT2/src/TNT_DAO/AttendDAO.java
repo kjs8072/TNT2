@@ -1,5 +1,6 @@
 package TNT_DAO;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -72,4 +73,26 @@ public class AttendDAO {
 		return list;
 	}
 
+	public int funcstaff_check(int id) {
+		connect();
+		CallableStatement cs;
+		String sql = "{? = call staff_check(?)";
+		
+		int result = 0;
+
+		try {
+			cs = conn.prepareCall(sql);
+			cs.registerOutParameter(1, java.sql.Types.INTEGER);
+			cs.setInt(2, id);
+			cs.execute();
+			result = cs.getInt(1);
+			System.out.println("llllllllllllllllllllllll" + result);
+//		         System.out.println(cs.getInt(1) + " => success ");
+			cs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+		return result;
+	}
 }

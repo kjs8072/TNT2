@@ -22,15 +22,23 @@
 
 <!-- Custom styles for this template -->
 <link href="<%= request.getContextPath() %>/css/landing-page.min.css" rel="stylesheet">
-
+ 
 </head>
 <body>
 
 	<!-- Navigation -->
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
-      <a class="navbar-brand" href="<%= request.getContextPath() %>/student_main.jsp" style="color:blue">TUTER & TUTEE</a>
-      <a class="btn btn-primary" href="#">Sign In</a>
+      <a class="navbar-brand" href="<%= request.getContextPath() %>/student_login/student_main.jsp" style="color:blue">TUTER & TUTEE</a>
+      <%
+           if(session.getAttribute("signedUser") ==null){
+      %>
+       <a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/Login_form.jsp">Sign In</a>
+       <%
+             } else {
+       %>
+              <a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/logout.jsp">logout</a>
+       <%} %>
     </div>
   </nav>
 
@@ -56,7 +64,7 @@
             <div class="features-icons-icon d-flex" style="width:700px;">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:700px;"><a href="TNT_Attend_control.jsp?action=attend_out">입실</a></h3>
+            <h3 style="width:700px;"><a href="#">입실</a></h3>
             <p class="lead mb-0"></p>
           </div>
         </div>
@@ -66,7 +74,7 @@
             <div class="features-icons-icon d-flex" style="width:900px;">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:900px;"><a href="TNT_Attend_control.jsp?action=attend_out">외출</a></h3>
+            <h3 style="width:900px;"><a href="#">외출</a></h3>
             <p class="lead mb-0"></p>
           </div>
         </div>
@@ -81,7 +89,7 @@
             <div class="features-icons-icon d-flex" style="width:700px;">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:700px;"><a href="TNT_Attend_control.jsp?action=attend_out">퇴실</a></h3>
+            <h3 style="width:700px;"><a href="#">퇴실</a></h3>
             <p class="lead mb-0"></p>
           </div>
         </div>
@@ -91,12 +99,10 @@
             <div class="features-icons-icon d-flex" style="width:900px;">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:900px;"><a href="TNT_Attend_control.jsp?action=attend_out">복귀</a></h3>
+            <h3 style="width:900px;"><a href="#">복귀</a></h3>
             <p class="lead mb-0"></p>
           </div>
         </div>
-       
-        
       </div>
     </div>
   </section>

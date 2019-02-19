@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html>
 <html lang="en">
  
@@ -31,11 +30,13 @@
 
 <body>
 
-  <!-- Navigation -->
+  <!-- Navigation 
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
       <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp" style="color:blue">TUTER & TUTEE</a>
-      <a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/Login_form.jsp">Sign In</a>
+     
+       <a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/Login_form.jsp">Login</a>
+     
     </div>
   </nav>
 
@@ -47,12 +48,13 @@
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
           <form>
             <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
+              <div class="col-12 col-md-3">
+                <button type="submit" class="btn btn-block btn-lg btn-primary">
+                <a href="<%= request.getContextPath() %>/Login_form/Login_form.jsp" style="color:white">Login</a></button>
               </div>
               <div class="col-12 col-md-3">
                 <button type="submit" class="btn btn-block btn-lg btn-primary">
-                <a href="<%= request.getContextPath() %>/Login_form/Login_form.jsp" style="color:white">Sign up!</a></button>
+                <a href="<%= request.getContextPath() %>/Students/student_form.jsp" style="color:white">Sign up!</a></button>
               </div>
             </div>
           </form>
@@ -60,42 +62,6 @@
       </div>
     </div>
   </header>
-
-  <!-- Icons Grid -->
-  <section class="features-icons bg-light text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-screen-desktop m-auto text-primary"></i>
-            </div>
-            <h3><a href="TNT_Attend_control.jsp?action=attendance">출결조회</a></h3>
-          </div>
-        </div>
-        
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-check m-auto text-primary"></i>
-            </div>
-            <h3><a href="TNT_Attend_control.jsp?action=attend_out">출결</a></h3>
-            <p class="lead mb-0"></p>
-          </div>
-        </div>
-        
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-layers m-auto text-primary"></i>
-            </div>
-            <h3><a href="TNT_Attend_control.jsp?action=mypage">Mypage</a></h3>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </section>
 
 
   <!-- Footer -->

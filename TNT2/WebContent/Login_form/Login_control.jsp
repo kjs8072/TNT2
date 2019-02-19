@@ -31,7 +31,7 @@
 				session.setAttribute("signedUser", res);
 			}
 			if (dao.funcStudent(bean.getUserid(), bean.getPasswd()))
-				response.sendRedirect("index.jsp"); //메인주소로 해놓기
+				response.sendRedirect("/TNT2/index.jsp"); //메인주소로 해놓기
 			else
 				out.println("<script>alert('Login Fail');history.back();</script>");
 		}

@@ -22,6 +22,30 @@
 
 </head>
 <body>
+<<<<<<< HEAD
+	<h2>Login Form</h2>
+	<hr>
+	<!-- <a href="">메인화면으로 돌아가기</a> -->
+	<form method="post" action="Login_control.jsp">
+		<input type="hidden" name="action" value="login">
+		<table border="1">
+			<tr>
+				<th>ID</th>
+				<td><input type="text" name="userid"></td>
+			<tr>
+				<th>PASSWORD</th>
+				<td><input type="password" name="passwd"></td>
+			<tr>
+				<th>Login Type</th>
+				<td><input type="radio" name="user" value="student" checked>
+					학생<br> <input type="radio" name="user" value="staff">
+					교직원<br></td>
+			</tr>
+			<tr>
+				<td colspan="1" align="center"><input type="submit" value="Login"></td>
+			</tr>
+		</table>
+	</form>
 
   <div class="container">
 
@@ -84,7 +108,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -98,5 +121,6 @@
   <!-- Custom scripts for all pages-->
   <script src="<%=request.getContextPath() %>/js/sb-admin-2.min.js"></script>
 
+>>>>>>> branch 'master' of https://github.com/kjs8072/TNT2.git
 </body>
 </html>

@@ -13,45 +13,24 @@
 <%
 	String action = request.getParameter("action");
 
-	if (action.equals("students")) {
-		ArrayList<LoginBean> login = dao.studentDBselect();
-		request.setAttribute("data", login);
-		pageContext.forward("Login_students.jsp");
-
-	} else if (action.equals("insert")) {
-		dao.studentsDBinsert(bean);
-		response.sendRedirect("Login_control.jsp?action=list");
-
-	} else if (action.equals("login")) {
+	if (action.equals("login")) {
 		String res = request.getParameter("user");
-		System.out.println(bean.getUserid() + res + bean.getPasswd());
-		if (res.equals("student_id")) {
-			if (dao.funcStudent(bean.getUserid(), bean.getPasswd())){
-				response.sendRedirect("/TNT2/index.jsp"); //메인주소로 해놓기
+		if (res.equals("student")) {
+			ArrayList<LoginBean> login = dao.studentDBselect();
+
+			if (dao.funcStudent(bean.getUserid(), bean.getPasswd())) {
 				session.setAttribute("signedUser", res);
-			}
-			if (dao.funcStudent(bean.getUserid(), bean.getPasswd()))
-				response.sendRedirect("/TNT2/index.jsp"); //메인주소로 해놓기
-			else
+				response.sendRedirect("/TNT2/student_login/student_main.jsp"); //메인주소로 해놓기
+			} else
 				out.println("<script>alert('Login Fail');history.back();</script>");
-		}
-	}
 
-	else if (action.equals("staffs")) {
-		ArrayList<LoginBean> login = dao.staffDBselect();
-		request.setAttribute("data", login);
-		pageContext.forward("Login_staffs.jsp");
+		}else if (res.equals("staff")) {
+			ArrayList<LoginBean> login = dao.staffDBselect();
 
-	} else if (action.equals("insert")) {
-		dao.staffsDBinsert(bean);
-		response.sendRedirect("Login_control.jsp?action=list");
-
-	} else if (action.equals("login")) {
-		String res = request.getParameter("user");
-		System.out.println(bean.getUserid() + res + bean.getPasswd());
-		if (res.equals("staff_id")) {
-			if (dao.funcStaff(bean.getUserid(), bean.getPasswd()))
-				response.sendRedirect("Staff_Main.jsp");
+			if (dao.funcStaff(bean.getUserid(), bean.getPasswd())) {
+				session.setAttribute("signedUser", res);
+				response.sendRedirect("#");
+			}
 			else
 				out.println("<script>alert('Login Fall');history.back();</script>");
 		}

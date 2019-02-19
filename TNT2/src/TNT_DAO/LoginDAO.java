@@ -17,7 +17,6 @@ public class LoginDAO {
 
 	String jdbc_dirver = "oracle.jdbc.driver.OracleDriver";
 	String jdbc_url = "jdbc:oracle:thin:@192.168.0.24:1521:TNT";
-
 	void connect() {
 		try {
 			Class.forName(jdbc_dirver);

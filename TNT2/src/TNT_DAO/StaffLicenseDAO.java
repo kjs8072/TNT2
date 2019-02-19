@@ -11,6 +11,8 @@ import TNT_Bean.StaffLicenseBean;
 
 public class StaffLicenseDAO {
 
+//staff_num인가요?? staff_id가 아니라??
+
 	Connection conn;
 	PreparedStatement pstmt;
 
@@ -71,13 +73,33 @@ public class StaffLicenseDAO {
 		return select;
 	}
 
-	public boolean staffDBinsert() {
+	public boolean staffDBinsert(StaffLicenseBean bean) {
 		connect();
-		String sql = "insert into staff_licenses(f_license_code, f_license_start_date, f_license_end_date, license_num, staff_num)"
+		String sql = "insert into staff_licenses(f_license_start_date, f_license_end_date, staff_num, license_num, f_license_code)"
 				+ " values(?,?,?,?,?)";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setDate(1, bean.getF_license_start_date());
+			pstmt.setDate(2, bean.getF_license_end_date());
+			pstmt.setInt(3, bean.getStaff_num());
+			pstmt.setInt(4, bean.getLicense_num());
+			pstmt.setString(5, bean.getF_license_code());
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			disconnect();
+		}
+		return true;
+
 	}
-	
-	
+
+	public boolean staffDBupdate(StaffLicenseBean bean) {
+		connect();
+		String sql = "update staff_licenses set staff_"
+	}
 	
 	
 	

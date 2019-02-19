@@ -26,8 +26,13 @@
 		
 	} else if(action.equals("mypage")){
 		ArrayList<StudentBean> list = sdao.getInfoList("19001");
-		request.setAttribute("stu", list);		//요청 페이지에 값을 setting. list에 있는 값을 "data"에 넣어서 TNT_mypage.jsp에 값을 넘김
+		request.setAttribute("stu", list);		//요청 페이지에 값을 setting. list에 있는 값을 "stu"에 넣어서 TNT_mypage.jsp에 값을 넘김
 		pageContext.forward("TNT_mypage.jsp");
+		
+	} else if(action.equals("update")){
+		ArrayList<StudentBean> list = sdao.getInfoList("19001");
+		request.setAttribute("stu", list);		//요청 페이지에 값을 setting. list에 있는 값을 "stu"에 넣어서 TNT_mypage_update.jsp에 값을 넘김
+		pageContext.forward("TNT_mypage_update.jsp");
 		
 	}
 %>

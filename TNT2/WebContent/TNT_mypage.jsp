@@ -44,7 +44,7 @@
     </div>
   </header>
   <br>
-<form method="post" action="TNT_mypage_update.jsp">
+<form method="post" action="<%= request.getContextPath() %>/TNT_Attend_control.jsp?action=update">
 <table border="1" align="center" style="width:50%">
 		<%
 			for(StudentBean ab : (ArrayList<StudentBean>) stu) {

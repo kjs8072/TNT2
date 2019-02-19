@@ -6,11 +6,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <script>
-	function Login_check() {
-		document.form
-	}
-</script> -->
 <meta charset="UTF-8">
 <title>Login Form</title>
  <!-- Custom fonts for this template-->
@@ -22,38 +17,12 @@
 
 </head>
 <body>
-<<<<<<< HEAD
-	<h2>Login Form</h2>
+	<h2>Tuter & Tutee</h2>
 	<hr>
-	<!-- <a href="">메인화면으로 돌아가기</a> -->
-	<form method="post" action="Login_control.jsp">
-		<input type="hidden" name="action" value="login">
-		<table border="1">
-			<tr>
-				<th>ID</th>
-				<td><input type="text" name="userid"></td>
-			<tr>
-				<th>PASSWORD</th>
-				<td><input type="password" name="passwd"></td>
-			<tr>
-				<th>Login Type</th>
-				<td><input type="radio" name="user" value="student" checked>
-					학생<br> <input type="radio" name="user" value="staff">
-					교직원<br></td>
-			</tr>
-			<tr>
-				<td colspan="1" align="center"><input type="submit" value="Login"></td>
-			</tr>
-		</table>
-	</form>
-
   <div class="container">
-
     <!-- Outer Row -->
     <div class="row justify-content-center">
-
       <div class="col-xl-10 col-lg-12 col-md-9">
-
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
@@ -76,8 +45,8 @@
 					  <div>
 					    <tr>
 							<th>Login Type</th><br>
-							<td><label><input type="radio" name="user" value="student_id" checked>학생</label> 
-							<label><input type="radio" name="user" value="staff_id">교직원<br></label></td>
+							<td><label><input type="radio" name="user" value="student" checked>학생</label> 
+							<label><input type="radio" name="user" value="staff">교직원<br></label></td>
 						</tr>
 					  </div>
                       <div class="custom-control custom-checkbox small">
@@ -86,7 +55,6 @@
                       </div>
                     </div>
                     <input type="submit" class="btn btn-primary btn-user btn-block" value="로그인">
-                      Login
                     </input>
                     <hr>
                     <a href="index.html" class="btn btn-google btn-user btn-block">
@@ -121,6 +89,5 @@
   <!-- Custom scripts for all pages-->
   <script src="<%=request.getContextPath() %>/js/sb-admin-2.min.js"></script>
 
->>>>>>> branch 'master' of https://github.com/kjs8072/TNT2.git
 </body>
 </html>

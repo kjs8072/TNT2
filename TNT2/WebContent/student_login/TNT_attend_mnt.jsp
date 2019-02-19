@@ -56,7 +56,7 @@
             <div class="features-icons-icon d-flex" style="width:700px;">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:700px;"><a href="TNT_Attend_control.jsp?action=attend_out">입실</a></h3>
+            <h3 style="width:700px;"><a href="#">입실</a></h3>
             <p class="lead mb-0"></p>
           </div>
         </div>
@@ -66,7 +66,7 @@
             <div class="features-icons-icon d-flex" style="width:900px;">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:900px;"><a href="TNT_Attend_control.jsp?action=attend_out">외출</a></h3>
+            <h3 style="width:900px;"><a href="#">외출</a></h3>
             <p class="lead mb-0"></p>
           </div>
         </div>
@@ -81,7 +81,7 @@
             <div class="features-icons-icon d-flex" style="width:700px;">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:700px;"><a href="TNT_Attend_control.jsp?action=attend_out">퇴실</a></h3>
+            <h3 style="width:700px;"><a href="#">퇴실</a></h3>
             <p class="lead mb-0"></p>
           </div>
         </div>
@@ -91,12 +91,10 @@
             <div class="features-icons-icon d-flex" style="width:900px;">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:900px;"><a href="TNT_Attend_control.jsp?action=attend_out">복귀</a></h3>
+            <h3 style="width:900px;"><a href="#">복귀</a></h3>
             <p class="lead mb-0"></p>
           </div>
         </div>
-       
-        
       </div>
     </div>
   </section>

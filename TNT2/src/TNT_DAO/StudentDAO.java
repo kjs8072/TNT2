@@ -102,7 +102,7 @@ public class StudentDAO {
 				bean = new StudentBean();
 				bean.setStudent_name(rs.getString("student_name"));
 				bean.setStudent_birth(rs.getDate("student_birth"));
-				bean.setStudent_gender(rs.getString("gender"));
+				bean.setStudent_gender(rs.getString("student_gender"));
 				bean.setStudent_phone(rs.getString("student_phone"));
 				bean.setStudent_address(rs.getString("student_address"));
 				bean.setStudent_univ_coll(rs.getString("student_univ_coll"));

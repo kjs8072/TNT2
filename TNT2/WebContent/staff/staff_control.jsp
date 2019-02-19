@@ -34,6 +34,8 @@
 	/**********************************************IH********************************************/
 	//action의 값이 "list인지 확인"
 	/*	} else */
+	
+	
 	if (action.equals("list")) {
 		//bean에 있는 getStudents를 실행하고 나온 값을 arrylist type으로 studentVO에 넣음
 		ArrayList<StudentBean> list = TNT.getStudents();

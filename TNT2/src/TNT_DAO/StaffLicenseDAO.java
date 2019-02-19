@@ -15,12 +15,12 @@ public class StaffLicenseDAO {
 	PreparedStatement pstmt;
 
 	String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
-	String jdbc_url = "jdbc:oracle:thin:@192.168.111.136:1521:TNT";
+	String jdbc_url = "jdbc:oracle:thin:@192.168.0.24:1521:TNT";
 
 	void connect() {
 		try {
 			Class.forName(jdbc_driver);
-			conn = DriverManager.getConnection(jdbc_url, "admin", "oracle");
+			conn = DriverManager.getConnection(jdbc_url, "admin", "admin");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

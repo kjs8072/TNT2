@@ -14,7 +14,7 @@ public class AttendDAO {
 	PreparedStatement pstmt = null;
 	
 	String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
-	String jdbc_url="jdbc:oracle:thin:@192.168.111.130:1521:TNT";
+	String jdbc_url="jdbc:oracle:thin:@192.168.0.24:1521:TNT";
 	
 	void connect() {
 		try {

@@ -15,10 +15,6 @@ public class StudentBean {
 	private String student_complete_edu;
 	private String student_univ_coll;
 	private String student_major;
-	private String t_license_code;
-	private int license_num;
-	private Date t_license_start_date;
-	private Date t_license_end_date;
 
 	public int getStudent_num() {
 		return student_num;
@@ -106,38 +102,6 @@ public class StudentBean {
 
 	public void setStudent_major(String student_major) {
 		this.student_major = student_major;
-	}
-
-	public String getT_license_code() {
-		return t_license_code;
-	}
-
-	public void setT_license_code(String t_license_code) {
-		this.t_license_code = t_license_code;
-	}
-
-	public int getLicense_num() {
-		return license_num;
-	}
-
-	public void setLicense_num(int license_num) {
-		this.license_num = license_num;
-	}
-
-	public Date getT_license_start_date() {
-		return t_license_start_date;
-	}
-
-	public void setT_license_start_date(Date t_license_start_date) {
-		this.t_license_start_date = t_license_start_date;
-	}
-
-	public Date getT_license_end_date() {
-		return t_license_end_date;
-	}
-
-	public void setT_license_end_date(Date t_license_end_date) {
-		this.t_license_end_date = t_license_end_date;
 	}
 
 }

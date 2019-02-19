@@ -14,10 +14,6 @@ public class StaffBean {
 	private String staff_address;
 	private String staff_phone;
 	private String staff_email;
-	private String f_license_code;
-	private int license_num;
-	private Date f_license_start_date;
-	private Date f_license_end_date;
 
 	public int getStaff_num() {
 		return staff_num;
@@ -97,38 +93,6 @@ public class StaffBean {
 
 	public void setStaff_email(String staff_email) {
 		this.staff_email = staff_email;
-	}
-
-	public String getF_license_code() {
-		return f_license_code;
-	}
-
-	public void setF_license_code(String f_license_code) {
-		this.f_license_code = f_license_code;
-	}
-
-	public int getLicense_num() {
-		return license_num;
-	}
-
-	public void setLicense_num(int license_num) {
-		this.license_num = license_num;
-	}
-
-	public Date getF_license_start_date() {
-		return f_license_start_date;
-	}
-
-	public void setF_license_start_date(Date f_license_start_date) {
-		this.f_license_start_date = f_license_start_date;
-	}
-
-	public Date getF_license_end_date() {
-		return f_license_end_date;
-	}
-
-	public void setF_license_end_date(Date f_license_end_date) {
-		this.f_license_end_date = f_license_end_date;
 	}
 
 }

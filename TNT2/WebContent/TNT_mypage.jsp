@@ -55,12 +55,23 @@
 		<tr>
 		<tr>
 			<th>생일</th>
-			<td><input type="text" name="student_birth" value="<%=ab.getStudent_birth() %>" style="width:100%"></td></tr>
+			<td><input type="date" name="student_birth" value="<%=ab.getStudent_birth() %>" style="width:100%"></td></tr>
 		<tr>
 		<tr>
 			<th>성별</th>
-			<td><input type="text" name="student_gender" value="<%=ab.getStudent_gender() %>" style="width:100%"></td></tr>
-		<tr>
+			<%
+				if(ab.getStudent_gender().equals("MALE")) {
+			%>
+			<td><input type="radio" name="student_gender" value="남자" checked>남자 
+			<input type="radio"name="student_gender" value="여자">여자</td></tr>
+			<%
+				} else if(ab.getStudent_gender().equals("FEMALE")){
+			%>
+			<td><input type="radio" name="student_gender" value="남자" checked>남자 
+			<input type="radio"name="student_gender" value="여자" checked>여자</td></tr>
+			<%
+				}
+			%>
 		<tr>
 			<th>연락처</th>
 			<td><input type="text" name="student_phone" value="<%=ab.getStudent_phone() %>" style="width:100%"></td></tr>

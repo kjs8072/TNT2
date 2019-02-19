@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList,TNT_DAO.*, TNT_Bean.*" %>
-
+ 
 <jsp:useBean id="adao" class="TNT_DAO.AttendDAO"></jsp:useBean>
 <jsp:useBean id="abean" class="TNT_Bean.AttendBean"></jsp:useBean>
 <jsp:setProperty property="*" name="abean"></jsp:setProperty>

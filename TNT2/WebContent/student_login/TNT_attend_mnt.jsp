@@ -22,7 +22,7 @@
 
 <!-- Custom styles for this template -->
 <link href="<%= request.getContextPath() %>/css/landing-page.min.css" rel="stylesheet">
-
+ 
 </head>
 <body>
 

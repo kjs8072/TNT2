@@ -29,8 +29,8 @@
 				<td><input type="password" name="passwd"></td>
 			<tr>
 				<th>Login Type</th>
-				<td><input type="radio" name="user" value="student_id" checked>
-					학생<br> <input type="radio" name="user" value="staff_id">
+				<td><input type="radio" name="user" value="student" checked>
+					학생<br> <input type="radio" name="user" value="staff">
 					교직원<br></td>
 			</tr>
 			<tr>

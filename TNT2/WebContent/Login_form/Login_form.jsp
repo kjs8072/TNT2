@@ -43,7 +43,7 @@
                   <form class="user" method="post" action="Login_control.jsp">
                   	<input type="hidden" name="action" value="login">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="userid" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="userid" aria-describedby="emailHelp" placeholder="Enter User Id...">
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="passwd" placeholder="Password">

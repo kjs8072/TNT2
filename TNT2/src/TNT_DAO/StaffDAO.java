@@ -12,9 +12,6 @@ import TNT_Bean.StaffBean;
 
 public class StaffDAO {
 
-//학생 자격증 내용 추가
-//프로시저나 함수 필요한 지 얘기해주세요~
-
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 
@@ -53,7 +50,7 @@ public class StaffDAO {
 
 	public ArrayList<StaffBean> SelectDBstaffs() {
 		connect();
-		String sql = "select staff_id, staff_name, staff_address, staff_num,  " + " from staffs";
+		String sql = "select staff_id, staff_name, staff_address, staff_num, staff_phone, staff_salary " + " from staffs";
 
 		ArrayList<StaffBean> list = new ArrayList<>();
 		StaffBean bean = null;

@@ -8,34 +8,81 @@
 <html>
 <head>
 <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+ <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/landing-page.min.css" rel="stylesheet">
 <title>출결관리</title>
 </head>
 <body>
-<table border="1">
-		<tr>
-			<th>이름</th>
-			<th>생일</th>
-			<th>성별</th>
-			<th>연락처</th>
-			<th>주소</th>
-			<th>학교</th>
-			<th>학과</th>
-		</tr>
+<!-- Navigation -->
+  <nav class="navbar navbar-light bg-light static-top">
+    <div class="container">
+      <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp" style="color:blue">TUTER & TUTEE</a>
+      <a class="btn btn-primary" href="#">Sign In</a>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+       
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        </div>
+      </div>
+    </div>
+  </header>
+  <br>
+<form method="post" action="TNT_attend_list.jsp?action=">
+<table border="1" align="center" style="width:50%">
 		<%
 			for(StudentBean ab : (ArrayList<StudentBean>) stu) {
 		%>
 		<tr>
-			<td><%=ab.getStudent_name() %></td>
-			<td><%=ab.getStudent_birth() %></td>
-			<td><%=ab.getStudent_gender() %></td>
-			<td><%=ab.getStudent_phone() %></td>
-			<td><%=ab.getStudent_address() %></td>
-			<td><%=ab.getStudent_univ_coll() %></td>
-			<td><%=ab.getStudent_major() %></td>
-		</tr>
+			<th>이름</th>
+			<td><input type="text" name="student_name" value="<%=ab.getStudent_name() %>" style="width:100%"></td></tr>
+		<tr>
+		<tr>
+			<th>생일</th>
+			<td><input type="text" name="student_birth" value="<%=ab.getStudent_birth() %>" style="width:100%"></td></tr>
+		<tr>
+		<tr>
+			<th>성별</th>
+			<td><input type="text" name="student_gender" value="<%=ab.getStudent_gender() %>" style="width:100%"></td></tr>
+		<tr>
+		<tr>
+			<th>연락처</th>
+			<td><input type="text" name="student_phone" value="<%=ab.getStudent_phone() %>" style="width:100%"></td></tr>
+		<tr>
+		<tr>
+			<th>주소</th>
+			<td><input type="text" name="student_name" value="<%=ab.getStudent_address() %>" style="width:100%"></td></tr>
+		<tr>
+		<tr>
+			<th>학교</th>
+			<td><input type="text" name="student_name" value="<%=ab.getStudent_univ_coll() %>" style="width:100%"></td></tr>
+		<tr>
+		<tr>
+			<th>학과</th>
+			<td><input type="text" name="student_name" value="<%=ab.getStudent_major() %>" style="width:100%"></td></tr>
 		<%
 			}
 		%>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" value="수정">
+			<input type="reset" value="취소"></td></tr>
 	</table>
+</form>
 </body>
 </html>

@@ -15,6 +15,16 @@
 <meta name="author" content="">
 <title>학생 성적 순위</title>
 
+  <!-- Bootstrap core JavaScript-->
+  <script src="<%=request.getContextPath()%>/vendor/jquery/jquery.min.js"></script>
+  <script src="<%=request.getContextPath()%>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="<%=request.getContextPath()%>/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="<%=request.getContextPath()%>/js/sb-admin-2.min.js"></script>
+
 <!-- Bootstrap core CSS -->
 <link
 	href="<%=request.getContextPath()%>/vendor/bootstrap/css/bootstrap.min.css"
@@ -62,6 +72,16 @@ tr:nth-child(even) {
 
 <body>
 
+	<%
+		//언어 설정
+		request.setCharacterEncoding("UTF-8");
+		TestvuBean testvu = new TestvuBean();
+		StudentDAO tnt = new StudentDAO();
+
+		list = tnt.getScore();
+	%>
+
+
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
@@ -73,6 +93,12 @@ tr:nth-child(even) {
 				href="#">Sign In</a>
 		</div>
 	</nav>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
 
 	<!-- Masthead -->
 	<header class="masthead text-white text-center">
@@ -103,17 +129,16 @@ tr:nth-child(even) {
 		</div>
 	</header>
 
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">학생 성적 정보</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
 
-	<%
-		//언어 설정
-		request.setCharacterEncoding("UTF-8");
-		TestvuBean testvu = new TestvuBean();
-		StudentDAO tnt = new StudentDAO();
-
-		list = tnt.getScore();
-	%>
-
-	<table border="1" align="center">
+	<table id="dataTable" border="1" align="center">
+		<thead>
 		<tr>
 			<th>이름</th>
 			<th>과정명</th>
@@ -122,7 +147,7 @@ tr:nth-child(even) {
 			<th>시험일</th>
 			<th>시험구분</th>
 			<th>시험결과</th>
-		</tr>
+		</tr></thead><tbody>
 		<%
 			for (TestvuBean tu : (ArrayList<TestvuBean>) list) {
 		%>
@@ -139,7 +164,15 @@ tr:nth-child(even) {
 		<%
 			}
 		%>
+		</tbody>
 	</table>
+  <!-- Page level plugins -->
+  <script src="<%=request.getContextPath() %>/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<%=request.getContextPath() %>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="<%=request.getContextPath() %>/js/demo/datatables-demo.js"></script>
+
 
 </body>
 </html>

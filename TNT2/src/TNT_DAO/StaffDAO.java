@@ -78,21 +78,21 @@ public class StaffDAO {
 		return list;
 	}
 
-	public boolean insertDB(StaffBean membership) { // »ðÀÔ
+	public boolean insertDB(StaffBean bean) { // »ðÀÔ
 		connect();
 		String sql = "insert into staffs (staff_num,staff_id,staff_pass,staff_name,staff_gender,staff_responsibility,staff_address,staff_phone,staff_email)"
 				+ " values (?,?,?,?,?,?,?,?,?) ";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, membership.getStaff_num()); // ex)
-			pstmt.setString(2, membership.getStaff_id());
-			pstmt.setString(3, membership.getStaff_pass());
-			pstmt.setString(4, membership.getStaff_name());
-			pstmt.setString(5, membership.getGender());
-			pstmt.setString(6, membership.getResponsibility());
-			pstmt.setString(7, membership.getStaff_address());
-			pstmt.setString(8, membership.getStaff_phone());
-			pstmt.setString(9, membership.getStaff_email());
+			pstmt.setInt(1, bean.getStaff_num()); // ex)
+			pstmt.setString(2, bean.getStaff_id());
+			pstmt.setString(3, bean.getStaff_pass());
+			pstmt.setString(4, bean.getStaff_name());
+			pstmt.setString(5, bean.getGender());
+			pstmt.setString(6, bean.getResponsibility());
+			pstmt.setString(7, bean.getStaff_address());
+			pstmt.setString(8, bean.getStaff_phone());
+			pstmt.setString(9, bean.getStaff_email());
 			pstmt.executeUpdate();
 
 		} catch (SQLException e) {

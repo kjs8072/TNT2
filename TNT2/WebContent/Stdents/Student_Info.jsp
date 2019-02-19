@@ -33,6 +33,25 @@
 <!-- Custom styles for this template -->
 <link href="<%=request.getContextPath()%>/css/landing-page.min.css"
 	rel="stylesheet">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 90%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 3px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+</style>
 </head>
 
 
@@ -56,10 +75,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-9 mx-auto">
-					<h1 class="mb-5">
-						<!-- 중앙img / STAFF MAIN으로 이동하기 -->
-						<a href="<%=request.getContextPath()%>/main/staff_main.jsp">Tuter
-							& Tutee</a>
+					<h1 class="mb-5">						
+							<a>학생 정보</a>
 					</h1>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
@@ -81,7 +98,7 @@
 	</header>
 
 
-	<h2>학생 정보</h2>
+<!-- 	<h2 align="center">학생 정보</h2> -->
 	<%
 		//언어 설정
 		request.setCharacterEncoding("UTF-8");

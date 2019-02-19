@@ -107,9 +107,6 @@ public class StudentDAO {
 				bean.setStudent_address(rs.getString("student_address"));
 				bean.setStudent_univ_coll(rs.getString("student_univ_coll"));
 				bean.setStudent_major(rs.getString("student_major"));
-
-
-				bean.setStudent_id(rs.getString("student_id"));
 				list.add(bean);
 			}
 		} catch (SQLException e) {

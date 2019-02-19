@@ -44,7 +44,7 @@
     </div>
   </header>
   <br>
-<form method="post" action="TNT_attend_list.jsp?action=">
+<form method="post" action="TNT_mypage_update.jsp">
 <table border="1" align="center" style="width:50%">
 		<%
 			for(StudentBean ab : (ArrayList<StudentBean>) stu) {

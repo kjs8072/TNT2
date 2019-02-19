@@ -16,7 +16,7 @@ public class LoginDAO {
 	PreparedStatement pstmt;
 
 	String jdbc_dirver = "oracle.jdbc.driver.OracleDriver";
-	String jdbc_url = "jdbc:oracle:thin:@192.168.111.136:1521:TNT";
+	String jdbc_url = "jdbc:oracle:thin:@192.168.0.24:1521:TNTadmin";
 
 	void connect() {
 		try {

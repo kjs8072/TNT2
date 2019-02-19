@@ -45,7 +45,8 @@
   </header>
   <br>
 <form method="post" action="<%= request.getContextPath() %>/TNT_Attend_control.jsp?action=update">
-<table border="1" align="center" style="width:50%">
+<div class="table-responsive">
+<table class="table" border="1" align="center" style="width:50%">
 		<%
 			for(StudentBean ab : (ArrayList<StudentBean>) stu) {
 		%>
@@ -94,6 +95,7 @@
 			<td colspan="2" align="center"><input type="submit" value="수정">
 			<input type="reset" value="취소"></td></tr>
 	</table>
+</div>	
 </form>
 </body>
 </html>

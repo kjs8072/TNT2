@@ -98,9 +98,21 @@ public class StaffLicenseDAO {
 
 	public boolean staffDBupdate(StaffLicenseBean bean) {
 		connect();
-		String sql = "update staff_licenses set staff_"
+		String sql = "update staff_licenses set staff_";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bean.getF_license_code());
+			pstmt.setDate(2, bean.getF_license_start_date());
+			pstmt.setDate(3, bean.getF_license_end_date());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			disconnect();
+		}
+		return false;
+
 	}
-	
-	
-	
+
 }

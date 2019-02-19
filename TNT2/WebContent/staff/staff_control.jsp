@@ -16,7 +16,7 @@
 	}
 
 	else if (action.equals("gradelist")) {
-		response.sendRedirect(request.getContextPath()+"/staff/ranking.jsp");
+		response.sendRedirect(request.getContextPath()+"/Students/ranking.jsp");
 	}
 
 	// 	if (action.equals("insert")) {
@@ -38,5 +38,4 @@
 	// 		} else
 	// 			out.println("<script>alert('no');history.back();</script>");
 	//	}
-	/******************************************************************************************/
 %>

@@ -5,14 +5,13 @@
 <html lang="en">
  
 <head>
-
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
   <title>TNT</title>
-  
+ 
  
 <!-- Bootstrap core CSS -->
 <link href="<%= request.getContextPath() %>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +27,6 @@
 <!-- Custom styles for this template -->
 <link href="<%= request.getContextPath() %>/css/landing-page.min.css" rel="stylesheet">
 
-
 </head>
 
 <body>
@@ -36,8 +34,8 @@
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html" style="color:blue">TUTER & TUTEE</a>
-      <a class="btn btn-primary" href="#">Sign In</a>
+      <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp" style="color:blue">TUTER & TUTEE</a>
+      <a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/Login_form.jsp">Sign In</a>
     </div>
   </nav>
 
@@ -46,17 +44,15 @@
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
-        <div class="col-xl-9 mx-auto">
-          <h1 class="mb-5">Tuter & Tutee</h1>
-        </div>
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
           <form>
             <div class="form-row">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="text" class="form-control form-control-lg" placeholder="Enter your email...">
+                <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
               </div>
               <div class="col-12 col-md-3">
-                <button type="submit" class="btn btn-block btn-lg btn-primary" href="TNT_control.jsp?action=attendance">Sign up!</button>
+                <button type="submit" class="btn btn-block btn-lg btn-primary">
+                <a href="<%= request.getContextPath() %>/Login_form/Login_form.jsp" style="color:white">Sign up!</a></button>
               </div>
             </div>
           </form>
@@ -74,7 +70,7 @@
             <div class="features-icons-icon d-flex">
               <i class="icon-screen-desktop m-auto text-primary"></i>
             </div>
-            <h3><a href="TNT_Attend_control.jsp?action=attendance">ì¶ê²°ì¡°í</a></h3>
+            <h3><a href="TNT_Attend_control.jsp?action=attendance">출결조회</a></h3>
           </div>
         </div>
         
@@ -83,7 +79,7 @@
             <div class="features-icons-icon d-flex">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3><a href="TNT_Attend_control.jsp?action=attend_out">ì¶ê²°</a></h3>
+            <h3><a href="TNT_Attend_control.jsp?action=attend_out">출결</a></h3>
             <p class="lead mb-0"></p>
           </div>
         </div>

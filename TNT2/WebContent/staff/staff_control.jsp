@@ -12,7 +12,7 @@
 	String action = request.getParameter("action");
 
 	if (action.equals("list")) {
-		response.sendRedirect(request.getContextPath()+"/Stdents/Student_Info.jsp");
+		response.sendRedirect(request.getContextPath()+"/Students/Student_Info.jsp");
 	}
 
 	else if (action.equals("gradelist")) {

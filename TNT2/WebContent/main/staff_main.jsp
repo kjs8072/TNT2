@@ -32,20 +32,6 @@
 <!-- Custom styles for this template -->
 <link href="<%=request.getContextPath()%>/css/landing-page.min.css"
 	rel="stylesheet">
-
-<!--  <script>
-		function list1() {
-			document.form1.action.value = "list";
-			//console.log("asdfasdf");
-			document.form1.submit();
-		}
-
-		function gradeList() {
-			document.form1.action.value = "gradelist";
-			document.form1.submit();
-		}
-	</script> -->
-
 </head>
 
 <body>

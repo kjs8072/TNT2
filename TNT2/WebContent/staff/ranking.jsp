@@ -20,7 +20,8 @@
 		TestvuBean testvu = new TestvuBean();
 		StudentDAO tnt = new StudentDAO();
 
-		tnt.getStudents();
+		list = tnt.getScore();
+		
 	%>
 
 	<table border="1">

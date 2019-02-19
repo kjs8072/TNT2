@@ -17,7 +17,7 @@
 		StudentBean student = new StudentBean();
 		StudentDAO tnt = new StudentDAO();
 
-		tnt.getStudents();
+		list = tnt.getStudents();
 	%>
 
 	<table border="1">

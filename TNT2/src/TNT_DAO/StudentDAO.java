@@ -87,7 +87,7 @@ public class StudentDAO {
 
 	public ArrayList<StudentBean> getInfoList(String stdid){
 		connect();
-		String sql="select student_name, student_birth, student_gender, student_phone, student_address, student_univ_coll, student_major " 
+		String sql="select student_id, student_name, student_birth, student_gender, student_phone, student_address, student_univ_coll, student_major " 
 				+ " from students where student_id=?";
 		
 		ArrayList<StudentBean> list = new ArrayList<>();
@@ -107,6 +107,7 @@ public class StudentDAO {
 				bean.setStudent_address(rs.getString("student_address"));
 				bean.setStudent_univ_coll(rs.getString("student_univ_coll"));
 				bean.setStudent_major(rs.getString("student_major"));
+				bean.setStudent_id(rs.getString("student_id"));
 				list.add(bean);
 			}
 		} catch (SQLException e) {

@@ -153,7 +153,7 @@ public class StudentDAO {
 
 	public ArrayList<StudentLicenseVuBean> getTLicense() {
 		connect();
-		String sql = "select * from staff_licenses";
+		String sql = "select * from STUDENT_LICENSE_VU";
 		ArrayList<StudentLicenseVuBean> select = new ArrayList<>();
 		StudentLicenseVuBean bean = null;
 
@@ -164,6 +164,8 @@ public class StudentDAO {
 			while (rs.next()) {
 				bean = new StudentLicenseVuBean();
 								
+				
+				
 				bean.setStudent_name(rs.getString("student_name"));
 				bean.setT_license_code(rs.getString("t_license_code"));
 				bean.setLicense_name(rs.getString("license_name"));

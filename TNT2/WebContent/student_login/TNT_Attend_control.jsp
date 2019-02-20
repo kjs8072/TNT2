@@ -28,25 +28,29 @@
 		returntime = adao.returntimeSelect((String)session.getAttribute("sid"));
 		ltime = adao.leaveSelect((String)session.getAttribute("sid"));
 		
-		if(etime == null){
+		if(etime == null){		//처음 입실할 때
 			pageContext.forward("TNT_attend_mnt.jsp?state=init");	//입실
-		} else{
-			if(outtime != null){
-				if(returntime==null){
+		} else{		//입실한 후
+			if(outtime != null){	//외출 했을경우
+				if(returntime==null){	//외출하고 리턴 안했을 때
 					pageContext.forward("TNT_attend_mnt.jsp?state=out");	//복귀 퇴실
-				} else{
-					if(ltime != null){
+				} else{		//외출 후 복귀 눌렀을 경우
+					if(ltime != null){	//퇴실 후
 						pageContext.forward("TNT_attend_mnt.jsp?state=end");
-					} else
+					} else {	//퇴실 전
 						pageContext.forward("TNT_attend_mnt.jsp?state=leave");	//퇴실
+					}
 				}
-			} else
-				pageContext.forward("TNT_attend_mnt.jsp?state=attendance");	//외출 퇴실
+			} else {	//외출 안했을 경우
+				if(ltime != null){
+					pageContext.forward("TNT_attend_mnt.jsp?state=end");
+				}else {
+					pageContext.forward("TNT_attend_mnt.jsp?state=attendance");	//외출 퇴실
+				}
+			}
 		}
 		
-		if(ltime != null){
-			pageContext.forward("TNT_attend_mnt.jsp?state=end");
-		}
+		
 	} else if(action.equals("mypage")){
 		ArrayList<StudentBean> list = sdao.getInfoList((String)session.getAttribute("sid"));
 		request.setAttribute("stu", list);		//요청 페이지에 값을 setting. list에 있는 값을 "stu"에 넣어서 TNT_mypage.jsp에 값을 넘김

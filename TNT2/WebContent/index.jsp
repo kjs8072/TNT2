@@ -36,7 +36,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form method="post" action="Login_control.jsp">
+          <form method="post" action="<%= request.getContextPath() %>/Login_form/Login_form.jsp">
           
             <div class="form-row">
               <div class="col-12 col-md-3">
@@ -44,7 +44,7 @@
                 <a href="<%= request.getContextPath() %>/Login_form/Login_form.jsp" style="color:white">Login</a></button>
               </div>
               <div class="col-12 col-md-3">
-                <button type="submit" class="btn btn-block btn-lg btn-primary">
+                <button type="button" class="btn btn-block btn-lg btn-primary">
                 <a href="<%= request.getContextPath() %>/Students/student_form.jsp" style="color:white">Sign up!</a></button>
               </div>
             </div>

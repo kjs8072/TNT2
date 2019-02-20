@@ -13,7 +13,6 @@
 <%
 	String action = request.getParameter("action");
 	
-	
 	if (action.equals("login")) {
 		String res = request.getParameter("user");
 		if (res.equals("student")) {
@@ -26,7 +25,7 @@
 		}else if (res.equals("staff")) {
 			if (dao.funcStaff(bean.getUserid(), bean.getPasswd())) {
 				session.setAttribute("sid", bean.getUserid());
-				response.sendRedirect("/TNT2/main/staff_main.jsp");
+				response.sendRedirect("/TNT2/staff/staff_main.jsp");
 			}
 			else
 				out.println("<script>alert('Login Fall');history.back();</script>");

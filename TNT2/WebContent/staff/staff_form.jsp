@@ -11,16 +11,28 @@
 
 </script>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>교직원 회원가입</title>
+<!-- Bootstrap core CSS -->
+<link href="<%= request.getContextPath() %>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link href="<%= request.getContextPath() %>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/vendor/simple-line-icons/css/simple-line-icons.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+	rel="stylesheet" type="text/css">
+
+<!-- Custom styles for this template -->
+<link href="<%= request.getContextPath() %>/css/landing-page.min.css" rel="stylesheet">
 </head>
 <body align="center">
 <form name="form1" method="get" action="staff_control.jsp">
 <input type="hidden" name="action" value="insert">
-<table border="2">
+<table class="table" border="2">
 <h1>회원가입 </h1> 
-<tr><th>직원번호</th><td><input type="text" name="staff_num"> <!-- 직원 번호는 이전에 가입한 직원 다음으로 자동으로 번호가 업데이트 했야한다. -->
 <tr><th>아이디</th><td><input type="text" name="staff_id">
-<input type="button" value="중복확인" onclick="staff_check()"></td></tr>
+<input class="btn btn-primary"type="button" value="중복확인" onclick="staff_check()"></td></tr>
 <tr><th>비밀번호</th><td colspan="2"><input type="password" name="staff_pass"></td></tr>
 <tr><th>비밀번호확인</th><td colapan="2"><input type="password" name="student_pass"></td></tr>
 <tr><th>이름</th><td colspan="2"><input type="text" name="staff_name"></td></tr>

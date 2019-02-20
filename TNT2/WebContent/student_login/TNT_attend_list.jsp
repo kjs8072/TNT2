@@ -57,7 +57,6 @@
 <table border="1" align="center">
 		<tr>
 			<th>출석번호</th>
-			<th>학생번호</th>
 			<th>날짜</th>
 			<th>입실시간</th>
 			<th>퇴실시간</th>
@@ -70,7 +69,6 @@
 		%>
 		<tr>
 			<td><%=ab.getAttendance_num() %></td>
-			<td><%=ab.getStudent_num() %></td>
 			<td><%=ab.getAttendance_date() %></td>
 			<td><%=ab.getEntering_time() %></td>
 			<td><%=ab.getLeaving_time() %></td>

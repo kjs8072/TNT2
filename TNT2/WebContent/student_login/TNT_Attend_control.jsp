@@ -73,6 +73,7 @@
 		
 	} else if(action.equals("leaving_update")){		//퇴실
 		adao.attendLeavingUpdate((String)session.getAttribute("sid"));
+		adao.attendDivision((String)session.getAttribute("sid"));
 		pageContext.forward("TNT_Attend_control.jsp?action=attend_out");
 	}
 %>

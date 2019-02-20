@@ -45,10 +45,9 @@ public class AttendDAO {
 	
 	public ArrayList<AttendBean> getAttendList(String stuid){	//출석리스트조회
 		connect();
-		String sql="select * from ATTENDANCE_MANAGEMENTS  where student_id=?";
+		String sql="select * from ATTENDANCE_MANAGEMENTS where student_id=?";
 		ArrayList<AttendBean> list = new ArrayList<AttendBean>();
 		AttendBean bean = null;
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, stuid);
@@ -63,7 +62,7 @@ public class AttendDAO {
 				bean.setLeaving_time(rs.getString("leaving_time"));
 				bean.setOutgo_time(rs.getString("outgo_time"));
 				bean.setReturn_time(rs.getString("return_time"));
-				bean.setStudent_num(rs.getInt("student_num"));
+				bean.setStudent_id(rs.getString("student_id"));
 				
 				list.add(bean);
 			}
@@ -128,7 +127,20 @@ public class AttendDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void attendDivision(String stuid) {
+		connect();
+		CallableStatement cs;
+		try {
+			cs = conn.prepareCall("{call attendance_update(?)}");
+			cs.setString(1,stuid);
+			cs.execute();
+			
+			cs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public String etimeSelect(String stuid) {
 		connect();

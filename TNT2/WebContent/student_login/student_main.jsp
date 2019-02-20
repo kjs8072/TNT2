@@ -5,13 +5,12 @@
 <html lang="en">
  
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-  <title>TNT</title>
- 
+<title>TNT</title>
  
 <!-- Bootstrap core CSS -->
 <link href="<%= request.getContextPath() %>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +29,7 @@
 </head>
 
 <body>
- 
+ out.println(<%= request.getContextPath() %>);
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">

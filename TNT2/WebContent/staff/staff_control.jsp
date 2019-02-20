@@ -2,7 +2,7 @@
 	pageEncoding="EUC-KR"%>
 <%@ page import="java.util.ArrayList, TNT_Bean.*, TNT_DAO.*"%>
 
-<jsp:useBean id="bean" class="TNT_Bean.StudentBean"></jsp:useBean>
+<jsp:useBean id="bean" class="TNT_Bean.StudentLicenseVuBean"></jsp:useBean>
 <jsp:useBean id="TNT" class="TNT_DAO.StudentDAO"></jsp:useBean>
 <jsp:setProperty property="*" name="bean" />
 <jsp:setProperty property="*" name="TNT" />
@@ -20,6 +20,7 @@
 	}
 	
 	else if (action.equals("license")) {
+		
 		response.sendRedirect(request.getContextPath()+"/Students/studentLicense.jsp");
 	}
 

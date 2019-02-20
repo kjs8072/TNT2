@@ -14,15 +14,17 @@
 <meta name="author" content="">
 <title>학생정보</title>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="<%=request.getContextPath()%>/vendor/jquery/jquery.min.js"></script>
-  <script src="<%=request.getContextPath()%>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="<%=request.getContextPath()%>/vendor/jquery/jquery.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="<%=request.getContextPath()%>/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script
+	src="<%=request.getContextPath()%>/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="<%=request.getContextPath()%>/js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="<%=request.getContextPath()%>/js/sb-admin-2.min.js"></script>
 
 
 <!-- Bootstrap core CSS -->
@@ -46,23 +48,23 @@
 	rel="stylesheet">
 
 
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 90%;
-  border: 1px solid #ddd;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 90%;
+	border: 1px solid #ddd;
 }
 
 th, td {
-  text-align: left;
-  padding: 3px;
+	text-align: left;
+	padding: 3px;
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2
+	background-color: #f2f2f2
 }
 </style>
 </head>
@@ -91,27 +93,27 @@ tr:nth-child(even) {
 		</div>
 	</nav>
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+	<!-- Content Wrapper -->
+	<div id="content-wrapper" class="d-flex flex-column">
 
-      <!-- Main Content -->
-      <div id="content">
+		<!-- Main Content -->
+		<div id="content">
 
 
-	<!-- Masthead -->
-	<header class="masthead text-white text-center">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-9 mx-auto">
-					<h1 class="mb-5">						
-							<a>학생 정보</a>
-					</h1>
-				</div>
-				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-					<form>
-						<div class="form-row">
-							<%--	<div class="col-12 col-md-9 mb-2 mb-md-0">
+			<!-- Masthead -->
+			<header class="masthead text-white text-center">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-9 mx-auto">
+							<h1 class="mb-5">
+								<a>학생 정보</a>
+							</h1>
+						</div>
+						<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+							<form>
+								<div class="form-row">
+									<%--	<div class="col-12 col-md-9 mb-2 mb-md-0">
 								<input type="text" class="form-control form-control-lg"
 									placeholder="Enter your email...">
 							</div>
@@ -119,61 +121,73 @@ tr:nth-child(even) {
 								<button type="submit" class="btn btn-block btn-lg btn-primary"
 									href="TNT_control.jsp?action=attendance">Sign up!</button>
 							</div> --%>
+								</div>
+							</form>
 						</div>
-					</form>
+					</div>
+				</div>
+			</header>
+
+			<!-- DataTales Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">학생 정보</h6>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+
+						<!-- 	<h2 align="center">학생 정보</h2> -->
+						<form method="post" action="/studentLicense.jsp">
+							<table id="dataTable" border="1" align="center">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>이름</th>
+										<th>생일</th>
+										<th>성별</th>
+										<th>전화</th>
+										<th>주소</th>
+										<th>최종학력</th>
+										<th>학교</th>
+										<th>전공</th>
+									</tr>
+								</thead>
+								<tbody>
+									<%
+										for (StudentBean st : (ArrayList<StudentBean>) list) {
+									%>
+									<tr>
+										<td><%=st.getStudent_id()%></td>
+										<td><a
+											href="<%=request.getContextPath()%>/Students/studentLicense.jsp?action=<%=st.getStudent_name()%>" />
+											<%=st.getStudent_name()%></td>
+										<td><%=st.getStudent_birth()%></td>
+										<td><%=st.getStudent_gender()%></td>
+										<td><%=st.getStudent_phone()%></td>
+										<td><%=st.getStudent_address()%></td>
+										<td><%=st.getStudent_complete_edu()%></td>
+										<td><%=st.getStudent_univ_coll()%></td>
+										<td><%=st.getStudent_major()%></td>
+									</tr>
+									<%
+										}
+									%>
+								</tbody>
+							</table>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</header>
+	</div>
+	<!-- Page level plugins -->
+	<script
+		src="<%=request.getContextPath()%>/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">학생 정보</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-
-<!-- 	<h2 align="center">학생 정보</h2> -->
-	<table id="dataTable" border="1" align="center">
-		<thead>
-		<tr>
-			<th>ID</th>
-			<th>이름</th>
-			<th>생일</th>
-			<th>성별</th>
-			<th>전화</th>
-			<th>주소</th>
-			<th>최종학력</th>
-			<th>학교</th>
-			<th>전공</th>
-		</tr></thead><tbody>
-		<%
-			for (StudentBean st : (ArrayList<StudentBean>) list) {
-		%>
-		<tr>
-			<td><%=st.getStudent_id()%></td>
-			<td><%=st.getStudent_name()%></td>
-			<td><%=st.getStudent_birth()%></td>
-			<td><%=st.getStudent_gender()%></td>
-			<td><%=st.getStudent_phone()%></td>
-			<td><%=st.getStudent_address()%></td>
-			<td><%=st.getStudent_complete_edu()%></td>
-			<td><%=st.getStudent_univ_coll()%></td>
-			<td><%=st.getStudent_major()%></td>
-		</tr>
-		<%
-			}
-		%>
-		</tbody>
-	</table>
-</div></div></div></div></div>
-  <!-- Page level plugins -->
-  <script src="<%=request.getContextPath() %>/vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="<%=request.getContextPath() %>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="<%=request.getContextPath() %>/js/demo/datatables-demo.js"></script>
+	<!-- Page level custom scripts -->
+	<script src="<%=request.getContextPath()%>/js/demo/datatables-demo.js"></script>
 
 
 </body>

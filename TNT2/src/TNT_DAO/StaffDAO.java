@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import TNT_Bean.StaffBean;
+import TNT_Bean.StudentBean;
 
 public class StaffDAO {
 
@@ -48,9 +49,40 @@ public class StaffDAO {
 		}
 	}
 
-	public ArrayList<StaffBean> SelectDBstaffs(String staff_id) {
+	public ArrayList<StaffBean> getInfoList(String staffid) {
 		connect();
-		String sql = "select staff_id, staff_name, staff_address, staff_num, staff_phone, staff_salary " + " from staffs";
+		String sql = "select staff_id, staff_name, staff_birth, staff_gender, staff_phone, staff_address, staff_responsibility"
+				+ " from staffs where staff_id=?";
+
+		ArrayList<StaffBean> list = new ArrayList<>();
+		StaffBean bean = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, staffid);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				bean = new StaffBean();
+				bean.setStaff_name(rs.getString("staff_name"));
+				bean.setStaff_birth(rs.getDate("staff_birth"));
+				bean.setStaff_gender(rs.getString("staff_gender"));
+				bean.setStaff_phone(rs.getString("staff_phone"));
+				bean.setStaff_address(rs.getString("staff_address"));
+				bean.setStaff_id(rs.getString("staff_id"));
+				bean.setStaff_responsibility(rs.getString("staff_responsibility"));
+				list.add(bean);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public ArrayList<StaffBean> SelectDBstaffs() {
+		connect();
+		String sql = "select staff_id, staff_name, staff_address, staff_num, staff_phone, staff_salary "
+				+ " from staffs";
 
 		ArrayList<StaffBean> list = new ArrayList<>();
 		StaffBean bean = null;

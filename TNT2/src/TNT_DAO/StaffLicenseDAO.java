@@ -11,8 +11,6 @@ import TNT_Bean.StaffLicenseBean;
 
 public class StaffLicenseDAO {
 
-//staff_num인가요?? staff_id가 아니라??
-
 	Connection conn;
 	PreparedStatement pstmt;
 
@@ -98,7 +96,7 @@ public class StaffLicenseDAO {
 
 	public boolean staffDBupdate(StaffLicenseBean bean) {
 		connect();
-		String sql = "update staff_licenses set staff_";
+		String sql = "update staff_licenses set f_license_code=?, f_license_start_date=?, f_license_end_code";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -114,5 +112,4 @@ public class StaffLicenseDAO {
 		return false;
 
 	}
-
 }

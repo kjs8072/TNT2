@@ -21,7 +21,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/landing-page.min.css" rel="stylesheet">
-<title>교사관리</title>
+<title>교직원관리</title>
 </head>
 <body>
 <!-- Navigation -->

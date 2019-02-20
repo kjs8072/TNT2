@@ -110,7 +110,7 @@ tr:nth-child(even) {
 		TestvuBean testvu = new TestvuBean();
 		StudentDAO tnt = new StudentDAO();
 
-		list = tnt.getScore();
+		list = tnt.getScore(1);
 	%>
 
 	<table border="1" align="center">
@@ -124,17 +124,18 @@ tr:nth-child(even) {
 			<th>시험결과</th>
 		</tr>
 		<%
-			for (TestvuBean tu : (ArrayList<TestvuBean>) list) {
+			for (RankBean rank : (ArrayList<RankBean>) list) {
 		%>
 		<tr>
 
-			<td><%=tu.getStudent_name()%></td>
-			<td><%=tu.getCourse_name()%></td>
-			<td><%=tu.getSubject_name()%></td>
-			<td><%=tu.getScore()%></td>
-			<td><%=tu.getTest_date()%></td>
-			<td><%=tu.getTest_division()%></td>
-			<td><%=tu.getTest_result()%></td>
+			<td><%=rank.getStudent_name()%></td>
+			<td><%=rank.getCourse_name()%></td>
+			<td><%=rank.getSubject_name()%></td>
+			<td><%=rank.getScore()%></td>
+			<td><%=rank.getTest_date()%></td>
+			<td><%=rank.getTest_division()%></td>
+			<td><%=rank.getTest_result()%></td>
+			<td><%=rank.getStudent_rank()%></td>
 		</tr>
 		<%
 			}

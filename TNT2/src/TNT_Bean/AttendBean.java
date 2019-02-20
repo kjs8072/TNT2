@@ -2,7 +2,7 @@ package TNT_Bean;
 
 public class AttendBean {
 	int attendance_num;
-	int student_num;
+	String student_id;
 	String attendance_date;
 	String entering_time;
 	String leaving_time;
@@ -15,11 +15,11 @@ public class AttendBean {
 	public void setAttendance_num(int attendance_num) {
 		this.attendance_num = attendance_num;
 	}
-	public int getStudent_num() {
-		return student_num;
+	public String getStudent_id() {
+		return student_id;
 	}
-	public void setStudent_num(int student_num) {
-		this.student_num = student_num;
+	public void setStudent_id(String student_id) {
+		this.student_id = student_id;
 	}
 	public String getAttendance_date() {
 		return attendance_date;

@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import oracle.jdbc.*;
 
 import TNT_Bean.RankBean;
 import TNT_Bean.StudentBean;
@@ -26,12 +25,11 @@ public class StudentDAO {
 	void connect() {
 		try {
 
-			conn = DriverManager.getConnection(jdbc_url, "admin", "admin"); // url, user��, password
+			conn = DriverManager.getConnection(jdbc_url, "admin", "admin");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	void disconnect() {

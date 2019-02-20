@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ page
 	import="TNT_Bean.*, TNT_DAO.*, java.util.ArrayList, java.sql.Date"%>
-
 <jsp:useBean id="list" class="java.util.ArrayList" scope="request"></jsp:useBean>
 <jsp:setProperty property="*" name="list"></jsp:setProperty>
 <!DOCTYPE html>
@@ -13,7 +12,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>학생 성적 순위</title>
+<title>교과목 정보</title>
 
   <!-- Bootstrap core JavaScript-->
   <script src="<%=request.getContextPath()%>/vendor/jquery/jquery.min.js"></script>
@@ -46,8 +45,6 @@
 <link href="<%=request.getContextPath()%>/css/landing-page.min.css"
 	rel="stylesheet">
 
-
-
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 table {
@@ -66,18 +63,16 @@ tr:nth-child(even) {
   background-color: #f2f2f2
 }
 </style>
-
 </head>
 
 <body>
-
 	<%
 		//언어 설정
 		request.setCharacterEncoding("UTF-8");
 	
-		int subjectNum = request.getParameter("action");
+		int subjectNum = Integer.parseInt(request.getParameter("action"));
 		
-		TestvuBean testvu = new TestvuBean();
+		CourseListVuBean testvu = new CourseListVuBean();
 		StudentDAO tnt = new StudentDAO();
 
 		list = tnt.getScore(subjectNum);
@@ -151,18 +146,30 @@ tr:nth-child(even) {
 			<th>rank</th>
 		</tr></thead><tbody>
 		<%
-			for (RankBean rank : (ArrayList<RankBean>) list) {
+			for (CourseListVuBean vu : (ArrayList<CourseListVuBean>) list) {
 		%>
 		<tr>
+<!-- 	COURSE_NAME -->
+<!-- COURSE_CONTENTS -->
+<!-- SUBJECT_NAME -->
+<!-- SUBJECT_CONTENTS -->
+<!-- DETAIL_METHOD -->
+<!-- SUBJECT_DIVISION -->
+<!-- COURSE_OPEN -->
+<!-- COURSE_FINISH -->
+<!-- COURSE_PERSONS -->
+<!-- COURSE_MAX -->
+<!-- DETAIL_DATE -->
 
-			<td><%=rank.getStudent_name()%></td>
-			<td><%=rank.getCourse_name()%></td>
-			<td><%=rank.getSubject_name()%></td>
-			<td><%=rank.getScore()%></td>
-			<td><%=rank.getTest_date()%></td>
-			<td><%=rank.getTest_division()%></td>
-			<td><%=rank.getTest_result()%></td>
-			<td><%=rank.getStudent_rank()%></td>
+
+			<td><%=vu.getCourse_name()%></td>
+			<td><%=vu.getCourse_contents()%></td>
+			<td><%=vu.getSubject_name()%></td>
+			<td><%=vu.getSubject_contents()%></td>
+			<td><%=vu.getDetail_method()%></td>
+			<td><%=vu.gets%></td>
+			<td><%=vu.getTest_result()%></td>
+			<td><%=vu.getStudent_rank()%></td>
 		</tr>
 		<%
 			}

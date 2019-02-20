@@ -84,13 +84,17 @@ tr:nth-child(even) {
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
-
-			<!-- 상단 / STAFF MAIN으로 이동하기 -->
-			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/main/staff_main.jsp"
-				style="color: blue">TUTER & TUTEE</a> <a class="btn btn-primary"
-				href="#">Sign In</a>
-		</div>
+			<a class="navbar-brand" href="<%= request.getContextPath() %>/student_login/student_main.jsp" style="color:blue">TUTER & TUTEE</a>
+			<%
+           		if(session.getAttribute("sid") ==null){
+      		%>
+       		<a class="btn btn-primary" href="<%= request.getContextPath() %>/index.jsp">Sign In</a>
+       		<%
+             	} else {
+       		%>
+            	<a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/logout.jsp">logout</a>
+       		<%} %>
+    	</div>
 	</nav>
 
 	<!-- Content Wrapper -->

@@ -39,13 +39,17 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
-
-			<!-- 상단 / STAFF MAIN으로 이동하기 -->
-			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/main/staff_main.jsp"
-				style="color: blue">TUTER & TUTEE</a> <a class="btn btn-primary"
-				href="#">Sign In</a>
-		</div>
+			<a class="navbar-brand" href="<%= request.getContextPath() %>/student_login/student_main.jsp" style="color:blue">TUTER & TUTEE</a>
+			<%
+           		if(session.getAttribute("sid") ==null){
+      		%>
+       		<a class="btn btn-primary" href="<%= request.getContextPath() %>/index.jsp">Sign In</a>
+       		<%
+             	} else {
+       		%>
+            	<a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/logout.jsp">logout</a>
+       		<%} %>
+    	</div>
 	</nav>
 
 	<!-- Masthead -->
@@ -56,7 +60,7 @@
 				<div class="col-xl-9 mx-auto">
 					<h1 class="mb-5">
 						<!-- 중앙img / STAFF MAIN으로 이동하기 -->
-						<a href="<%=request.getContextPath()%>/main/staff_main.jsp">Tuter
+						<a href="<%=request.getContextPath()%>/staff/staff_main.jsp">Tuter
 							& Tutee</a>
 					</h1>
 				</div>
@@ -90,7 +94,7 @@
 						</div>
 						<h3>
 							<a
-								href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=list">MyPage</a>
+								href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=my">MyPage</a>
 						</h3>
 					</div>
 				</div>

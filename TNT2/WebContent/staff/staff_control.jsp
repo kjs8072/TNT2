@@ -23,6 +23,10 @@
 		
 		response.sendRedirect(request.getContextPath()+"/Students/studentLicense.jsp");
 	}
+	else if (action.equals("my")) {
+		
+		response.sendRedirect(request.getContextPath()+"/Staff_login/Staff_mypage.jsp");
+	}
 
 	// 	if (action.equals("insert")) {
 	// 		//   bean.insertDB(TNT);

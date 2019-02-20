@@ -144,6 +144,39 @@ public class StudentDAO {
 		}
 		return list;
 	}
+	
+	public ArrayList<CourseListVuBean> getSubjectInfo(String subject_name) {
+		connect();
+		String sql = "select * from course_list_vu where subject_name = ?";
+
+		ArrayList<CourseListVuBean> list = new ArrayList<>();
+		CourseListVuBean bean = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, subject_name);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				bean = new CourseListVuBean();
+				bean.setCourse_name(rs.getString("COURSE_NAME"));
+				bean.setCourse_contents(rs.getString("COURSE_CONTENTS"));
+				bean.setSubject_name(rs.getString("SUBJECT_NAME"));
+				bean.setSubject_contents(rs.getString("SUBJECT_CONTENTS"));
+				bean.setDetail_method(rs.getString("DETAIL_METHOD"));
+				bean.setSubject_division(rs.getString("SUBJECT_DIVISION"));
+				bean.setCourse_open(rs.getDate("COURSE_OPEN"));
+				bean.setCourse_finish(rs.getDate("COURSE_FINISH"));
+				bean.setCourse_persons(rs.getInt("COURSE_PERSONS"));
+				bean.setCourse_max(rs.getInt("COURSE_MAX"));
+				bean.setDetail_date(rs.getDate("DETAIL_DATE"));
+				list.add(bean);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	public ArrayList<RankBean> getScore(int subject_num) {
 		connect();

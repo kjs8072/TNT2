@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import oracle.jdbc.*;
 
 import TNT_Bean.RankBean;
 import TNT_Bean.StudentBean;
@@ -25,7 +26,7 @@ public class StudentDAO {
 	void connect() {
 		try {
 
-			conn = DriverManager.getConnection(jdbc_url, "admin", "admin"); // url, user¸í, password
+			conn = DriverManager.getConnection(jdbc_url, "admin", "admin"); // url, userï¿½ï¿½, password
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -118,14 +119,15 @@ public class StudentDAO {
 		connect();
 		CallableStatement cs;
 
-		String sql = "{call stud_test_rank(?, ?)";
+		String sql = "{call stud_test_rank(?, ?)}";
 		ArrayList<RankBean> list = new ArrayList<>();
 		RankBean bean = null;
 
 		try {
 			cs = conn.prepareCall(sql);
-			cs.registerOutParameter(2, java.sql.Types.REF_CURSOR);
 			cs.setInt(1, subject_num);
+			// cs.registerOutParameter(2, java.sql.Types.REF_CURSOR);
+			cs.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
 			cs.execute();
 			rs = (ResultSet) cs.getObject(2);
 
@@ -168,7 +170,7 @@ public class StudentDAO {
 	 * list.add(vu); } } catch (SQLException e) { e.printStackTrace(); } return
 	 * list; }
 	 */
-	
+
 	public int funcStudent_check(String id) {
 		connect();
 		CallableStatement cs;
@@ -191,7 +193,7 @@ public class StudentDAO {
 		return result;
 	}
 
-	public boolean insertDB(StudentBean membership) { // »ðÀÔ
+	public boolean insertDB(StudentBean membership) { // ï¿½ï¿½ï¿½ï¿½
 		connect();
 		String sql = "insert into students (student_id,student_pw,student_name,sysdate,student_gender,student_phone,student_address,student_complete_edu,student_univ_coll,student_major)"
 				+ " values (?,?,?,?,?,?,?,?,?) ";

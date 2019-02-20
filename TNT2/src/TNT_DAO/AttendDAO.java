@@ -118,7 +118,6 @@ public class AttendDAO {
 	public void attendLeavingUpdate(String stuid) {
 		connect();
 		CallableStatement cs;
-		System.out.println("==================="+stuid);
 		try {
 			cs = conn.prepareCall("{call leaving_update(?)}");
 			cs.setString(1,stuid);

@@ -16,22 +16,14 @@
 	request.setCharacterEncoding("UTF-8");
 	String action = request.getParameter("action");
 
-	/* if(action.equals("attendance")){
-		ArrayList<AttendBean> list = adao.getAttendList(1);
-		request.setAttribute("data", list);		//요청 페이지에 값을 setting. list에 있는 값을 "data"에 넣어서 addrbook_list.jsp에 값을 넘김
-		pageContext.forward("TNT_attend_list.jsp");	 */	//리스트를 보여주는 페이지(TNT_attend_list.jsp)로 이동 ( data값을 넘겨줌.)
-		
-	/* } else if(action.equals("attend_out")){
-		pageContext.forward("TNT_attend_mnt.jsp");
-		
-	} */ if(action.equals("mypage")){
-		ArrayList<StaffBean> list = sdao.SelectDBstaffs("19001");
-		request.setAttribute("staf", list);		//요청 페이지에 값을 setting. list에 있는 값을 "stu"에 넣어서 TNT_mypage.jsp에 값을 넘김
+	 if(action.equals("mypage")){
+		ArrayList<StaffBean> list = sdao.getInfoList("19001");
+		request.setAttribute("data", list);		//요청 페이지에 값을 setting. list에 있는 값을 "stu"에 넣어서 TNT_mypage.jsp에 값을 넘김
 		pageContext.forward("Staff_mypage.jsp");
 		
 	} else if(action.equals("update")){
-		ArrayList<StaffBean> list = sdao.SelectDBstaffs("19001");
-		request.setAttribute("staf", list);		//요청 페이지에 값을 setting. list에 있는 값을 "stu"에 넣어서 TNT_mypage_update.jsp에 값을 넘김
+		ArrayList<StaffBean> list = sdao.getInfoList("19001");
+		request.setAttribute("data", list);		//요청 페이지에 값을 setting. list에 있는 값을 "stu"에 넣어서 TNT_mypage_update.jsp에 값을 넘김
 		pageContext.forward("Staff_mypage_update.jsp");
 		
 	}

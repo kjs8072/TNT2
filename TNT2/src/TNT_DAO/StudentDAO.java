@@ -53,9 +53,9 @@ public class StudentDAO {
 
 	public ArrayList<StudentBean> getStudents() {
 		connect();
-		String sql = "select student_num, student_name, student_birth, student_gender, student_phone, "
+		String sql = "select student_id, student_name, student_birth, student_gender, student_phone, "
 				+ "student_address, student_complete_edu, student_univ_coll, student_major "
-				+ "from students order by 1";
+				+ "from students order by student_name";
 
 		ArrayList<StudentBean> list = new ArrayList<>();
 		StudentBean student = null;
@@ -64,7 +64,7 @@ public class StudentDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				student = new StudentBean();
-				student.setStudent_num(rs.getInt("student_num"));
+				student.setStudent_id(rs.getString("student_id"));
 				student.setStudent_name(rs.getString("student_name"));
 				student.setStudent_birth(rs.getDate("student_birth"));
 				student.setStudent_gender(rs.getString("student_gender"));

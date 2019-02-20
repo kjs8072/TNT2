@@ -138,7 +138,7 @@ tr:nth-child(even) {
 	<table id="dataTable" border="1" align="center">
 		<thead>
 		<tr>
-			<th>번호</th>
+			<th>ID</th>
 			<th>이름</th>
 			<th>생일</th>
 			<th>성별</th>
@@ -152,7 +152,7 @@ tr:nth-child(even) {
 			for (StudentBean st : (ArrayList<StudentBean>) list) {
 		%>
 		<tr>
-			<td><%=st.getStudent_num()%></td>
+			<td><%=st.getStudent_id()%></td>
 			<td><%=st.getStudent_name()%></td>
 			<td><%=st.getStudent_birth()%></td>
 			<td><%=st.getStudent_gender()%></td>

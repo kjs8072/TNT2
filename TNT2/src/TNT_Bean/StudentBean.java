@@ -3,7 +3,6 @@ package TNT_Bean;
 import java.sql.Date;
 
 public class StudentBean {
-	private int student_num;
 	private String student_id;
 	private String student_pass;
 	private String student_name;
@@ -14,14 +13,6 @@ public class StudentBean {
 	private String student_complete_edu;
 	private String student_univ_coll;
 	private String student_major;
-
-	public int getStudent_num() {
-		return student_num;
-	}
-
-	public void setStudent_num(int student_num) {
-		this.student_num = student_num;
-	}
 
 	public String getStudent_id() {
 		return student_id;

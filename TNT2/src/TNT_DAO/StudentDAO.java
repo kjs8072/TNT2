@@ -8,8 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import TNT_Bean.RankBean;
 import TNT_Bean.StudentBean;
-import TNT_Bean.TestvuBean;
 
 public class StudentDAO {
 
@@ -20,13 +20,12 @@ public class StudentDAO {
 
 	String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
 
-	String jdbc_url="jdbc:oracle:thin:@192.168.0.24:1521:TNT";
-
+	String jdbc_url = "jdbc:oracle:thin:@192.168.0.24:1521:TNT";
 
 	void connect() {
 		try {
 
-			conn = DriverManager.getConnection(jdbc_url, "admin", "admin");	//url, user¸í, password
+			conn = DriverManager.getConnection(jdbc_url, "admin", "admin"); // url, user¸í, password
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -84,12 +83,11 @@ public class StudentDAO {
 		return list;
 	}
 
-
-	public ArrayList<StudentBean> getInfoList(String stdid){
+	public ArrayList<StudentBean> getInfoList(String stdid) {
 		connect();
-		String sql="select student_id, student_name, student_birth, student_gender, student_phone, student_address, student_univ_coll, student_major " 
+		String sql = "select student_id, student_name, student_birth, student_gender, student_phone, student_address, student_univ_coll, student_major "
 				+ " from students where student_id=?";
-		
+
 		ArrayList<StudentBean> list = new ArrayList<>();
 		StudentBean bean = null;
 
@@ -116,34 +114,61 @@ public class StudentDAO {
 		return list;
 	}
 
-	public ArrayList<TestvuBean> getScore() {
+	public ArrayList<RankBean> getScore(int subject_num) {
 		connect();
+		CallableStatement cs;
 
-		String sql = "select * from test_vu";
+		String sql = "{call stud_test_rank(?, ?)";
+		ArrayList<RankBean> list = new ArrayList<>();
+		RankBean bean = null;
 
-		ArrayList<TestvuBean> list = new ArrayList<>();
-		TestvuBean vu = null;
 		try {
-			pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				vu = new TestvuBean();
-				vu.setStudent_name(rs.getString("student_name"));
-				vu.setCourse_name(rs.getString("course_name"));
-				vu.setSubject_name(rs.getString("subject_name"));
-				vu.setScore(rs.getInt("score"));
-				vu.setTest_date(rs.getDate("test_date"));
-				vu.setTest_division(rs.getString("test_division"));
-				vu.setTest_result(rs.getString("test_result"));
+			cs = conn.prepareCall(sql);
+			cs.registerOutParameter(2, java.sql.Types.REF_CURSOR);
+			cs.setInt(1, subject_num);
+			cs.execute();
+			rs = (ResultSet) cs.getObject(2);
 
-				list.add(vu);
+			while (rs.next()) {
+				bean = new RankBean();
+				bean.setStudent_name(rs.getString("student_name"));
+				bean.setCourse_name(rs.getString("course_name"));
+				bean.setSubject_name(rs.getString("subject_name"));
+				bean.setScore(rs.getString("score"));
+				bean.setTest_date(rs.getString("test_date"));
+				bean.setTest_division(rs.getString("test_division"));
+				bean.setTest_result(rs.getString("test_result"));
+				bean.setStudent_rank(rs.getString("student_rank"));
+
+				list.add(bean);
 			}
+
+			cs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
 
+	/*
+	 * public ArrayList<TestvuBean> getScore() { connect();
+	 * 
+	 * String sql = "select * from test_vu";
+	 * 
+	 * ArrayList<TestvuBean> list = new ArrayList<>(); TestvuBean vu = null; try {
+	 * pstmt = conn.prepareStatement(sql); ResultSet rs = pstmt.executeQuery();
+	 * while (rs.next()) { vu = new TestvuBean();
+	 * vu.setStudent_name(rs.getString("student_name"));
+	 * vu.setCourse_name(rs.getString("course_name"));
+	 * vu.setSubject_name(rs.getString("subject_name"));
+	 * vu.setScore(rs.getInt("score")); vu.setTest_date(rs.getDate("test_date"));
+	 * vu.setTest_division(rs.getString("test_division"));
+	 * vu.setTest_result(rs.getString("test_result"));
+	 * 
+	 * list.add(vu); } } catch (SQLException e) { e.printStackTrace(); } return
+	 * list; }
+	 */
+	
 	public int funcStudent_check(String id) {
 		connect();
 		CallableStatement cs;

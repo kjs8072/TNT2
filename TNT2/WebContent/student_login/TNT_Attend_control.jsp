@@ -23,15 +23,14 @@
 		
 	} else if(action.equals("attend_out")){
 		String etime, ltime, outtime, returntime;
-		etime = adao.etimeSelect((String)session.getAttribute("signedUser"));
-		outtime = adao.outtimeSelect((String)session.getAttribute("signedUser"));
-		returntime = adao.returntimeSelect((String)session.getAttribute("signedUser"));
-		ltime = adao.leaveSelect((String)session.getAttribute("signedUser"));
+		etime = adao.etimeSelect((String)session.getAttribute("sid"));
+		outtime = adao.outtimeSelect((String)session.getAttribute("sid"));
+		returntime = adao.returntimeSelect((String)session.getAttribute("sid"));
+		ltime = adao.leaveSelect((String)session.getAttribute("sid"));
 		
 		if(etime == null){
 			pageContext.forward("TNT_attend_mnt.jsp?state=init");	//입실
-		}
-		else{
+		} else{
 			if(outtime != null){
 				if(returntime==null){
 					pageContext.forward("TNT_attend_mnt.jsp?state=out");	//복귀 퇴실
@@ -53,7 +52,7 @@
 		pageContext.forward("TNT_mypage_update.jsp");
 		
 	}else if(action.equals("insert")){
-		adao.attendInsert((String)session.getAttribute("signedUser"));
+		adao.attendInsert((String)session.getAttribute("sid"));
 		pageContext.forward("TNT_Attend_control.jsp?action=attend_out");
 	}
 %>

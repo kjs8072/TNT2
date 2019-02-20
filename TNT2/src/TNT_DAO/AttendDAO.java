@@ -76,6 +76,7 @@ public class AttendDAO {
 	public void attendInsert(String stuid) {
 		connect();
 		CallableStatement cs;
+		System.out.println("==================="+stuid);
 		try {
 			cs = conn.prepareCall("{call attendance_insert(?)}");
 			cs.setString(1,stuid);
@@ -91,7 +92,6 @@ public class AttendDAO {
 		connect();
 		String sql="select entering_time from attendance_managements where student_id=?";
 		String etime = null;
-
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, stuid);

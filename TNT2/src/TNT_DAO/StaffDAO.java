@@ -88,8 +88,8 @@ public class StaffDAO {
 			pstmt.setString(2, bean.getStaff_id());
 			pstmt.setString(3, bean.getStaff_pass());
 			pstmt.setString(4, bean.getStaff_name());
-			pstmt.setString(5, bean.getGender());
-			pstmt.setString(6, bean.getResponsibility());
+			pstmt.setString(5, bean.getStaff_gender());
+			pstmt.setString(6, bean.getStaff_responsibility());
 			pstmt.setString(7, bean.getStaff_address());
 			pstmt.setString(8, bean.getStaff_phone());
 			pstmt.setString(9, bean.getStaff_email());

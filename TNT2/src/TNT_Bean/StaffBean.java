@@ -8,12 +8,13 @@ public class StaffBean {
 	private String staff_id;
 	private String staff_pass;
 	private String staff_name;
-	private String gender;
-	private String responsibility;
+	private String staff_gender;
+	private String staff_responsibility;
 	private int Staff_salary;
 	private String staff_address;
 	private String staff_phone;
 	private String staff_email;
+	private Date staff_birth;
 
 	public int getStaff_num() {
 		return staff_num;
@@ -47,20 +48,20 @@ public class StaffBean {
 		this.staff_name = staff_name;
 	}
 
-	public String getGender() {
-		return gender;
+	public String getStaff_gender() {
+		return staff_gender;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setStaff_gender(String staff_gender) {
+		this.staff_gender = staff_gender;
 	}
 
-	public String getResponsibility() {
-		return responsibility;
+	public String getStaff_responsibility() {
+		return staff_responsibility;
 	}
 
-	public void setResponsibility(String responsibility) {
-		this.responsibility = responsibility;
+	public void setStaff_responsibility(String staff_responsibility) {
+		this.staff_responsibility = staff_responsibility;
 	}
 
 	public int getStaff_salary() {
@@ -93,6 +94,14 @@ public class StaffBean {
 
 	public void setStaff_email(String staff_email) {
 		this.staff_email = staff_email;
+	}
+
+	public Date getStaff_birth() {
+		return staff_birth;
+	}
+
+	public void setStaff_birth(Date staff_birth) {
+		this.staff_birth = staff_birth;
 	}
 
 }

@@ -43,7 +43,7 @@ public class AttendDAO {
 		}
 	}
 	
-	public ArrayList<AttendBean> getAttendList(int student_num){
+	public ArrayList<AttendBean> getAttendList(int student_num){	//출석리스트조회
 		connect();
 		String sql="select * from ATTENDANCE_MANAGEMENTS  where student_num=?";
 		ArrayList<AttendBean> list = new ArrayList<AttendBean>();
@@ -73,7 +73,96 @@ public class AttendDAO {
 		return list;
 	}
 
-	public int funcstaff_check(int id) {
+	public void attendInsert(String stuid) {
+		connect();
+		CallableStatement cs;
+		try {
+			cs = conn.prepareCall("{call attendance_insert(?)}");
+			cs.setString(1,stuid);
+			cs.execute();
+			
+			cs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public String etimeSelect(String stuid) {
+		connect();
+		String sql="select entering_time from attendance_managements where student_id=?";
+		String etime = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, stuid);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				etime = rs.getString("entering_time");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return etime;
+	}
+	
+	public String outtimeSelect(String stuid) {
+		connect();
+		String sql="select outgo_time from attendance_managements where student_id=?";
+		String outtime = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, stuid);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				outtime = rs.getString("outgo_time");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return outtime;
+	}
+	
+	public String returntimeSelect(String stuid) {
+		connect();
+		String sql="select return_time from attendance_managements where student_id=?";
+		String returntime = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, stuid);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				returntime = rs.getString("return_time");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return returntime;
+	}
+	
+	public String leaveSelect(String stuid) {
+		connect();
+		String sql="select leaving_time from attendance_managements where student_id=?";
+		String ltime = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, stuid);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ltime = rs.getString("leaving_time");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ltime;
+	}
+/*	public int funcstaff_check(int id) {
 		connect();
 		CallableStatement cs;
 		String sql = "{? = call staff_check(?)";
@@ -87,12 +176,11 @@ public class AttendDAO {
 			cs.execute();
 			result = cs.getInt(1);
 			System.out.println("llllllllllllllllllllllll" + result);
-//		         System.out.println(cs.getInt(1) + " => success ");
 			cs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return 0;
 		}
 		return result;
-	}
+	}*/
 }

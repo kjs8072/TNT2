@@ -29,7 +29,7 @@
     <div class="container">
       <a class="navbar-brand" href="<%= request.getContextPath() %>/student_login/student_main.jsp" style="color:blue">TUTER & TUTEE</a>
       <%
-           if(session.getAttribute("signedUser") ==null){
+           if(session.getAttribute("sid") ==null){
       %>
        <a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/Login_form.jsp">Sign In</a>
        <%

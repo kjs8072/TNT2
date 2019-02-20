@@ -31,7 +31,7 @@
     <div class="container">
       <a class="navbar-brand" href="<%= request.getContextPath() %>/student_login/student_main.jsp" style="color:blue">TUTER & TUTEE</a>
       <%
-           if(session.getAttribute("signedUser") ==null){
+           if(session.getAttribute("sid") ==null){
       %>
        <a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/Login_form.jsp">Sign In</a>
        <%
@@ -55,56 +55,52 @@
       </div>
     </div>
   </header>
-  
+
 	<section class="features-icons bg-light text-center">
-    <div class="container">
-      <div class="row">
-		<div class="col-lg-4">
           <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-            <div class="features-icons-icon d-flex" style="width:700px;">
+            <%  String state = request.getParameter("state"); 
+            	if (state.equals("init")) {
+            %>
+            <div class="features-icons-icon d-flex" style="width:60%">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:700px;"><a href="#">입실</a></h3>
+            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=insert">입실</a></h3>
             <p class="lead mb-0"></p>
-          </div>
-        </div>
-        
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-            <div class="features-icons-icon d-flex" style="width:900px;">
+            <% } else if(state.equals("attendance")) { %>
+            <div class="features-icons-icon d-flex" style="width:60%">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:900px;"><a href="#">외출</a></h3>
+            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=insert">외출</a></h3>
             <p class="lead mb-0"></p>
+            
+            <div class="features-icons-icon d-flex" style="width:60%">
+              <i class="icon-check m-auto text-primary"></i>
+            </div>
+            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=insert">퇴실</a></h3>
+            <p class="lead mb-0"></p>
+            <% }else if(state.equals("out")) { %>
+            <div class="features-icons-icon d-flex" style="width:60%">
+              <i class="icon-check m-auto text-primary"></i>
+            </div>
+            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=insert">복귀</a></h3>
+            <p class="lead mb-0"></p>
+            
+            <div class="features-icons-icon d-flex" style="width:60%">
+              <i class="icon-check m-auto text-primary"></i>
+            </div>
+            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=insert">퇴실</a></h3>
+            <p class="lead mb-0"></p>
+            <% }else { %>
+            <div class="features-icons-icon d-flex" style="width:60%">
+              <i class="icon-check m-auto text-primary"></i>
+            </div>
+            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=insert">퇴실</a></h3>
+            <p class="lead mb-0"></p>
+            
+            <% } %>
           </div>
-        </div>
-       
-        
-      </div>
       
-      <div class="row">
-        
-		<div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-            <div class="features-icons-icon d-flex" style="width:700px;">
-              <i class="icon-check m-auto text-primary"></i>
-            </div>
-            <h3 style="width:700px;"><a href="#">퇴실</a></h3>
-            <p class="lead mb-0"></p>
-          </div>
-        </div>
-        
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-            <div class="features-icons-icon d-flex" style="width:900px;">
-              <i class="icon-check m-auto text-primary"></i>
-            </div>
-            <h3 style="width:900px;"><a href="#">복귀</a></h3>
-            <p class="lead mb-0"></p>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
+  
 </body>
 </html>

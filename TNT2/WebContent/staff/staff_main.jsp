@@ -39,11 +39,12 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
-		
-		<!-- 상단 / STAFF MAIN으로 이동하기 -->
+
+			<!-- 상단 / STAFF MAIN으로 이동하기 -->
 			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/main/staff_main.jsp" style="color: blue">TUTER
-				& TUTEE</a> <a class="btn btn-primary" href="#">Sign In</a>
+				href="<%=request.getContextPath()%>/main/staff_main.jsp"
+				style="color: blue">TUTER & TUTEE</a> <a class="btn btn-primary"
+				href="#">Sign In</a>
 		</div>
 	</nav>
 
@@ -54,8 +55,9 @@
 			<div class="row">
 				<div class="col-xl-9 mx-auto">
 					<h1 class="mb-5">
-					<!-- 중앙img / STAFF MAIN으로 이동하기 -->
-						<a href="<%=request.getContextPath()%>/main/staff_main.jsp">Tuter & Tutee</a>
+						<!-- 중앙img / STAFF MAIN으로 이동하기 -->
+						<a href="<%=request.getContextPath()%>/main/staff_main.jsp">Tuter
+							& Tutee</a>
 					</h1>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
@@ -80,6 +82,7 @@
 	<section class="features-icons bg-light text-center">
 		<div class="container">
 			<div class="row">
+				<!--MY PAGE-->
 				<div class="col-lg-4">
 					<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
 						<div class="features-icons-icon d-flex">
@@ -91,6 +94,7 @@
 						</h3>
 					</div>
 				</div>
+				<!--LIST-->
 				<div class="col-lg-4">
 					<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
 						<div class="features-icons-icon d-flex">
@@ -103,6 +107,7 @@
 						</h3>
 					</div>
 				</div>
+				<!--RANKING-->
 				<div class="col-lg-4">
 					<div class="features-icons-item mx-auto mb-0 mb-lg-3">
 						<div class="features-icons-icon d-flex">
@@ -110,11 +115,24 @@
 						</div>
 						<h3>
 							<a
-								href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=gradelist">성적조회
+								href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=ranking">성적조회
 							</a>
 						</h3>
-						<p class="lead mb-0"></p>
 					</div>
+				</div>
+				<!--LICENSE-->
+				<div class="col-lg-4">
+					<div class="features-icons-item mx-auto mb-0 mb-lg-3">
+						<div class="features-icons-icon d-flex">
+							<i class="icon-check m-auto text-primary"></i>
+						</div>
+						<h3>
+							<a
+								href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=license">자격증조회
+							</a>
+						</h3>
+					</div>
+						<p class="lead mb-0"></p>
 				</div>
 			</div>
 		</div>

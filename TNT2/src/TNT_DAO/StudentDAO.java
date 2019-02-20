@@ -2,14 +2,14 @@ package TNT_DAO;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import TNT_Bean.RankBean;
-import TNT_Bean.StudentBean;
+import TNT_Bean.*;
 
 public class StudentDAO {
 
@@ -150,6 +150,36 @@ public class StudentDAO {
 		return list;
 	}
 
+
+	public ArrayList<StudentLicenseVuBean> getTLicense() {
+		connect();
+		String sql = "select * from staff_licenses";
+		ArrayList<StudentLicenseVuBean> select = new ArrayList<>();
+		StudentLicenseVuBean bean = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				bean = new StudentLicenseVuBean();
+								
+				bean.setStudent_name(rs.getString("student_name"));
+				bean.setT_license_code(rs.getString("t_license_code"));
+				bean.setLicense_name(rs.getString("license_name"));
+				bean.setLicense_type(rs.getString("license_type"));
+				bean.setCertificate_authority(rs.getString("certificate_authority"));
+				bean.setT_license_start_date(rs.getDate("t_license_start_date"));
+				bean.setT_license_end_date(rs.getDate("t_license_end_date"));
+
+				select.add(bean);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return select;
+	}
+	
 	/*
 	 * public ArrayList<TestvuBean> getScore() { connect();
 	 * 

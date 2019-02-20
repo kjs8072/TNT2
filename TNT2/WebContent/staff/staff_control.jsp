@@ -15,8 +15,12 @@
 		response.sendRedirect(request.getContextPath()+"/Students/Student_Info.jsp");
 	}
 
-	else if (action.equals("gradelist")) {
+	else if (action.equals("ranking")) {
 		response.sendRedirect(request.getContextPath()+"/Students/ranking.jsp");
+	}
+	
+	else if (action.equals("license")) {
+		response.sendRedirect(request.getContextPath()+"/Students/studentLicense.jsp");
 	}
 
 	// 	if (action.equals("insert")) {

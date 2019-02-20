@@ -44,7 +44,6 @@ ul.c {
 	margin-right: auto;
 	}
 </style>
-
 </head>
 <body align="center">
 <form name="form1" method="get" action="staff_control.jsp">

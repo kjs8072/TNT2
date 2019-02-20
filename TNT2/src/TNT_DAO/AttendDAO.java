@@ -76,7 +76,6 @@ public class AttendDAO {
 	public void attendInsert(String stuid) {
 		connect();
 		CallableStatement cs;
-		System.out.println("==================="+stuid);
 		try {
 			cs = conn.prepareCall("{call attendance_insert(?)}");
 			cs.setString(1,stuid);
@@ -88,6 +87,50 @@ public class AttendDAO {
 		}
 	}
 	
+	public void attendOutUpdate(String stuid) {
+		connect();
+		CallableStatement cs;
+		try {
+			cs = conn.prepareCall("{call attendance_outgo(?)}");
+			cs.setString(1,stuid);
+			cs.execute();
+			
+			cs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void attendReturnUpdate(String stuid) {
+		connect();
+		CallableStatement cs;
+		try {
+			cs = conn.prepareCall("{call attendance_return(?)}");
+			cs.setString(1,stuid);
+			cs.execute();
+			
+			cs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void attendLeavingUpdate(String stuid) {
+		connect();
+		CallableStatement cs;
+		System.out.println("==================="+stuid);
+		try {
+			cs = conn.prepareCall("{call leaving_update(?)}");
+			cs.setString(1,stuid);
+			cs.execute();
+			
+			cs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+
 	public String etimeSelect(String stuid) {
 		connect();
 		String sql="select entering_time from attendance_managements where student_id=? and to_char(attendance_date, 'YYYYMMDD') = to_char(sysdate,'YYYYMMDD')";

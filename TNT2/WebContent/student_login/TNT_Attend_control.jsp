@@ -35,24 +35,37 @@
 				if(returntime==null){
 					pageContext.forward("TNT_attend_mnt.jsp?state=out");	//복귀 퇴실
 				} else{
-					pageContext.forward("TNT_attend_mnt.jsp?state=leave");	//퇴실
+					if(ltime != null){
+						pageContext.forward("TNT_attend_mnt.jsp?state=end");
+					} else
+						pageContext.forward("TNT_attend_mnt.jsp?state=leave");	//퇴실
 				}
 			} else
 				pageContext.forward("TNT_attend_mnt.jsp?state=attendance");	//외출 퇴실
 		}
 		
+		if(ltime != null){
+			pageContext.forward("TNT_attend_mnt.jsp?state=end");
+		}
 	} else if(action.equals("mypage")){
 		ArrayList<StudentBean> list = sdao.getInfoList((String)session.getAttribute("sid"));
 		request.setAttribute("stu", list);		//요청 페이지에 값을 setting. list에 있는 값을 "stu"에 넣어서 TNT_mypage.jsp에 값을 넘김
 		pageContext.forward("TNT_mypage.jsp");
 		
-	} else if(action.equals("update")){
-		ArrayList<StudentBean> list = sdao.getInfoList((String)session.getAttribute("sid"));
-		request.setAttribute("stu", list);		//요청 페이지에 값을 setting. list에 있는 값을 "stu"에 넣어서 TNT_mypage_update.jsp에 값을 넘김
-		pageContext.forward("TNT_mypage_update.jsp");
-		
-	}else if(action.equals("insert")){
+	} else if(action.equals("insert")){	//입실
 		adao.attendInsert((String)session.getAttribute("sid"));
+		pageContext.forward("TNT_Attend_control.jsp?action=attend_out");
+		
+	} else if(action.equals("out_update")){		//외출
+		adao.attendOutUpdate((String)session.getAttribute("sid"));
+		pageContext.forward("TNT_Attend_control.jsp?action=attend_out");
+		
+	}else if(action.equals("return_update")){		//복귀
+		adao.attendReturnUpdate((String)session.getAttribute("sid"));
+		pageContext.forward("TNT_Attend_control.jsp?action=attend_out");
+		
+	} else if(action.equals("leaving_update")){		//퇴실
+		adao.attendLeavingUpdate((String)session.getAttribute("sid"));
 		pageContext.forward("TNT_Attend_control.jsp?action=attend_out");
 	}
 %>

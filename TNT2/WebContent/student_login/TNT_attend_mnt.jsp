@@ -70,37 +70,38 @@
             <div class="features-icons-icon d-flex" style="width:60%">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=insert">외출</a></h3>
+            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=out_update">외출</a></h3>
             <p class="lead mb-0"></p>
             
             <div class="features-icons-icon d-flex" style="width:60%">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=insert">퇴실</a></h3>
+            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=leaving_update">퇴실</a></h3>
             <p class="lead mb-0"></p>
             <% }else if(state.equals("out")) { %>
             <div class="features-icons-icon d-flex" style="width:60%">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=insert">복귀</a></h3>
+            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=return_update">복귀</a></h3>
             <p class="lead mb-0"></p>
             
             <div class="features-icons-icon d-flex" style="width:60%">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=insert">퇴실</a></h3>
+            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=leaving_update">퇴실</a></h3>
             <p class="lead mb-0"></p>
+            <% }else if(state.equals("end")) { %>
+            
             <% }else { %>
             <div class="features-icons-icon d-flex" style="width:60%">
               <i class="icon-check m-auto text-primary"></i>
             </div>
-            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=insert">퇴실</a></h3>
+            <h3 style="width:60%"><a href="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=leaving_update">퇴실</a></h3>
             <p class="lead mb-0"></p>
             
             <% } %>
           </div>
       
   </section>
-  
 </body>
 </html>

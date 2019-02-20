@@ -30,16 +30,6 @@
 
 <body>
 
-  <!-- Navigation 
-  <nav class="navbar navbar-light bg-light static-top">
-    <div class="container">
-      <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp" style="color:blue">TUTER & TUTEE</a>
-     
-       <a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/Login_form.jsp">Login</a>
-     
-    </div>
-  </nav>
-
   <!-- Masthead -->
   <header class="masthead text-white text-center">
     <div class="overlay"></div>

@@ -5,13 +5,12 @@
 <html lang="en">
  
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-  <title>TNT</title>
- 
+<title>TNT</title>
  
 <!-- Bootstrap core CSS -->
 <link href="<%= request.getContextPath() %>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +29,6 @@
 </head>
 
 <body>
- 
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
@@ -53,17 +51,6 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
-            <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
-              </div>
-              <div class="col-12 col-md-3">
-                <button type="submit" class="btn btn-block btn-lg btn-primary">
-                <a href="<%= request.getContextPath() %>/Login_form/Login_form.jsp" style="color:white">Sign up!</a></button>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
     </div>

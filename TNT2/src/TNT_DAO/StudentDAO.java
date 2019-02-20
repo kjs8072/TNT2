@@ -145,16 +145,15 @@ public class StudentDAO {
 		return list;
 	}
 	
-	public ArrayList<CourseListVuBean> getSubjectInfo(String subject_name) {
+	public ArrayList<CourseListVuBean> getSubjectInfo() {
 		connect();
-		String sql = "select * from course_list_vu where subject_name = ?";
+		String sql = "select * from course_list_vu";
 
 		ArrayList<CourseListVuBean> list = new ArrayList<>();
 		CourseListVuBean bean = null;
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, subject_name);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {

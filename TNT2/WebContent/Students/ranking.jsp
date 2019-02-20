@@ -75,8 +75,8 @@ tr:nth-child(even) {
 		//언어 설정
 		request.setCharacterEncoding("UTF-8");
 	
-		int subjectNum = request.getParameter("action");
-		
+	int subjectNum = Integer.parseInt(request.getParameter("action"));		
+	
 		TestvuBean testvu = new TestvuBean();
 		StudentDAO tnt = new StudentDAO();
 

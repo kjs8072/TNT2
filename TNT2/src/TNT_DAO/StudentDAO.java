@@ -169,6 +169,7 @@ public class StudentDAO {
 				bean.setCourse_persons(rs.getInt("COURSE_PERSONS"));
 				bean.setCourse_max(rs.getInt("COURSE_MAX"));
 				bean.setDetail_date(rs.getDate("DETAIL_DATE"));
+				bean.setSubject_num(rs.getInt("SUBJECT_NUM"));
 				list.add(bean);
 			}
 		} catch (SQLException e) {

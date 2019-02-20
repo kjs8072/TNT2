@@ -164,11 +164,11 @@ tr:nth-child(even) {
 									for (CourseListVuBean courseVu : (ArrayList<CourseListVuBean>) list) {
 								%>
 								<tr>
-									<td><a
-										href="<%=request.getContextPath()%>/Students/studentLicense.jsp?action=
-										<%=courseVu.getCourse_name()%>" /><%=courseVu.getCourse_name()%></td>
+									<td><%=courseVu.getCourse_name()%></td>
 									<td><%=courseVu.getCourse_contents()%></td>
-									<td><%=courseVu.getSubject_name()%></td>
+									<td><a
+										href="<%=request.getContextPath()%>/Students/ranking.jsp?action=
+										<%=courseVu.getSubject_num()%>" /><%=courseVu.getSubject_name()%></td>
 									<td><%=courseVu.getSubject_division()%></td>
 									<td><%=courseVu.getSubject_contents()%></td>
 									<td><%=courseVu.getDetail_method()%></td>

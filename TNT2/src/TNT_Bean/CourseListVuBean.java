@@ -14,7 +14,14 @@ public class CourseListVuBean {
 	private int course_persons;
 	private int course_max;
 	private Date detail_date;
+	private int subject_num;
 	
+	public int getSubject_num() {
+		return subject_num;
+	}
+	public void setSubject_num(int subject_num) {
+		this.subject_num = subject_num;
+	}
 	public String getCourse_name() {
 		return course_name;
 	}

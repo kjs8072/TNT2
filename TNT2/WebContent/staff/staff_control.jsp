@@ -16,7 +16,7 @@
 	}
 
 	else if (action.equals("ranking")) {
-		response.sendRedirect(request.getContextPath()+"/Students/ranking.jsp");
+		response.sendRedirect(request.getContextPath()+"/course/subjectList.jsp");
 	}
 	
 	else if (action.equals("license")) {

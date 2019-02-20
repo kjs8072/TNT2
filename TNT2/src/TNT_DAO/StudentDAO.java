@@ -145,16 +145,15 @@ public class StudentDAO {
 		return list;
 	}
 	
-	public ArrayList<CourseListVuBean> getSubjectInfo(String subject_name) {
+	public ArrayList<CourseListVuBean> getSubjectInfo() {
 		connect();
-		String sql = "select * from course_list_vu where subject_name = ?";
+		String sql = "select * from course_list_vu";
 
 		ArrayList<CourseListVuBean> list = new ArrayList<>();
 		CourseListVuBean bean = null;
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, subject_name);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -170,6 +169,7 @@ public class StudentDAO {
 				bean.setCourse_persons(rs.getInt("COURSE_PERSONS"));
 				bean.setCourse_max(rs.getInt("COURSE_MAX"));
 				bean.setDetail_date(rs.getDate("DETAIL_DATE"));
+				bean.setSubject_num(rs.getInt("SUBJECT_NUM"));
 				list.add(bean);
 			}
 		} catch (SQLException e) {

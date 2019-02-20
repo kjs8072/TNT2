@@ -25,6 +25,26 @@
 
 <!-- Custom styles for this template -->
 <link href="<%= request.getContextPath() %>/css/landing-page.min.css" rel="stylesheet">
+
+<style>
+ul {
+	border: 1px solid #bcbcbc;
+	}
+ul.a {
+	text-align: center;
+	}
+ul.b {
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	}
+ul.c {
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+	}
+</style>
+
 </head>
 <body align="center">
 <form name="form1" method="get" action="staff_control.jsp">

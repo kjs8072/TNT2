@@ -30,9 +30,38 @@
 
 <!-- Custom styles for this template -->
 <link href="<%= request.getContextPath() %>/css/landing-page.min.css" rel="stylesheet">
+
+<style>
+ul {
+	border: 1px solid #bcbcbc;
+	}
+ul.a {
+	text-align: center;
+	}
+ul.b {
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	}
+ul.c {
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+	}
+</style>
 </head>
 
 <body align="center">
+	<%
+	request.setCharacterEncoding("UTF-8"); //언어설정
+	%>
+
+<!-- Content Wrapper -->
+	<div id="content-wrapper" class="d-flex flex-column">
+
+<!-- Main Content -->
+		<div id="content">
+
 <!-- Masthead -->
   <header class="masthead text-white text-center">
     <div class="overlay"></div>
@@ -40,7 +69,6 @@
       <div class="row">
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
           <form method="post" action="Login_control.jsp">
-          
             <div class="form-row">
             </div>
           </form>
@@ -51,12 +79,12 @@
   
 <form name="form1" method="get" action="student_control.jsp">
 <input type="hidden" name="action" value="insert">
-<table class="table" border="2">
-<h1>회원가입 </h1> 
+<table class="container" border="2">
+
 <tr><th>아이디</th><td><input type="text" name="student_id">
 <input class="btn btn-primary" type="button" value="중복확인" onclick="stud_check()"></td></tr>
 <tr><th>비밀번호</th><td colspan="2"><input type="password" name="student_pw"></td></tr>
-<tr><th>비밀번호확인</th><td colapan="2"><input type="password" name="student_pw"></td></tr>
+<tr><th>비밀번호확인</th><td colspan="2"><input type="password" name="student_pw"></td></tr>
 <tr><th>이름</th><td colspan="2"><input type="text" name="student_name"></td></tr>
 <tr><th>성별</th><td colspan="2">
 <input type="radio" name="gender" value="남자" >남자 <input type="radio"name="gender" value="여자">여자</td></tr>
@@ -64,8 +92,11 @@
 <tr><th>주소</th><td colspan="2"><input type="text" name="student_adress"></td></tr>
 <tr><th>학교</th><td colspan="2"><input type="text" name="student_univ_coll"></td></tr>
 <tr><th>전공</th><td colspan="2"><input type="text" name="student_major"></td></tr>
-<tr><td colspan="2" align="center">
-<input type="submit" value="저장"><input type="reset" value="취소">
+<tr>
+<td colspan="2" align="center">
+<input class="btn btn-primary" type="submit" value="저장">
+<input class="btn btn-primary" type="reset" value="취소">
+</td></tr>
 </table>
 </form>
 </body>

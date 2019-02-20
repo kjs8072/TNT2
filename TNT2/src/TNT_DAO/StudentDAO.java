@@ -184,7 +184,7 @@ public class StudentDAO {
 
 	public ArrayList<StudentLicenseVuBean> getTLicense(String student_name) {
 		connect();
-		String sql = "select * from STUDENT_LICENSE_VU where = ?";
+		String sql = "select * from STUDENT_LICENSE_VU where student_name = ?";
 		ArrayList<StudentLicenseVuBean> select = new ArrayList<>();
 		StudentLicenseVuBean bean = null;
 

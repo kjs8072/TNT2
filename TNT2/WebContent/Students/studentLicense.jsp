@@ -69,22 +69,20 @@ tr:nth-child(even) {
 </style>
 </head>
 
-
 <body>
 
 	<%
 		//언어 설정
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String studentName = request.getParameter("action");
-		
+
 		StudentBean student = new StudentBean();
 		StudentLicenseVuBean license = new StudentLicenseVuBean();
 		StudentDAO tnt = new StudentDAO();
 
 		list = tnt.getStudentInfo(studentName);
 		list2 = tnt.getTLicense(studentName);
-		
 	%>
 
 	<!-- Navigation -->
@@ -214,13 +212,14 @@ tr:nth-child(even) {
 		</div>
 	</div>
 	<!-- Page level plugins -->
-<!-- 	<script -->
-<%-- 		src="<%=request.getContextPath()%>/vendor/datatables/jquery.dataTables.min.js"></script> --%>
-<!-- 	<script -->
-<%-- 		src="<%=request.getContextPath()%>/vendor/datatables/dataTables.bootstrap4.min.js"></script> --%>
+	<!-- 	<script -->
+	<%-- 		src="<%=request.getContextPath()%>/vendor/datatables/jquery.dataTables.min.js"></script> --%>
+	<!-- 	<script -->
+	<%-- 		src="<%=request.getContextPath()%>/vendor/datatables/dataTables.bootstrap4.min.js"></script> --%>
 
-<!-- 	<!-- Page level custom scripts --> -->
-<%-- 	<script src="<%=request.getContextPath()%>/js/demo/datatables-demo.js"></script> --%>
+	<!-- 	<!-- Page level custom scripts -->
+	-->
+	<%-- 	<script src="<%=request.getContextPath()%>/js/demo/datatables-demo.js"></script> --%>
 
 
 </body>

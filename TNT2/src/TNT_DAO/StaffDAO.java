@@ -51,8 +51,8 @@ public class StaffDAO {
 
 	public ArrayList<StaffBean> getInfoList(String staffid) {
 		connect();
-		String sql = "select student_id, student_name, student_birth, student_gender, student_phone, student_address, student_univ_coll, student_major "
-				+ " from students where student_id=?";
+		String sql = "select staff_id, staff_name, staff_birth, staff_gender, staff_phone, staff_address, staff_responsibility"
+				+ " from staffs where staff_id=?";
 
 		ArrayList<StaffBean> list = new ArrayList<>();
 		StaffBean bean = null;

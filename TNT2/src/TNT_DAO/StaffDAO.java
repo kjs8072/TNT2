@@ -48,7 +48,7 @@ public class StaffDAO {
 		}
 	}
 
-	public ArrayList<StaffBean> SelectDBstaffs() {
+	public ArrayList<StaffBean> SelectDBstaffs(String staff_id) {
 		connect();
 		String sql = "select staff_id, staff_name, staff_address, staff_num, staff_phone, staff_salary " + " from staffs";
 

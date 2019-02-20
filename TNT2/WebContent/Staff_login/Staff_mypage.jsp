@@ -44,7 +44,7 @@
     </div>
   </header>
   <br>
-<form method="post" action="<%= request.getContextPath() %>/TNT_Attend_control.jsp?action=update">
+<form method="post" action="<%= request.getContextPath() %>/Staff_mail_control.jsp?action=update">
 <div class="table-responsive">
 <table class="table" border="1" align="center" style="width:50%">
 		<%

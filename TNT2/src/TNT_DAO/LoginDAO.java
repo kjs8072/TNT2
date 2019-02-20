@@ -53,8 +53,8 @@ public class LoginDAO {
 		try {
 			cs = conn.prepareCall(sql);
 			cs.registerOutParameter(1, java.sql.Types.INTEGER);
-			cs.setString(1, id);
-			cs.setString(2, pw); // 교직원 password 값
+			cs.setString(2, id);
+			cs.setString(3, pw); // 교직원 password 값
 			cs.execute();
 			result = cs.getInt(1);
 			cs.close();

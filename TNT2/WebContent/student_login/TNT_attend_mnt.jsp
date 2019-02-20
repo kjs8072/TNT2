@@ -33,7 +33,7 @@
       <%
            if(session.getAttribute("sid") ==null){
       %>
-       <a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/Login_form.jsp">Sign In</a>
+       <a class="btn btn-primary" href="<%= request.getContextPath() %>/index.jsp">Sign In</a>
        <%
              } else {
        %>

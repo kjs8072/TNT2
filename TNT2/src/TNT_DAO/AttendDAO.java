@@ -43,15 +43,15 @@ public class AttendDAO {
 		}
 	}
 	
-	public ArrayList<AttendBean> getAttendList(int student_num){	//출석리스트조회
+	public ArrayList<AttendBean> getAttendList(String stuid){	//출석리스트조회
 		connect();
-		String sql="select * from ATTENDANCE_MANAGEMENTS  where student_num=?";
+		String sql="select * from ATTENDANCE_MANAGEMENTS  where student_id=?";
 		ArrayList<AttendBean> list = new ArrayList<AttendBean>();
 		AttendBean bean = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, student_num);
+			pstmt.setString(1, stuid);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -90,7 +90,7 @@ public class AttendDAO {
 	
 	public String etimeSelect(String stuid) {
 		connect();
-		String sql="select entering_time from attendance_managements where student_id=?";
+		String sql="select entering_time from attendance_managements where student_id=? and to_char(attendance_date, 'YYYYMMDD') = to_char(sysdate,'YYYYMMDD')";
 		String etime = null;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -108,7 +108,7 @@ public class AttendDAO {
 	
 	public String outtimeSelect(String stuid) {
 		connect();
-		String sql="select outgo_time from attendance_managements where student_id=?";
+		String sql="select outgo_time from attendance_managements where student_id=? and to_char(attendance_date, 'YYYYMMDD') = to_char(sysdate,'YYYYMMDD')";
 		String outtime = null;
 
 		try {
@@ -127,7 +127,7 @@ public class AttendDAO {
 	
 	public String returntimeSelect(String stuid) {
 		connect();
-		String sql="select return_time from attendance_managements where student_id=?";
+		String sql="select return_time from attendance_managements where student_id=? and to_char(attendance_date, 'YYYYMMDD') = to_char(sysdate,'YYYYMMDD')";
 		String returntime = null;
 
 		try {
@@ -146,7 +146,7 @@ public class AttendDAO {
 	
 	public String leaveSelect(String stuid) {
 		connect();
-		String sql="select leaving_time from attendance_managements where student_id=?";
+		String sql="select leaving_time from attendance_managements where student_id=? and to_char(attendance_date, 'YYYYMMDD') = to_char(sysdate,'YYYYMMDD')";
 		String ltime = null;
 
 		try {

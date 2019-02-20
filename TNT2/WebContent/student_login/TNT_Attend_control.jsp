@@ -32,8 +32,11 @@
 			pageContext.forward("TNT_attend_mnt.jsp?state=init");	//입실
 		} else{		//입실한 후
 			if(outtime != null){	//외출 했을경우
-				if(returntime==null){	//외출하고 리턴 안했을 때
-					pageContext.forward("TNT_attend_mnt.jsp?state=out");	//복귀 퇴실
+				if(returntime==null){	//외출하고 복귀 안했을 때
+					if(ltime != null){	//퇴실 후
+						pageContext.forward("TNT_attend_mnt.jsp?state=end");
+					}else 
+						pageContext.forward("TNT_attend_mnt.jsp?state=out");	//복귀 퇴실
 				} else{		//외출 후 복귀 눌렀을 경우
 					if(ltime != null){	//퇴실 후
 						pageContext.forward("TNT_attend_mnt.jsp?state=end");

@@ -16,8 +16,7 @@ public class LoginDAO {
 	PreparedStatement pstmt;
 
 	String jdbc_dirver = "oracle.jdbc.driver.OracleDriver";
-	String jdbc_url = "jdbc:oracle:thin:@192.168.111.136:1521:TNT";
-
+	String jdbc_url = "jdbc:oracle:thin:@192.168.0.24:1521:TNT";
 	void connect() {
 		try {
 			Class.forName(jdbc_dirver);
@@ -45,50 +44,56 @@ public class LoginDAO {
 		}
 	}
 
-	public boolean funcStaff(int id, String pw) {
+	public boolean funcStaff(String id, String pw) {
 		connect();
 		CallableStatement cs;
-		String sql = "{call staff_login_check(?, ?)}";
-
+		String sql = "{? = call staff_login_check(?, ?)}";
+		int result=0;
+		
 		try {
 			cs = conn.prepareCall(sql);
 			cs.registerOutParameter(1, java.sql.Types.INTEGER);
-			cs.setInt(1, id);
-			cs.setString(2, pw); // 교직원 password 값
+			cs.setString(2, id);
+			cs.setString(3, pw); // 교직원 password 값
 			cs.execute();
-			int result = cs.getInt(1);
-//			System.out.println(cs.getString(1) + " => sussess ");
+			result = cs.getInt(1);
 			cs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
-		return true;
+		if(result > 0)
+			return true;
+		else
+			return false;
 
 	}
 
-	public boolean funcStudent(int id, String pw) {
+	public boolean funcStudent(String id, String pw) {
 		connect();
 		CallableStatement cs;
 		String sql = "{? = call log_in_check(?, ?)";
-
+		int result=0;
 		try {
 			cs = conn.prepareCall(sql);
 			cs.registerOutParameter(1, java.sql.Types.INTEGER);
-			cs.setInt(2, id);
+			cs.setString(2, id);
 			cs.setString(3, pw); // 학생 password 값
 			cs.execute();
-			int result = cs.getInt(1);
+			result = cs.getInt(1);
 //			System.out.println(cs.getInt(1) + " => success ");
 			cs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
-		return true;
+		if(result > 0)
+			return true;
+		else
+			return false;
 	}
 
-	public ArrayList<LoginBean> studentDBselect() {
+	public ArrayList<LoginBean> studentDBselect(String id, String pwd) {
 		connect();
 		String sql = "select * from students ";
 		ArrayList<LoginBean> login = new ArrayList<>();
@@ -99,33 +104,8 @@ public class LoginDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				bean = new LoginBean();
-				bean.setUserid(1);
-				bean.setPasswd("passwd");
-
-				login.add(bean);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
-		}
-		return login;
-
-	}
-
-	public ArrayList<LoginBean> staffDBselect() {
-		connect();
-		String sql = "select * from staffs ";
-		ArrayList<LoginBean> login = new ArrayList<>();
-		LoginBean bean = null;
-
-		try {
-			pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				bean = new LoginBean();
-				bean.setUserid(1);
-				bean.setPasswd("passwd");
+				bean.setUserid(id);
+				bean.setPasswd(pwd);
 
 				login.add(bean);
 			}
@@ -144,7 +124,7 @@ public class LoginDAO {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, loginbean.getUserid());
+			pstmt.setString(1, loginbean.getUserid());
 			pstmt.setString(2, loginbean.getPasswd());
 
 		} catch (SQLException e) {
@@ -162,7 +142,7 @@ public class LoginDAO {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, loginbean.getUserid());
+			pstmt.setString(1, loginbean.getUserid());
 			pstmt.setString(2, loginbean.getPasswd());
 
 		} catch (SQLException e) {

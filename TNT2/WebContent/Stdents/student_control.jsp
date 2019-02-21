@@ -35,5 +35,10 @@
             
          }   else
             out.println("<script>alert('no');history.back();</script>");
+   } 
+   
+   else if (action.equals("")) {
+         if (TNT.funcStudent_check(bean.getStudent_id())==){
+         }
    }   
 %>

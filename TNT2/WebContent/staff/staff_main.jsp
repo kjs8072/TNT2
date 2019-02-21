@@ -132,7 +132,21 @@
 						</div>
 						<h3>
 							<a
-								href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=license">자격증조회
+								href="<%=request.getContextPath()%>/staff/stuattendance.jsp">출결현황
+							</a>
+						</h3>
+					</div>
+						<p class="lead mb-0"></p>
+				</div>
+				<!--CHART-->
+				<div class="col-lg-4">
+					<div class="features-icons-item mx-auto mb-0 mb-lg-3">
+						<div class="features-icons-icon d-flex">
+							<i class="icon-check m-auto text-primary"></i>
+						</div>
+						<h3>
+							<a
+								href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=chart">Chart
 							</a>
 						</h3>
 					</div>

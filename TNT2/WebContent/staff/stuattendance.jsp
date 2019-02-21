@@ -3,7 +3,6 @@
 <%@ page
 	import="TNT_Bean.*, TNT_DAO.*, java.util.ArrayList, java.sql.Date"%>
 <jsp:useBean id="list" class="java.util.ArrayList" scope="request"></jsp:useBean>
-<jsp:useBean id="list2" class="java.util.ArrayList" scope="request"></jsp:useBean>
 <jsp:setProperty property="*" name="list"></jsp:setProperty>
 <!DOCTYPE html>
 <html>
@@ -13,7 +12,8 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>학생 자격증 조회</title>
+<title>교과목 정보</title>
+
 <!-- Bootstrap core JavaScript-->
 <script src="<%=request.getContextPath()%>/vendor/jquery/jquery.min.js"></script>
 <script
@@ -47,8 +47,6 @@
 <link href="<%=request.getContextPath()%>/css/landing-page.min.css"
 	rel="stylesheet">
 
-
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 table {
@@ -70,35 +68,33 @@ tr:nth-child(even) {
 </head>
 
 <body>
-
 	<%
-		//언어 설정
 		request.setCharacterEncoding("UTF-8");
-
-		String studentName = request.getParameter("action");
-
-		StudentBean student = new StudentBean();
-		StudentLicenseVuBean license = new StudentLicenseVuBean();
+		CourseListVuBean vu = new CourseListVuBean();
 		StudentDAO tnt = new StudentDAO();
-
-		list = tnt.getStudentInfo(studentName);
-		list2 = tnt.getTLicense(studentName);
+		list = tnt.getSubjectInfo();
 	%>
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
-			<a class="navbar-brand" href="<%= request.getContextPath() %>/staff/staff_main.jsp" style="color:blue">TUTER & TUTEE</a>
+			<a class="navbar-brand"
+				href="<%=request.getContextPath()%>/staff/staff_main.jsp"
+				style="color: blue">TUTER & TUTEE</a>
 			<%
-           		if(session.getAttribute("sid") ==null){
-      		%>
-       		<a class="btn btn-primary" href="<%= request.getContextPath() %>/index.jsp">Sign In</a>
-       		<%
-             	} else {
-       		%>
-            	<a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/logout.jsp">logout</a>
-       		<%} %>
-    	</div>
+				if (session.getAttribute("sid") == null) {
+			%>
+			<a class="btn btn-primary"
+				href="<%=request.getContextPath()%>/index.jsp">Sign In</a>
+			<%
+				} else {
+			%>
+			<a class="btn btn-primary"
+				href="<%=request.getContextPath()%>/Login_form/logout.jsp">logout</a>
+			<%
+				}
+			%>
+		</div>
 	</nav>
 
 	<!-- Content Wrapper -->
@@ -107,7 +103,6 @@ tr:nth-child(even) {
 		<!-- Main Content -->
 		<div id="content">
 
-
 			<!-- Masthead -->
 			<header class="masthead text-white text-center">
 				<div class="overlay"></div>
@@ -115,7 +110,8 @@ tr:nth-child(even) {
 					<div class="row">
 						<div class="col-xl-9 mx-auto">
 							<h1 class="mb-5">
-								<a>학생 자격증</a>
+								<!-- 중앙img / STAFF MAIN으로 이동하기 -->
+								<a>학생 성적 정보</a>
 							</h1>
 						</div>
 						<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
@@ -139,7 +135,7 @@ tr:nth-child(even) {
 			<!-- DataTales Example -->
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">학생 정보</h6>
+					<h6 class="m-0 font-weight-bold text-primary"></h6>
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
@@ -147,63 +143,37 @@ tr:nth-child(even) {
 						<table id="dataTable" border="1" align="center">
 							<thead>
 								<tr>
-									<th>ID</th>
-									<th>이름</th>
-									<th>생일</th>
-									<th>성별</th>
-									<th>전화</th>
-									<th>주소</th>
-									<th>최종학력</th>
-									<th>학교</th>
-									<th>전공</th>
+									<th>과정명</th>
+									<th>과정내용</th>
+									<th>교과목명</th>
+									<th>교과구분</th>
+									<th>교과목내용</th>
+									<th>평가방법</th>
+									<th>평가일시</th>
+									<th>과정개강일</th>
+									<th>과정수료일</th>
+									<th>최대인원</th>
+									<th>신청인원</th>
 								</tr>
 							</thead>
 							<tbody>
 								<%
-									for (StudentBean st : (ArrayList<StudentBean>) list) {
+									for (CourseListVuBean courseVu : (ArrayList<CourseListVuBean>) list) {
 								%>
 								<tr>
-									<td><%=st.getStudent_id()%></td>
-									<td><%=st.getStudent_name()%></td>
-									<td><%=st.getStudent_birth()%></td>
-									<td><%=st.getStudent_gender()%></td>
-									<td><%=st.getStudent_phone()%></td>
-									<td><%=st.getStudent_address()%></td>
-									<td><%=st.getStudent_complete_edu()%></td>
-									<td><%=st.getStudent_univ_coll()%></td>
-									<td><%=st.getStudent_major()%></td>
-								</tr>
-								<%
-									}
-								%>
-							</tbody>
-						</table>
-						<br>
-						<!-- 	<h2 align="center">학생 정보</h2> -->
-						<table id="dataTable" border="1" align="center">
-							<thead>
-								<tr>
-									<th>이름</th>
-									<th>자격증 번호</th>
-									<th>자격증명</th>
-									<th>자격증 종류</th>
-									<th>인증기관</th>
-									<th>취득일</th>
-									<th>만료일</th>
-								</tr>
-							</thead>
-							<tbody>
-								<%
-									for (StudentLicenseVuBean vu : (ArrayList<StudentLicenseVuBean>) list2) {
-								%>
-								<tr>
-									<td><%=vu.getStudent_name()%></td>
-									<td><%=vu.getT_license_code()%></td>
-									<td><%=vu.getLicense_name()%></td>
-									<td><%=vu.getLicense_type()%></td>
-									<td><%=vu.getCertificate_authority()%></td>
-									<td><%=vu.getT_license_start_date()%></td>
-									<td><%=vu.getT_license_end_date()%></td>
+									<td><%=courseVu.getCourse_name()%></td>
+									<td><%=courseVu.getCourse_contents()%></td>
+									<td><a
+										href="<%=request.getContextPath()%>/Students/ranking.jsp?action=
+										<%=courseVu.getSubject_num()%>" /><%=courseVu.getSubject_name()%></td>
+									<td><%=courseVu.getSubject_division()%></td>
+									<td><%=courseVu.getSubject_contents()%></td>
+									<td><%=courseVu.getDetail_method()%></td>
+									<td><%=courseVu.getDetail_date()%></td>
+									<td><%=courseVu.getCourse_open()%></td>
+									<td><%=courseVu.getCourse_finish()%></td>
+									<td><%=courseVu.getCourse_persons()%></td>
+									<td><%=courseVu.getCourse_max()%></td>
 								</tr>
 								<%
 									}
@@ -216,15 +186,13 @@ tr:nth-child(even) {
 		</div>
 	</div>
 	<!-- Page level plugins -->
-	<!-- 	<script -->
-	<%-- 		src="<%=request.getContextPath()%>/vendor/datatables/jquery.dataTables.min.js"></script> --%>
-	<!-- 	<script -->
-	<%-- 		src="<%=request.getContextPath()%>/vendor/datatables/dataTables.bootstrap4.min.js"></script> --%>
+	<script
+		src="<%=request.getContextPath()%>/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-	<!-- 	<!-- Page level custom scripts -->
-	-->
-	<%-- 	<script src="<%=request.getContextPath()%>/js/demo/datatables-demo.js"></script> --%>
-
+	<!-- Page level custom scripts -->
+	<script src="<%=request.getContextPath()%>/js/demo/datatables-demo.js"></script>
 
 </body>
 </html>

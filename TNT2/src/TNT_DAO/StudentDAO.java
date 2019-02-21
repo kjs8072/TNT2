@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import TNT_Bean.*;
@@ -26,7 +28,7 @@ public class StudentDAO {
 		try {
 
 			Class.forName(jdbc_driver);
-			conn = DriverManager.getConnection(jdbc_url, "admin", "admin");//admin oracle·Î ¹Ù²Ù±â
+			conn = DriverManager.getConnection(jdbc_url, "admin", "admin");// admin oracleï¿½ï¿½ ï¿½Ù²Ù±ï¿½
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 
@@ -116,7 +118,7 @@ public class StudentDAO {
 		}
 		return list;
 	}
-	
+
 	public ArrayList<StudentBean> getStudentInfo(String student_name) {
 		connect();
 		String sql = "select student_id, student_name, student_birth, student_gender, student_phone, student_address, student_complete_edu, student_univ_coll, student_major "
@@ -148,7 +150,7 @@ public class StudentDAO {
 		}
 		return list;
 	}
-	
+
 	public ArrayList<CourseListVuBean> getSubjectInfo() {
 		connect();
 		String sql = "select * from course_list_vu";
@@ -159,7 +161,7 @@ public class StudentDAO {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
 				bean = new CourseListVuBean();
 				bean.setCourse_name(rs.getString("COURSE_NAME"));
@@ -232,7 +234,7 @@ public class StudentDAO {
 
 			while (rs.next()) {
 				bean = new StudentLicenseVuBean();
-							
+
 				bean.setStudent_name(rs.getString("student_name"));
 				bean.setT_license_code(rs.getString("t_license_code"));
 				bean.setLicense_name(rs.getString("license_name"));
@@ -248,7 +250,7 @@ public class StudentDAO {
 		}
 		return select;
 	}
-	
+
 	public int funcStudent_check(String id) {
 		connect();
 		CallableStatement cs;
@@ -271,7 +273,7 @@ public class StudentDAO {
 		return result;
 	}
 
-	public boolean insertDB(StudentBean membership) { // ï¿½ï¿½ï¿½ï¿½
+	public boolean insertDB(StudentBean membership) {
 		connect();
 		String sql = "insert into students (student_id,student_pw,student_name,sysdate,student_gender,student_phone,student_address,student_complete_edu,student_univ_coll,student_major)"
 				+ " values (?,?,?,?,?,?,?,?,?) ";
@@ -295,6 +297,36 @@ public class StudentDAO {
 			disconnect();
 		}
 		return true;
+	}
+
+	public void studentUpdate(StudentBean b, String birth) {
+		connect();
+		CallableStatement cs;
+		String sql = "{call stud_pkg.stu_update(?,?,?,?,?,?,?,?,?)";
+
+		try {
+			cs = conn.prepareCall(sql);
+			/*
+			 * SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd"); Date
+			 * d_birth = (Date) transFormat.parse(birth);
+			 */
+			
+			cs.setString(1, b.getStudent_id());
+			cs.setString(2, b.getStudent_name());
+			cs.setString(3, birth);
+			cs.setString(4, b.getStudent_gender());
+			cs.setString(5, b.getStudent_phone());
+			cs.setString(6, b.getStudent_address());
+			cs.setString(7, b.getStudent_complete_edu());
+			cs.setString(8, b.getStudent_univ_coll());
+			cs.setString(9, b.getStudent_major());
+			cs.execute();
+			
+			System.out.println("======================" + b.getStudent_name() + "---" + birth);
+			cs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

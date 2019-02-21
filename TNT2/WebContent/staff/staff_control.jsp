@@ -27,7 +27,10 @@
       
       response.sendRedirect(request.getContextPath()+"/Staff_login/Staff_mypage.jsp");
    }
-
+   else if (action.equals("chart")) {
+	      
+	      response.sendRedirect(request.getContextPath()+"/Staff_login/Staff_chart.jsp");
+	   }
    //    if (action.equals("insert")) {
    //       //   bean.insertDB(TNT);
    //       response.sendRedirect("membership_messageform.jsp");

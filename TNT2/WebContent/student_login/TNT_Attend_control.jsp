@@ -3,15 +3,16 @@
 <%@ page import="java.util.ArrayList,TNT_DAO.*, TNT_Bean.*" %>
  
 <jsp:useBean id="adao" class="TNT_DAO.AttendDAO"></jsp:useBean>
-<jsp:useBean id="abean" class="TNT_Bean.AttendBean"></jsp:useBean>
-<jsp:setProperty property="*" name="abean"></jsp:setProperty>
 <jsp:setProperty property="*" name="adao"></jsp:setProperty>
 
-<jsp:useBean id="sdao" class="TNT_DAO.StudentDAO"></jsp:useBean>
-<jsp:useBean id="sbean" class="TNT_Bean.StudentBean"></jsp:useBean>
-<jsp:setProperty property="*" name="sdao"></jsp:setProperty>
-<jsp:setProperty property="*" name="sbean"></jsp:setProperty>
+<jsp:useBean id="abean" class="TNT_Bean.AttendBean"></jsp:useBean>
+<jsp:setProperty property="*" name="abean"></jsp:setProperty>
 
+<jsp:useBean id="sdao" class="TNT_DAO.StudentDAO"></jsp:useBean>
+<jsp:setProperty property="*" name="sdao"></jsp:setProperty>
+
+<jsp:useBean id="stubean" class="TNT_Bean.StudentBean" scope="request"></jsp:useBean>
+<jsp:setProperty name="stubean" property="*"></jsp:setProperty>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String action = request.getParameter("action");
@@ -80,6 +81,12 @@
 		pageContext.forward("TNT_Attend_control.jsp?action=attend_out");
 		
 	} else if(action.equals("update")){		//mypage 수정
-		
+
+		System.out.println("11111"+stubean);
+		stubean.setStudent_id((String)session.getAttribute("sid"));
+		System.out.println("22222"+stubean);
+		String birth = (String)request.getParameter("student_birth1");
+		sdao.studentUpdate(stubean, birth);
+		response.sendRedirect("TNT_Attend_control.jsp?action=attendance");
 	}
 %>

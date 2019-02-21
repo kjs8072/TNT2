@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="TNT_Bean.*, java.util.*" %>
 <jsp:useBean id="stu" class="java.util.ArrayList" scope="request"></jsp:useBean>
+<jsp:useBean id="stubean" class="TNT_Bean.StudentBean"></jsp:useBean>
 <jsp:setProperty property="*" name="stu"></jsp:setProperty>
 
 <!DOCTYPE html>
@@ -52,7 +53,7 @@
     </div>
   </header>
   <br>
-<form method="post" action="<%= request.getContextPath() %>/TNT_Attend_control.jsp?action=update">
+<form method="post" action="<%= request.getContextPath() %>/student_login/TNT_Attend_control.jsp?action=update">
 <div class="table-responsive">
 <table class="table" border="1" align="center" style="width:50%">
 		<%
@@ -61,11 +62,11 @@
 		<tr>
 			<th>이름</th>
 			<td><input type="text" name="student_name" value="<%=ab.getStudent_name() %>" style="width:100%"></td></tr>
-		<tr>
+	
 		<tr>
 			<th>생일</th>
-			<td><input type="date" name="student_birth" value="<%=ab.getStudent_birth() %>" style="width:100%"></td></tr>
-		<tr>
+			<td><input type="date" name="student_birth1" value="<%=ab.getStudent_birth() %>" style="width:100%"></td></tr>
+		
 		<tr>
 			<th>성별</th>
 			<%
@@ -84,15 +85,18 @@
 		<tr>
 			<th>연락처</th>
 			<td><input type="text" name="student_phone" value="<%=ab.getStudent_phone() %>" style="width:100%"></td></tr>
-		<tr>
+	
 		<tr>
 			<th>주소</th>
 			<td><input type="text" name="student_address" value="<%=ab.getStudent_address() %>" style="width:100%"></td></tr>
 		<tr>
+			<th>최종학력</th>
+			<td><input type="text" name="student_complete_edu" value="<%=ab.getStudent_complete_edu() %>" style="width:100%"></td></tr>
+		
 		<tr>
 			<th>학교</th>
 			<td><input type="text" name="student_student_univ_coll" value="<%=ab.getStudent_univ_coll() %>" style="width:100%"></td></tr>
-		<tr>
+		
 		<tr>
 			<th>학과</th>
 			<td><input type="text" name="student_major" value="<%=ab.getStudent_major() %>" style="width:100%"></td></tr>

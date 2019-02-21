@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList,TNT_DAO.*, TNT_Bean.*" %>
+ <jsp:useBean id="stubean" class="TNT_Bean.StudentBean" scope="request"></jsp:useBean>
  
 <jsp:useBean id="adao" class="TNT_DAO.AttendDAO"></jsp:useBean>
 <jsp:useBean id="abean" class="TNT_Bean.AttendBean"></jsp:useBean>
@@ -11,7 +12,6 @@
 <jsp:useBean id="sbean" class="TNT_Bean.StudentBean"></jsp:useBean>
 <jsp:setProperty property="*" name="sdao"></jsp:setProperty>
 <jsp:setProperty property="*" name="sbean"></jsp:setProperty>
-
 <%
 	request.setCharacterEncoding("UTF-8");
 	String action = request.getParameter("action");
@@ -80,6 +80,7 @@
 		pageContext.forward("TNT_Attend_control.jsp?action=attend_out");
 		
 	} else if(action.equals("update")){		//mypage 수정
-		sdao.studentUpdate((String)session.getAttribute("sid"));
+		String birth = (String)request.getParameter("student_birth1");
+		sdao.studentUpdate(stubean, birth);
 	}
 %>

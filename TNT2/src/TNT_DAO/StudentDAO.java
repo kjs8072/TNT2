@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import TNT_Bean.*;
@@ -297,25 +299,34 @@ public class StudentDAO {
 		return true;
 	}
 
-	public int studentUpdate(String id) {
+	public void studentUpdate(StudentBean b, String birth) {
 		connect();
 		CallableStatement cs;
-		String sql = "{call studid_check(?)";
-		int result = 0;
+		String sql = "{call stud_pkg.stu_update(?,?,?,?,?,?,?,?,?)";
 
 		try {
 			cs = conn.prepareCall(sql);
-			cs.registerOutParameter(1, java.sql.Types.INTEGER);
-			cs.setString(2, id);
+			/*
+			 * SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd"); Date
+			 * d_birth = (Date) transFormat.parse(birth);
+			 */
+			
+			cs.setString(1, b.getStudent_id());
+			cs.setString(2, b.getStudent_name());
+			cs.setString(3, birth);
+			cs.setString(4, b.getStudent_gender());
+			cs.setString(5, b.getStudent_phone());
+			cs.setString(6, b.getStudent_address());
+			cs.setString(7, b.getStudent_complete_edu());
+			cs.setString(8, b.getStudent_univ_coll());
+			cs.setString(9, b.getStudent_major());
 			cs.execute();
-			result = cs.getInt(1);
-			System.out.println("llllllllllllllllllllllll" + result);
+			
+			System.out.println("======================" + cs.getString(2));
 			cs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return 0;
 		}
-		return result;
 	}
 
 }

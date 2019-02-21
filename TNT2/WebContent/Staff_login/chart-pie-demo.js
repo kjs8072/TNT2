@@ -3,26 +3,37 @@ Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,Bli
 Chart.defaults.global.defaultFontColor = '#858796';
 
 $(function(){
-	var jsonLabel = new Array();
-	var jsonData = new Array();
+	var jsonLabel = new Array();// ["Direct", "Referral", "Social"];
+	var jsonData = new Array();//[43, 34, 23];
 	$.ajax({
-		url:"",
+		url:"/TNT2/ChartControl",
 		type:"post",
 		success: function(result){
 			console.log(result);
+			var datas = JSON.parse(result);
+			for(var i=0;i<datas.result.length;i++){
+				jsonLabel.push(datas.result[i].score);
+				jsonData.push(datas.result[i].cnt);
+				//jsonLabel = ["Direct", "Referral", "Social"];
+				//jsonData = [43, 34, 23];
+			}
+			console.log(jsonLabel);
+			pieChart(jsonLabel, jsonData);
 		}
 	})
 });
 
-function pieChart() {
+function pieChart(jsonLabel, jsonData) {
 	// Pie Chart Example
 	var ctx = document.getElementById("myPieChart");
 	var myPieChart = new Chart(ctx, {
 	  type: 'doughnut',
 	  data: {
-	    labels: ["Direct", "Referral", "Social"],
+	    //labels: ["Direct", "Referral", "Social"],
+		labels: jsonLabel,
 	    datasets: [{
-	      data: [55, 30, 15],
+	      //data: [55, 30, 15],
+	      data: jsonData,
 	      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
 	      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
 	      hoverBorderColor: "rgba(234, 236, 244, 1)",

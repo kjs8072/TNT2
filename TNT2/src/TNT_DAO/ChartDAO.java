@@ -76,6 +76,7 @@ public class ChartDAO {
 			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
+				jsonObject = new JSONObject();
 				jsonObject.put("score", rs.getString("score_grade"));
 				jsonObject.put("cnt", rs.getString("cnt"));
 				jsonArray.add(jsonObject);

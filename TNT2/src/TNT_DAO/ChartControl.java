@@ -33,7 +33,7 @@ public class ChartControl extends HttpServlet {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		ChartDAO dao = new ChartDAO();
-		String json = "";
+		String json = dao.getChartJson();
 		PrintWriter out = response.getWriter();
 		out.println(json);
 	}

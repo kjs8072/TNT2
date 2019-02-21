@@ -82,7 +82,7 @@ tr:nth-child(even) {
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
 			<a class="navbar-brand"
-				href="<%=request.getContextPath()%>/student_login/student_main.jsp"
+				href="<%=request.getContextPath()%>/staff/staff_main.jsp"
 				style="color: blue">TUTER & TUTEE</a>
 			<%
 				if (session.getAttribute("sid") == null) {
@@ -138,7 +138,7 @@ tr:nth-child(even) {
 			<!-- DataTales Example -->
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">학생 정보</h6>
+					<h6 class="m-0 font-weight-bold text-primary"></h6>
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">

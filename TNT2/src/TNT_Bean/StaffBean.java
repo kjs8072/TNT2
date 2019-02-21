@@ -7,15 +7,24 @@ public class StaffBean {
 	private int staff_num;
 	private String staff_id;
 	private String staff_pass;
+<<<<<<< HEAD
+	private String staff_name; 
+	private String staff_gender; 
+	private String responsibility;
+=======
 	private String staff_name;
 	private String staff_gender;
 	private String staff_responsibility;
+>>>>>>> branch 'master' of https://github.com/kjs8072/TNT2.git
 	private int Staff_salary;
 	private String staff_address;
 	private String staff_phone;
 	private String staff_email;
+<<<<<<< HEAD
+=======
 	private Date staff_birth;
 
+>>>>>>> branch 'master' of https://github.com/kjs8072/TNT2.git
 	public int getStaff_num() {
 		return staff_num;
 	}
@@ -47,9 +56,20 @@ public class StaffBean {
 	public void setStaff_name(String staff_name) {
 		this.staff_name = staff_name;
 	}
+<<<<<<< HEAD
+	public String getStaff_gender() {
+		return staff_gender;
+	}
+	public void setStaff_gender(String staff_gender) {
+		this.staff_gender = staff_gender;
+	}
+	public String getResponsibility() {
+		return responsibility;
+=======
 
 	public String getStaff_gender() {
 		return staff_gender;
+>>>>>>> branch 'master' of https://github.com/kjs8072/TNT2.git
 	}
 
 	public void setStaff_gender(String staff_gender) {
@@ -95,6 +115,11 @@ public class StaffBean {
 	public void setStaff_email(String staff_email) {
 		this.staff_email = staff_email;
 	}
+<<<<<<< HEAD
+	
+	
+}
+=======
 
 	public Date getStaff_birth() {
 		return staff_birth;
@@ -105,3 +130,4 @@ public class StaffBean {
 	}
 
 }
+>>>>>>> branch 'master' of https://github.com/kjs8072/TNT2.git

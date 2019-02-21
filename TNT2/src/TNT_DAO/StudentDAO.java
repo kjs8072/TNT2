@@ -25,7 +25,11 @@ public class StudentDAO {
 	void connect() {
 		try {
 
-			conn = DriverManager.getConnection(jdbc_url, "admin", "admin");
+			Class.forName(jdbc_driver);
+			conn = DriverManager.getConnection(jdbc_url, "admin", "admin");//admin oracle로 바꾸기
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

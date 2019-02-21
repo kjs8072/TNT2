@@ -132,7 +132,7 @@
 						</div>
 						<h3>
 							<a
-								href="<%=request.getContextPath()%>/staff/staff_control.jsp?action=license">자격증조회
+								href="<%=request.getContextPath()%>/staff/stuattendance.jsp">출결현황
 							</a>
 						</h3>
 					</div>

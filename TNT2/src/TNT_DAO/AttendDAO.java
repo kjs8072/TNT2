@@ -244,25 +244,36 @@ public class AttendDAO {
 		}
 		return ltime;
 	}
-/*	public int funcstaff_check(int id) {
+	
+	public ArrayList<AttendBean> AttendList(String stuid) {
 		connect();
-		CallableStatement cs;
-		String sql = "{? = call staff_check(?)";
-		
-		int result = 0;
+
+		String sql = "select * from attendance_managements where student_id=?";
+		ArrayList<AttendBean> list = new ArrayList<>();
+		AttendBean bean = null;
 
 		try {
-			cs = conn.prepareCall(sql);
-			cs.registerOutParameter(1, java.sql.Types.INTEGER);
-			cs.setInt(2, id);
-			cs.execute();
-			result = cs.getInt(1);
-			System.out.println("llllllllllllllllllllllll" + result);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, stuid);
+
+			while (rs.next()) {
+				bean = new RankBean();
+				bean.setStudent_name(rs.getString("student_name"));
+				bean.setCourse_name(rs.getString("course_name"));
+				bean.setSubject_name(rs.getString("subject_name"));
+				bean.setScore(rs.getString("score"));
+				bean.setTest_date(rs.getString("test_date"));
+				bean.setTest_division(rs.getString("test_division"));
+				bean.setTest_result(rs.getString("test_result"));
+				bean.setStudent_rank(rs.getString("student_rank"));
+
+				list.add(bean);
+			}
+
 			cs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return 0;
 		}
-		return result;
-	}*/
+		return list;
+	}
 }

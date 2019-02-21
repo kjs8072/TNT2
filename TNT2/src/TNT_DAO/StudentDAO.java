@@ -28,7 +28,7 @@ public class StudentDAO {
 		try {
 
 			Class.forName(jdbc_driver);
-			conn = DriverManager.getConnection(jdbc_url, "admin", "admin");// admin oracle·Î ¹Ù²Ù±â
+			conn = DriverManager.getConnection(jdbc_url, "admin", "admin");// admin oracleï¿½ï¿½ ï¿½Ù²Ù±ï¿½
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 
@@ -322,7 +322,7 @@ public class StudentDAO {
 			cs.setString(9, b.getStudent_major());
 			cs.execute();
 			
-			System.out.println("======================" + cs.getString(2));
+			System.out.println("======================" + b.getStudent_name() + "---" + birth);
 			cs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

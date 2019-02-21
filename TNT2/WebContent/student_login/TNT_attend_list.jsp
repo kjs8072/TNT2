@@ -3,6 +3,8 @@
 <%@ page import="TNT_Bean.*, TNT_DAO.*, java.util.*" %>
 <jsp:useBean id="data" class="java.util.ArrayList" scope="request"></jsp:useBean>
 <jsp:setProperty property="*" name="data"></jsp:setProperty>
+<jsp:useBean id="count" class="java.util.ArrayList" scope="request"></jsp:useBean>
+<jsp:setProperty property="*" name="count"></jsp:setProperty>
 
 <!DOCTYPE html>
 <html>
@@ -43,17 +45,28 @@
   <!-- Masthead -->
   <header class="masthead text-white text-center">
     <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-9 mx-auto">
-          <h1 class="mb-5"><a href="<%= request.getContextPath() %>/student_login/student_main.jsp" style="color:white">Tuter & Tutee</a></h1>
-        </div>
-        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-        </div>
-      </div>
-    </div>
   </header>
   <br>
+  
+  <table border="1" align="center">
+		<tr>
+			<th>출석</th>
+			<th>지각</th>
+			<th>조퇴</th>
+			<th>외출</th>
+			<th>결석</th>
+			<th>총일수</th>
+		</tr>
+		<tr>
+			<td><%= count.get(0) %></td>
+			<td><%= count.get(1) %></td>
+			<td><%= count.get(2) %></td>
+			<td><%= count.get(3) %></td>
+			<td><%= count.get(4) %></td>
+			<td><%= count.get(5) %></td>
+		</tr>
+	</table><br>
+	
 <table border="1" align="center">
 		<tr>
 			<th>출석번호</th>

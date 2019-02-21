@@ -18,7 +18,10 @@
 
 	if(action.equals("attendance")){
 		ArrayList<AttendBean> list = adao.getAttendList((String)session.getAttribute("sid"));
+		ArrayList<Integer> list1 = adao.getAttendSelect((String)session.getAttribute("sid"));
+		
 		request.setAttribute("data", list);		//요청 페이지에 값을 setting. list에 있는 값을 "data"에 넣어서 addrbook_list.jsp에 값을 넘김
+		request.setAttribute("count", list1);
 		pageContext.forward("TNT_attend_list.jsp");		//리스트를 보여주는 페이지(TNT_attend_list.jsp)로 이동 ( data값을 넘겨줌.)
 		
 	} else if(action.equals("attend_out")){
@@ -75,5 +78,8 @@
 		adao.attendLeavingUpdate((String)session.getAttribute("sid"));
 		adao.attendDivision((String)session.getAttribute("sid"));
 		pageContext.forward("TNT_Attend_control.jsp?action=attend_out");
+		
+	} else if(action.equals("update")){		//mypage 수정
+		
 	}
 %>

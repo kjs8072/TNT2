@@ -72,6 +72,35 @@ public class AttendDAO {
 		return list;
 	}
 
+	public ArrayList<Integer> getAttendSelect(String stuid){	//출석 횟수 출력
+		connect();
+		CallableStatement cs;
+		ArrayList<Integer> list = new ArrayList<>();
+
+		try {
+			cs = conn.prepareCall("{call attendance_select(?,?,?,?,?,?,?)}");
+			cs.setString(1,stuid);
+			cs.registerOutParameter(2, java.sql.Types.INTEGER);
+			cs.registerOutParameter(3, java.sql.Types.INTEGER);
+			cs.registerOutParameter(4, java.sql.Types.INTEGER);
+			cs.registerOutParameter(5, java.sql.Types.INTEGER);
+			cs.registerOutParameter(6, java.sql.Types.INTEGER);
+			cs.registerOutParameter(7, java.sql.Types.INTEGER);
+			cs.execute();
+			
+			list.add(cs.getInt(2));
+			list.add(cs.getInt(3));
+			list.add(cs.getInt(4));
+			list.add(cs.getInt(5));
+			list.add(cs.getInt(6));
+			list.add(cs.getInt(7));
+			cs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	public void attendInsert(String stuid) {
 		connect();
 		CallableStatement cs;

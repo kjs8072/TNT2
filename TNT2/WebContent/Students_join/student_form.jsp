@@ -31,6 +31,8 @@
   <!-- Custom styles for this template -->
   <link href="<%= request.getContextPath() %>/css/landing-page.min.css" rel="stylesheet">
 <title>출결관리</title>
+<script src="lcs_nclicks.js"></script>
+<script src="clickcr.js"></script>
 </head>
 <body align="center">
 <!-- Navigation -->
@@ -74,12 +76,24 @@
 					onclick="stud_check()"></td>
 			</tr>
 			<tr>
-				<th>비밀번호</th>
-				<td colspan="2"><input type="password" name="student_pw"required></td>
-			</tr>
-			<tr>
-				<th>비밀번호확인</th>
-				<td colapan="2"><input type="password" name="student_pw"required></td>
+			 
+                        <th class="join_title"><label for="pswd1">비밀번호</label></th>
+                        <span class="ps_box int_pass" id="pswd1Img">
+							<td><input type="password" id="student_pw" name="student_pw" 
+							class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20"></td>
+                        <span class="error_next_box" id="pswd1Msg" style="display:none" role="alert">5~12자의 영문 소문자, 숫자와 특수기호(_)만 사용 가능합니다.</span>
+                        
+					</span>
+					</tr>
+					<tr>
+                        <th class="join_title"><label for="pswd2">비밀번호 재확인</label></th></td>
+                        <span class="ps_box int_pass_check" id="pswd2Img">
+							<td><input type="password" id="student_pw1" name="student_pw1" class="int" title="비밀번호 재확인 입력" aria-describedby="pswd2Blind" maxlength="20">
+							<span id="pswd2Blind" class="wa_blind" style="display:none">설정하려는 비밀번호가 맞는지 확인하기 위해 다시 입력 해주세요.</span></td>
+						</span>
+                        <span class="error_next_box" id="pswd2Msg" style="display:none" role="alert"></span>
+                   
+                
 			</tr>
 			<tr>
 				<th>이름</th>
@@ -87,6 +101,7 @@
 			</tr>
 			<tr>
 				<th>성별</th>
+				
 				<td colspan="2"><input type="radio" name="gender" value="남자" checked>남자
 					<input type="radio" name="gender" value="여자">여자</td>
 			</tr>

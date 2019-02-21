@@ -81,6 +81,7 @@
 		pageContext.forward("TNT_Attend_control.jsp?action=attend_out");
 		
 	} else if(action.equals("update")){		//mypage 수정
+
 		System.out.println("11111"+stubean);
 		stubean.setStudent_id((String)session.getAttribute("sid"));
 		System.out.println("22222"+stubean);

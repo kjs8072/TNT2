@@ -9,17 +9,13 @@
       document.form1.submit();
    }
 </script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
 <title>학생 회원가입</title>
-
 <!-- Bootstrap core CSS -->
 <link href="<%= request.getContextPath() %>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
 <!-- Custom fonts for this template -->
 <link href="<%= request.getContextPath() %>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link href="<%= request.getContextPath() %>/vendor/simple-line-icons/css/simple-line-icons.css"
@@ -27,41 +23,32 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
-
 <!-- Custom styles for this template -->
 <link href="<%= request.getContextPath() %>/css/landing-page.min.css" rel="stylesheet">
-
 <style>
-ul {
-	border: 1px solid #bcbcbc;
-	}
-ul.a {
-	text-align: center;
-	}
-ul.b {
-	width: 300px;
+table {
+	width: 100%;
+	border: 1px solid #444444;
+	border-collapse: collapse;
 	margin-left: auto;
-	margin-right: auto;
-	}
-ul.c {
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
-	}
+	margin-right: auto;	
+}
+
+th, td{
+	border: 1px solid #444444;
+	padding: 10px;
+}
+
 </style>
 </head>
-
 <body align="center">
 	<%
 	request.setCharacterEncoding("UTF-8"); //언어설정
 	%>
-
 <!-- Content Wrapper -->
 	<div id="content-wrapper" class="d-flex flex-column">
-
 <!-- Main Content -->
 		<div id="content">
-
 <!-- Masthead -->
   <header class="masthead text-white text-center">
     <div class="overlay"></div>
@@ -79,7 +66,7 @@ ul.c {
   
 <form name="form1" method="get" action="student_control.jsp">
 <input type="hidden" name="action" value="insert">
-<table class="container" border="2">
+<table class="table" border="2">
 
 <tr><th>아이디</th><td><input type="text" name="student_id">
 <input class="btn btn-primary" type="button" value="중복확인" onclick="stud_check()"></td></tr>
@@ -96,7 +83,8 @@ ul.c {
 <td colspan="2" align="center">
 <input class="btn btn-primary" type="submit" value="저장">
 <input class="btn btn-primary" type="reset" value="취소">
-</td></tr>
+</td>
+</tr>
 </table>
 </form>
 </body>

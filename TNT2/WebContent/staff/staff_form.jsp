@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
 <head>
 <script>
    function staff_check() {
@@ -10,11 +9,14 @@
    }
 
 </script>
-<meta charset="EUC-KR">
-<title>±³Á÷¿ø È¸¿ø°¡ÀÔ</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta charset="UTF-8">
+<title>êµì§ì› íšŒì›ê°€ìž…</title>
 <!-- Bootstrap core CSS -->
 <link href="<%= request.getContextPath() %>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
 <!-- Custom fonts for this template -->
 <link href="<%= request.getContextPath() %>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link href="<%= request.getContextPath() %>/vendor/simple-line-icons/css/simple-line-icons.css"
@@ -22,10 +24,8 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
-
 <!-- Custom styles for this template -->
 <link href="<%= request.getContextPath() %>/css/landing-page.min.css" rel="stylesheet">
-
 <style>
 ul {
 	border: 1px solid #bcbcbc;
@@ -46,23 +46,47 @@ ul.c {
 </style>
 </head>
 <body align="center">
+	<%
+	request.setCharacterEncoding("UTF-8"); //ì–¸ì–´ì„¤ì •
+	%>
+<!-- Content Wrapper -->
+	<div id="content-wrapper" class="d-flex flex-column">
+<!-- Main Content -->
+		<div id="content">
+<!-- Masthead -->
+  <header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+          <form method="post" action="Login_control.jsp">
+            <div class="form-row">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+  
 <form name="form1" method="get" action="staff_control.jsp">
 <input type="hidden" name="action" value="insert">
 <table class="table" border="2">
-<h1>È¸¿ø°¡ÀÔ </h1> 
-<tr><th>¾ÆÀÌµð</th><td><input type="text" name="staff_id">
-<input class="btn btn-primary"type="button" value="Áßº¹È®ÀÎ" onclick="staff_check()"></td></tr>
-<tr><th>ºñ¹Ð¹øÈ£</th><td colspan="2"><input type="password" name="staff_pass"></td></tr>
-<tr><th>ºñ¹Ð¹øÈ£È®ÀÎ</th><td colapan="2"><input type="password" name="student_pass"></td></tr>
-<tr><th>ÀÌ¸§</th><td colspan="2"><input type="text" name="staff_name"></td></tr>
-<tr><th>¼ºº°</th><td colspan="2">
-<input type="radio" name="gender" value="³²ÀÚ" >³²ÀÚ <input type="radio"name="gender" value="¿©ÀÚ">¿©ÀÚ</td></tr>
-<tr><th>Á÷¹«</th><td colspan="2"><input type="text" name="staff_responsibility"></td></tr>
-<tr><th>ÁÖ¼Ò</th><td colspan="2"><input type="text" name="staff_address"></td></tr>
-<tr><th>Æù¹øÈ£</th><td colspan="2"><input type="text" name="staff_phone"></td></tr>
-<tr><th>ÀÌ¸ÞÀÏ</th><td colspan="2"><input type="email" name="staff_email"></td></tr>
-<tr><td colspan="2" align="center">
-<input type="submit" value="ÀúÀå"><input type="reset" value="Ãë¼Ò">
+
+<tr><th>ì•„ì´ë””</th><td><input type="text" name="staff_id">
+<input class="btn btn-primary"type="button" value="ì¤‘ë³µí™•ì¸" onclick="staff_check()"></td></tr>
+<tr><th>ë¹„ë°€ë²ˆí˜¸</th><td colspan="2"><input type="password" name="staff_pass"></td></tr>
+<tr><th>ë¹„ë°€ë²ˆí˜¸í™•ì¸</th><td colapan="2"><input type="password" name="student_pass"></td></tr>
+<tr><th>ì´ë¦„</th><td colspan="2"><input type="text" name="staff_name"></td></tr>
+<tr><th>ì„±ë³„</th><td colspan="2">
+<input type="radio" name="gender" value="ë‚¨ìž" >ë‚¨ìž <input type="radio"name="gender" value="ì—¬ìž">ì—¬ìž</td></tr>
+<tr><th>ì§ë¬´</th><td colspan="2"><input type="text" name="staff_responsibility"></td></tr>
+<tr><th>ì£¼ì†Œ</th><td colspan="2"><input type="text" name="staff_address"></td></tr>
+<tr><th>í°ë²ˆí˜¸</th><td colspan="2"><input type="text" name="staff_phone"></td></tr>
+<tr><th>ì´ë©”ì¼</th><td colspan="2"><input type="email" name="staff_email"></td></tr>
+<tr>
+<td colspan="2" align="center">
+<input class="btn btn-primary" type="submit" value="ì €ìž¥">
+<input class="btn btn-primary" type="reset" value="ì·¨ì†Œ">
 </table>
 </form>
 </body>

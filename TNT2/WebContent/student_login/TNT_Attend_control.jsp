@@ -80,6 +80,6 @@
 		pageContext.forward("TNT_Attend_control.jsp?action=attend_out");
 		
 	} else if(action.equals("update")){		//mypage 수정
-		
+		sdao.studentUpdate((String)session.getAttribute("sid"));
 	}
 %>

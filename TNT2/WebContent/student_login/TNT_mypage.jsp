@@ -87,15 +87,15 @@
 		<tr>
 		<tr>
 			<th>주소</th>
-			<td><input type="text" name="student_name" value="<%=ab.getStudent_address() %>" style="width:100%"></td></tr>
+			<td><input type="text" name="student_address" value="<%=ab.getStudent_address() %>" style="width:100%"></td></tr>
 		<tr>
 		<tr>
 			<th>학교</th>
-			<td><input type="text" name="student_name" value="<%=ab.getStudent_univ_coll() %>" style="width:100%"></td></tr>
+			<td><input type="text" name="student_student_univ_coll" value="<%=ab.getStudent_univ_coll() %>" style="width:100%"></td></tr>
 		<tr>
 		<tr>
 			<th>학과</th>
-			<td><input type="text" name="student_name" value="<%=ab.getStudent_major() %>" style="width:100%"></td></tr>
+			<td><input type="text" name="student_major" value="<%=ab.getStudent_major() %>" style="width:100%"></td></tr>
 		<%
 			}
 		%>

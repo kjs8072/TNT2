@@ -31,7 +31,6 @@ public class StaffDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	void disconnect() {
@@ -50,73 +49,11 @@ public class StaffDAO {
 			}
 		}
 	}
-<<<<<<< HEAD
-		void disconnect() {
-			if(pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if(conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		public boolean insertDB(StaffBean membership) { //»ðÀÔ
-			connect();
-			String sql = "insert into staffs (staff_num,staff_id,staff_pass,staff_name,staff_gender,staff_responsibility,staff_address,staff_phone,staff_email)"
-						+ " values (?,?,?,?,?,?,?,?,?) ";
-				try {
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setInt(1, membership.getStaff_num()); //ex)
-					pstmt.setString(2, membership.getStaff_id());
-					pstmt.setString(3, membership.getStaff_pass());
-					pstmt.setString(4, membership.getStaff_name());
-					pstmt.setString(5, membership.getStaff_gender());
-					pstmt.setString(6, membership.getResponsibility());
-					pstmt.setString(7, membership.getStaff_address());
-					pstmt.setString(8, membership.getStaff_phone());
-					pstmt.setString(9, membership.getStaff_email());
-					pstmt.executeUpdate();
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-					return false;
-				} finally {
-					disconnect();
-				}
-				return true;
-		}
-=======
->>>>>>> branch 'master' of https://github.com/kjs8072/TNT2.git
 
-<<<<<<< HEAD
-		public int funcstaff_check(String id) {
-		      connect();
-		      CallableStatement cs;
-		      String sql = "{? = call staff_check(?)";
-		      int result = 0;
-=======
 	public ArrayList<StaffBean> getInfoList(String staffid) {
 		connect();
 		String sql = "select staff_id, staff_name, staff_birth, staff_gender, staff_phone, staff_address, staff_responsibility"
 				+ " from staffs where staff_id=?";
->>>>>>> branch 'master' of https://github.com/kjs8072/TNT2.git
-
-<<<<<<< HEAD
-		      try {
-		         cs = conn.prepareCall(sql);
-		         cs.registerOutParameter(1, java.sql.Types.INTEGER);
-		         cs.setString(2, id);
-		         cs.execute();
-		         result = cs.getInt(1);
-		         System.out.println("llllllllllllllllllllllll"+result);
-=======
 		ArrayList<StaffBean> list = new ArrayList<>();
 		StaffBean bean = null;
 
@@ -138,6 +75,8 @@ public class StaffDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+
 		}
 		return list;
 	}
@@ -212,7 +151,6 @@ public class StaffDAO {
 			cs.execute();
 			result = cs.getInt(1);
 			System.out.println("llllllllllllllllllllllll" + result);
->>>>>>> branch 'master' of https://github.com/kjs8072/TNT2.git
 //		         System.out.println(cs.getInt(1) + " => success ");
 			cs.close();
 		} catch (SQLException e) {

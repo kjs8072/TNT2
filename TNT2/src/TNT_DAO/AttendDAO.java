@@ -135,7 +135,6 @@ public class AttendDAO {
 			cs = conn.prepareCall("{call attendance_update(?)}");
 			cs.setString(1,stuid);
 			cs.execute();
-			
 			cs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

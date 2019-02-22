@@ -138,7 +138,7 @@ public class StaffDAO {
 		return true;
 	}
 
-	public int funcstaff_check(int id) {
+	public int funcstaff_check(String id) {
 		connect();
 		CallableStatement cs;
 		String sql = "{? = call staff_check(?)";

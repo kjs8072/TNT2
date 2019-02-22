@@ -59,9 +59,9 @@
 
 <td colspan="2" align="center">
 						<button type="submit" class="btn btn-block btn-lg btn-primary">
-                		<a href="<%= request.getContextPath() %>/Stdents/student_form.jsp" style="color:white">회원가입<학생></a></button>
+                		<a href="<%= request.getContextPath() %>/Students_join/student_form.jsp" style="color:white">회원가입<학생></a></button>
 						<button type="submit" class="btn btn-block btn-lg btn-primary">
-                		<a href="<%= request.getContextPath() %>/staff/staff_form.jsp" style="color:white">회원가입<교직원></a></button>
+                		<a href="<%= request.getContextPath() %>/Staff_join/staff_form.jsp" style="color:white">회원가입<교직원></a></button>
 						</td>
 
 </form>

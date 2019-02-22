@@ -164,7 +164,8 @@ tr:nth-child(even) {
 									<td><%=courseVu.getCourse_name()%></td>
 									<td><%=courseVu.getCourse_contents()%></td>
 									<td><a
-										href="<%=request.getContextPath()%>/Staff/attendance_list.jsp"></td>
+										href="<%=request.getContextPath()%>/Students/ranking.jsp?action=
+										<%=courseVu.getSubject_num()%>" /><%=courseVu.getSubject_name()%></td>
 									<td><%=courseVu.getSubject_division()%></td>
 									<td><%=courseVu.getSubject_contents()%></td>
 									<td><%=courseVu.getDetail_method()%></td>

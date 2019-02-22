@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page
 	import="TNT_Bean.*, TNT_DAO.*, java.util.ArrayList, java.sql.Date"%>
+
 <jsp:useBean id="list" class="java.util.ArrayList" scope="request"></jsp:useBean>
 <jsp:setProperty property="*" name="list"></jsp:setProperty>
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>교과목 정보</title>
+<title>학생 출결현황</title>
 
 <!-- Bootstrap core JavaScript-->
 <script src="<%=request.getContextPath()%>/vendor/jquery/jquery.min.js"></script>
@@ -47,6 +48,8 @@
 <link href="<%=request.getContextPath()%>/css/landing-page.min.css"
 	rel="stylesheet">
 
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 table {
@@ -65,14 +68,21 @@ tr:nth-child(even) {
 	background-color: #f2f2f2
 }
 </style>
+
 </head>
 
 <body>
+
 	<%
+		//언어 설정
 		request.setCharacterEncoding("UTF-8");
-		CourseListVuBean vu = new CourseListVuBean();
+
+		int subjectNum = Integer.parseInt(request.getParameter("action"));
+
+		AttendBean abean = new AttendBean();
 		StudentDAO tnt = new StudentDAO();
-		list = tnt.getSubjectInfo();
+
+		list = tnt.getScore(subjectNum);
 	%>
 
 	<!-- Navigation -->
@@ -83,10 +93,7 @@ tr:nth-child(even) {
 				style="color: blue">TUTER & TUTEE</a>
 			<%
 				if (session.getAttribute("sid") == null) {
-			%>
-			<a class="btn btn-primary"
-				href="<%=request.getContextPath()%>/index.jsp">Sign In</a>
-			<%
+		
 				} else {
 			%>
 			<a class="btn btn-primary"
@@ -110,21 +117,13 @@ tr:nth-child(even) {
 					<div class="row">
 						<div class="col-xl-9 mx-auto">
 							<h1 class="mb-5">
-								<!-- 중앙img / STAFF MAIN으로 이동하기 -->
-								<a>학생 성적 정보</a>
+								<a>학생 출결현황</a>
 							</h1>
 						</div>
 						<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 							<form>
 								<div class="form-row">
-									<%--	<div class="col-12 col-md-9 mb-2 mb-md-0">
-								<input type="text" class="form-control form-control-lg"
-									placeholder="Enter your email...">
-							</div>
-							<div class="col-12 col-md-3">
-								<button type="submit" class="btn btn-block btn-lg btn-primary"
-									href="TNT_control.jsp?action=attendance">Sign up!</button>
-							</div> --%>
+									
 								</div>
 							</form>
 						</div>
@@ -143,36 +142,30 @@ tr:nth-child(even) {
 						<table id="dataTable" border="1" align="center">
 							<thead>
 								<tr>
-									<th>과정명</th>
-									<th>과정내용</th>
-									<th>교과목명</th>
-									<th>교과구분</th>
-									<th>교과목내용</th>
-									<th>평가방법</th>
-									<th>평가일시</th>
-									<th>과정개강일</th>
-									<th>과정수료일</th>
-									<th>최대인원</th>
-									<th>신청인원</th>
+									<th>학생ID</th>
+									<th>출석번호</th>
+									<th>날짜</th>
+									<th>입실시간</th>
+									<th>퇴실시간</th>
+									<th>외출시간</th>
+									<th>복귀시간</th>
+									<th>출석구분</th>
 								</tr>
 							</thead>
 							<tbody>
 								<%
-									for (CourseListVuBean courseVu : (ArrayList<CourseListVuBean>) list) {
+									for (AttendBean abean : (ArrayList<AttendBean>) list) {
 								%>
 								<tr>
-									<td><%=courseVu.getCourse_name()%></td>
-									<td><%=courseVu.getCourse_contents()%></td>
-									<td><a
-										href="<%=request.getContextPath()%>/Staff/attendance_list.jsp"></td>
-									<td><%=courseVu.getSubject_division()%></td>
-									<td><%=courseVu.getSubject_contents()%></td>
-									<td><%=courseVu.getDetail_method()%></td>
-									<td><%=courseVu.getDetail_date()%></td>
-									<td><%=courseVu.getCourse_open()%></td>
-									<td><%=courseVu.getCourse_finish()%></td>
-									<td><%=courseVu.getCourse_persons()%></td>
-									<td><%=courseVu.getCourse_max()%></td>
+
+									<td><%=rank.getStudent_name()%></td>
+									<td><%=rank.getCourse_name()%></td>
+									<td><%=rank.getSubject_name()%></td>
+									<td><%=rank.getScore()%></td>
+									<td><%=rank.getTest_date()%></td>
+									<td><%=rank.getTest_division()%></td>
+									<td><%=rank.getTest_result()%></td>
+									<td><%=rank.getStudent_rank()%></td>
 								</tr>
 								<%
 									}
@@ -192,6 +185,7 @@ tr:nth-child(even) {
 
 	<!-- Page level custom scripts -->
 	<script src="<%=request.getContextPath()%>/js/demo/datatables-demo.js"></script>
+
 
 </body>
 </html>

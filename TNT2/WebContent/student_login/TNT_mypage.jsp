@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="TNT_Bean.*, java.util.*" %>
+
 <jsp:useBean id="stu" class="java.util.ArrayList" scope="request"></jsp:useBean>
 <jsp:setProperty property="*" name="stu"></jsp:setProperty>
 
@@ -77,7 +78,7 @@
 				<tr>
 					<th>성별</th>
 		<%
-				if(ab.getStudent_gender().equals("MALE")) {
+				if(ab.getStudent_gender() == null || ab.getStudent_gender().equals("MALE")) {
 		%>
 					<td>
 						<div class="radio"><label><input type="radio" name="student_gender" value="남자" checked>남자</label>

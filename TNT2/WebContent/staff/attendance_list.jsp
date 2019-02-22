@@ -76,13 +76,9 @@ tr:nth-child(even) {
 	<%
 		//언어 설정
 		request.setCharacterEncoding("UTF-8");
+		AttendDAO adao = new AttendDAO();
 
-		int subjectNum = Integer.parseInt(request.getParameter("action"));
-
-		AttendBean abean = new AttendBean();
-		StudentDAO tnt = new StudentDAO();
-
-		list = tnt.getScore(subjectNum);
+		list = adao.AttendList((String)session.getAttribute("sid"));
 	%>
 
 	<!-- Navigation -->
@@ -154,18 +150,18 @@ tr:nth-child(even) {
 							</thead>
 							<tbody>
 								<%
-									for (AttendBean abean : (ArrayList<AttendBean>) list) {
+									for (AttendBean bean : (ArrayList<AttendBean>) list) {
 								%>
 								<tr>
 
-									<td><%=rank.getStudent_name()%></td>
-									<td><%=rank.getCourse_name()%></td>
-									<td><%=rank.getSubject_name()%></td>
-									<td><%=rank.getScore()%></td>
-									<td><%=rank.getTest_date()%></td>
-									<td><%=rank.getTest_division()%></td>
-									<td><%=rank.getTest_result()%></td>
-									<td><%=rank.getStudent_rank()%></td>
+									<td><%=bean.getStudent_id()%></td>
+									<td><%=bean.getAttendance_num()%></td>
+									<td><%=bean.getAttendance_date()%></td>
+									<td><%=bean.getEntering_time()%></td>
+									<td><%=bean.getLeaving_time()%></td>
+									<td><%=bean.getOutgo_time()%></td>
+									<td><%=bean.getReturn_time()%></td>
+									<td><%=bean.getAttendance_division()%></td>
 								</tr>
 								<%
 									}

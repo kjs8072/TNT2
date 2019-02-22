@@ -60,6 +60,9 @@
 		
 	} else if(action.equals("mypage")){
 		ArrayList<StudentBean> list = sdao.getInfoList((String)session.getAttribute("sid"));
+		for(StudentBean stb : list){
+			System.out.println(stb.toString());
+		}
 		request.setAttribute("stu", list);		//요청 페이지에 값을 setting. list에 있는 값을 "stu"에 넣어서 TNT_mypage.jsp에 값을 넘김
 		pageContext.forward("TNT_mypage.jsp");
 		

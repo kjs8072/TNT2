@@ -1,91 +1,136 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
 <script>
-   function stud_check() {
-      document.form1.action.value="check1";
-      document.form1.submit();
-   }
+	function stud_check() {
+		var msg=document.getElementById("student_id").value;
+		console.log(msg);
+		 if (msg==""){
+			 alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.")
+			 return;
+		 }else{
+				document.form1.action.value = "check1";
+				document.form1.submit();
+		 }
+	}
 </script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>í•™ìƒ íšŒì›ê°€ì…</title>
-<!-- Bootstrap core CSS -->
-<link href="<%= request.getContextPath() %>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<!-- Custom fonts for this template -->
-<link href="<%= request.getContextPath() %>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-<link href="<%= request.getContextPath() %>/vendor/simple-line-icons/css/simple-line-icons.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
-	rel="stylesheet" type="text/css">
-<!-- Custom styles for this template -->
-<link href="<%= request.getContextPath() %>/css/landing-page.min.css" rel="stylesheet">
-<style>
-table {
-	width: 100%;
-	border: 1px solid #444444;
-	border-collapse: collapse;
-	margin-left: auto;
-	margin-right: auto;	
-}
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+ <!-- Bootstrap core CSS -->
+  <link href="<%= request.getContextPath() %>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-th, td{
-	border: 1px solid #444444;
-	padding: 10px;
-}
+  <!-- Custom fonts for this template -->
+  <link href="<%= request.getContextPath() %>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="<%= request.getContextPath() %>/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
-</style>
+  <!-- Custom styles for this template -->
+  <link href="<%= request.getContextPath() %>/css/landing-page.min.css" rel="stylesheet">
+<title>Ãâ°á°ü¸®</title>
+<script src="lcs_nclicks.js"></script>
+<script src="clickcr.js"></script>
 </head>
 <body align="center">
-	<%
-	request.setCharacterEncoding("UTF-8"); //ì–¸ì–´ì„¤ì •
-	%>
-<!-- Content Wrapper -->
-	<div id="content-wrapper" class="d-flex flex-column">
-<!-- Main Content -->
-		<div id="content">
-<!-- Masthead -->
+<!-- Navigation -->
+  <nav class="navbar navbar-light bg-light static-top">
+    <div class="container">
+      <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp" style="color:blue">TUTER & TUTEE</a>
+       <%
+           if(session.getAttribute("sid") ==null){
+      %>
+       <a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/Login_form.jsp">Sign In</a>
+       <%
+             } else {
+       %>
+              <a class="btn btn-primary" href="<%= request.getContextPath() %>/Login_form/logout.jsp">logout</a>
+       <%} %>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
   <header class="masthead text-white text-center">
     <div class="overlay"></div>
     <div class="container">
-      <div class="row">
+       <div class="row"> 
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form method="post" action="Login_control.jsp">
-            <div class="form-row">
-            </div>
-          </form>
         </div>
       </div>
     </div>
   </header>
-  
-<form name="form1" method="get" action="student_control.jsp">
-<input type="hidden" name="action" value="insert">
-<table class="table" border="2">
-
-<tr><th>ì•„ì´ë””</th><td><input type="text" name="student_id">
-<input class="btn btn-primary" type="button" value="ì¤‘ë³µí™•ì¸" onclick="stud_check()"></td></tr>
-<tr><th>ë¹„ë°€ë²ˆí˜¸</th><td colspan="2"><input type="password" name="student_pw"></td></tr>
-<tr><th>ë¹„ë°€ë²ˆí˜¸í™•ì¸</th><td colspan="2"><input type="password" name="student_pw"></td></tr>
-<tr><th>ì´ë¦„</th><td colspan="2"><input type="text" name="student_name"></td></tr>
-<tr><th>ì„±ë³„</th><td colspan="2">
-<input type="radio" name="gender" value="ë‚¨ì" >ë‚¨ì <input type="radio"name="gender" value="ì—¬ì">ì—¬ì</td></tr>
-<tr><th>í•¸ë“œí°ë²ˆí˜¸</th><td colspan="2"><input type="text" name="student_phone"></td></tr>
-<tr><th>ì£¼ì†Œ</th><td colspan="2"><input type="text" name="student_adress"></td></tr>
-<tr><th>í•™êµ</th><td colspan="2"><input type="text" name="student_univ_coll"></td></tr>
-<tr><th>ì „ê³µ</th><td colspan="2"><input type="text" name="student_major"></td></tr>
-<tr>
-<td colspan="2" align="center">
-<input class="btn btn-primary" type="submit" value="ì €ì¥">
-<input class="btn btn-primary" type="reset" value="ì·¨ì†Œ">
-</td>
-</tr>
-</table>
-</form>
+  <br>
+ 
+    <div class="container">
+    <div align="center">
+	<form name="form1" method="get" action="student_control.jsp">
+		<input type="hidden" name="action" value="insert">
+		<table class="table" border="2" style="width:70%">
+			<h1>È¸¿ø°¡ÀÔ</h1>
+			<tr>
+				<th>¾ÆÀÌµğ</th>
+				<td><input type="text" id="student_id" name="student_id" required>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<input class="btn btn-primary" type="button" value="Áßº¹È®ÀÎ"
+					onclick="stud_check()"></td>
+			</tr>
+			<tr>
+			 
+                        <th class="join_title"><label for="pswd1">ºñ¹Ğ¹øÈ£</label></th>
+                        <span class="ps_box int_pass" id="pswd1Img">
+							<td><input type="password" id="student_pw" name="student_pw" 
+							class="int" title="ºñ¹Ğ¹øÈ£ ÀÔ·Â" aria-describedby="pswd1Msg" maxlength="20"></td>
+                        <span class="error_next_box" id="pswd1Msg" style="display:none" role="alert">5~12ÀÚÀÇ ¿µ¹® ¼Ò¹®ÀÚ, ¼ıÀÚ¿Í Æ¯¼ö±âÈ£(_)¸¸ »ç¿ë °¡´ÉÇÕ´Ï´Ù.</span>
+                        
+					</span>
+					</tr>
+					<tr>
+                        <th class="join_title"><label for="pswd2">ºñ¹Ğ¹øÈ£ ÀçÈ®ÀÎ</label></th></td>
+                        <span class="ps_box int_pass_check" id="pswd2Img">
+							<td><input type="password" id="student_pw1" name="student_pw1" class="int" title="ºñ¹Ğ¹øÈ£ ÀçÈ®ÀÎ ÀÔ·Â" aria-describedby="pswd2Blind" maxlength="20">
+							<span id="pswd2Blind" class="wa_blind" style="display:none">¼³Á¤ÇÏ·Á´Â ºñ¹Ğ¹øÈ£°¡ ¸Â´ÂÁö È®ÀÎÇÏ±â À§ÇØ ´Ù½Ã ÀÔ·Â ÇØÁÖ¼¼¿ä.</span></td>
+						</span>
+                        <span class="error_next_box" id="pswd2Msg" style="display:none" role="alert"></span>
+                   
+                
+			</tr>
+			<tr>
+				<th>ÀÌ¸§</th>
+				<td colspan="2"><input type="text" name="student_name" required></td>
+			</tr>
+			<tr>
+				<th>¼ºº°</th>
+				
+				<td colspan="2"><input type="radio" name="gender" value="³²ÀÚ" checked>³²ÀÚ
+					<input type="radio" name="gender" value="¿©ÀÚ">¿©ÀÚ</td>
+			</tr>
+			<tr>
+				<th>ÇÚµåÆù¹øÈ£</th>
+				<td colspan="2"><input type="text" name="student_phone"
+					required></td>
+			</tr>
+			<tr>
+				<th>ÁÖ¼Ò</th>
+				<td colspan="2"><input type="text" name="student_adress"
+					required></td>
+			</tr>
+			<tr>
+				<th>ÇĞ±³</th>
+				<td colspan="2"><input type="text" name="student_univ_coll"
+					required></td>
+			</tr>
+			<tr>
+				<th>ÇĞ°ú</th>
+				<td colspan="2"><input type="text" name="student_major"
+					required></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit"
+					value="È¸¿ø°¡ÀÔ" action="student_control.jsp %>">
+					<input type="reset" value="Ãë¼Ò" onclick="¸ŞÀÎ">
+					</td></tr>
+		</table>
+	</form></div></div>
 </body>
 </html>

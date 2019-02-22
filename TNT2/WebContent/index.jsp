@@ -45,7 +45,7 @@
               </div>
               <div class="col-12 col-md-3">
                 <button type="button" class="btn btn-block btn-lg btn-primary">
-                <a href="<%= request.getContextPath() %>/Students/student_form.jsp" style="color:white">Sign up!</a></button>
+                <a href="<%= request.getContextPath() %>/staff/Join_form.jsp" style="color:white">Sign up!</a></button>
               </div>
             </div>
           </form>
